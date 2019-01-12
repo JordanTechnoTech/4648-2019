@@ -138,11 +138,6 @@ $RECYCLE.BIN/
 .gradle
 /build/
 
-### IntelliJ ###
-/.idea
-*.iml
-
-
 # Ignore Gradle GUI config
 gradle-app.setting
 

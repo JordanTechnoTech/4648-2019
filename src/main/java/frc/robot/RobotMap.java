@@ -7,10 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-import frc.frc.imu.ADIS16448_IMU;
-
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -27,13 +23,4 @@ public class RobotMap {
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
-
-  public static int rightDriveMotor = 0;
-  public static int leftDriveMotor = 3;
-
-  public static Spark leftDriveMotorController;
-  public static Spark rightDriveMotorController;
-  public static DifferentialDrive drivetrain;
-  public static ADIS16448_IMU imu;
-
 }
