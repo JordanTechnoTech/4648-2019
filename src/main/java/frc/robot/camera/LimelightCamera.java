@@ -61,7 +61,7 @@ public class LimelightCamera {
    *
    * @param mode the LED mode to set the camera to
    */
-  public void setLightMode(ledMode mode) {
+  public static void setLightMode(ledMode mode) {
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("ledMode").setNumber(mode.getValue());
   }
 
@@ -70,7 +70,7 @@ public class LimelightCamera {
    *
    * @param mode the camera mode to set the camera to
    */
-  public void setCameraMode(cameraMode mode) {
+  public static void setCameraMode(cameraMode mode) {
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("camMode").setNumber(mode.getValue());
   }
 
