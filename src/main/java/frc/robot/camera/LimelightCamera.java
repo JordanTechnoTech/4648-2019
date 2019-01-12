@@ -1,6 +1,7 @@
 package frc.robot.camera;
 
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class LimelightCamera {
 
@@ -54,6 +55,13 @@ public class LimelightCamera {
   public static boolean hasTarget() {
     return NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0) == 1;
   }
+  public static void log() {
+	  SmartDashboard.putNumber("limelight.tv", NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0));
+	  SmartDashboard.putNumber("limelight.tx", NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0));
+	  SmartDashboard.putNumber("limelight.ty", NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0));
+	  SmartDashboard.putNumber("limelight.ta", NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0));
+	  SmartDashboard.putNumber("limelight.distance", LimelightCamera.getDistance());
+  }
 
 
   /**
@@ -100,8 +108,8 @@ public class LimelightCamera {
      */
     double a = 0.0;
     double ty = getTargetVertical();
-    double ht = 0.0;
-    double hc = 0.0;
+    double ht = 64.7;
+    double hc = 22.0;
     return (ht - hc) / Math.tan(Math.toRadians(a + ty));
   }
 }

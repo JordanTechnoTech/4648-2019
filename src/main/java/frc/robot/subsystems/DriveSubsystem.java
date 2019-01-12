@@ -24,7 +24,7 @@ public class DriveSubsystem extends Subsystem implements TechnoTechSubsystem {
   public DriveSubsystem() {
     addChild("Left CIM", leftDrive);
     addChild("Right CIM", rightDrive);
-    addChild("IMU", imu);
+//    addChild("IMU", imu);
     differentialDrive1.setSafetyEnabled(false);
     differentialDrive1.setExpiration(0.1);
     differentialDrive1.setMaxOutput(1.0);
@@ -40,13 +40,13 @@ public class DriveSubsystem extends Subsystem implements TechnoTechSubsystem {
   }
 
   public void log() {
-    SmartDashboard.putNumber("Gyro-Angle", imu.getAngle());
-    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
-    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
-    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
-
-    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
-    SmartDashboard.putNumber("Temperature: ", imu.getTemperature());
+//    SmartDashboard.putNumber("Gyro-Angle", imu.getAngle());
+//    SmartDashboard.putNumber("Gyro-X", imu.getAngleX());
+//    SmartDashboard.putNumber("Gyro-Y", imu.getAngleY());
+//    SmartDashboard.putNumber("Gyro-Z", imu.getAngleZ());
+//
+//    SmartDashboard.putNumber("Pressure: ", imu.getBarometricPressure());
+//    SmartDashboard.putNumber("Temperature: ", imu.getTemperature());
 
     SmartDashboard.putNumber("Left Speed", leftDrive.get());
     SmartDashboard.putNumber("Right Speed", rightDrive.get());

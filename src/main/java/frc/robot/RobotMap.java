@@ -35,5 +35,13 @@ public class RobotMap {
   public static Spark rightDriveMotorController;
   public static DifferentialDrive drivetrain;
   public static ADIS16448_IMU imu;
+  
+  public static void init() {
+		// drive initialization
+		leftDriveMotorController = new Spark(leftDriveMotor);
+		rightDriveMotorController = new Spark(rightDriveMotor);
+		drivetrain = new DifferentialDrive(leftDriveMotorController, rightDriveMotorController);
+//		imu = new ADIS16448_IMU();
+  }
 
 }

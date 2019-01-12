@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
+import frc.robot.commands.CameraTrackCommand;
 
 
 /**
@@ -48,8 +49,10 @@ public class OI {
 
   Button stickLeft = new XBoxButton(controller1, XBoxButton.kStickLeft);
   Button stickRight = new XBoxButton(controller1, XBoxButton.kStickRight);
+  Button bButton = new XBoxButton(controller1, XBoxButton.kB);
 
   public OI() {
+	  bButton.whenPressed(new CameraTrackCommand());
 
   }
 
