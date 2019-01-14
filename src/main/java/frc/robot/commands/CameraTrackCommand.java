@@ -11,7 +11,7 @@ public class CameraTrackCommand extends Command {
 
   @Override
   protected void initialize() {
-	LimelightCamera.setLightMode(ledMode.ON);
+	LimelightCamera.setLightMode(ledMode.OFF);
     super.initialize();
   }
 
