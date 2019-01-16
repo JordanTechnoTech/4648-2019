@@ -35,6 +35,7 @@ public class LimelightCamera {
     }
   }
 
+
   //Table info
   public static double getTargetHorizontal() {
     return NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);

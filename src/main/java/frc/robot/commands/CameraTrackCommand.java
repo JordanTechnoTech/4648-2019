@@ -5,13 +5,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.camera.LimelightCamera;
 import frc.robot.camera.LimelightCamera.ledMode;
+import frc.robot.camera.LimelightCamera.cameraMode;
 
 public class CameraTrackCommand extends Command {
   double defaultDriveForwardSpeed = .4D;
 
   @Override
   protected void initialize() {
-	LimelightCamera.setLightMode(ledMode.OFF);
+	LimelightCamera.setLightMode(ledMode.ON);
+    LimelightCamera.setCameraMode(cameraMode.VISION);
+
     super.initialize();
   }
 
