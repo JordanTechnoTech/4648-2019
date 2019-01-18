@@ -88,7 +88,7 @@ public class LimelightCamera {
    *
    * @param pl the pipeline for the camera to use
    */
-  public void setPipeline(Number pl) {
+  public static void setPipeline(Number pl) {
     NetworkTableInstance.getDefault().getTable("limelight").getEntry("pipeline").setNumber(pl);
   }
 

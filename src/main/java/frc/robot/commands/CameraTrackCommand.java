@@ -13,7 +13,8 @@ public class CameraTrackCommand extends Command {
 
   @Override
   protected void initialize() {
-	LimelightCamera.setLightMode(ledMode.ON);
+    LimelightCamera.setPipeline(0);
+    LimelightCamera.setLightMode(ledMode.ON);
     LimelightCamera.setCameraMode(cameraMode.VISION);
 
     super.initialize();
@@ -26,8 +27,8 @@ public class CameraTrackCommand extends Command {
       RobotMap.leftDriveMotorController.set(-.25);
       RobotMap.rightDriveMotorController.set(-.25);
     } else {
-      double kSetSpeed = .3;
-      if (LimelightCamera.getDistance() < 150.0D) {
+      double kSetSpeed = .4;
+      if (LimelightCamera.getDistance() < 190.0D) {
         kSetSpeed = 0.0;
       }
 
@@ -35,17 +36,17 @@ public class CameraTrackCommand extends Command {
       float min_command = 0.05f;
       float tx = (float) LimelightCamera.getTargetHorizontal();
       float angle = Math.abs(tx);
-      if(angle <= 1){
-        Kp = .25f;
+      if(angle <= 5){
+        Kp = -.04f;
       }
-      else if (angle <= 2){
-        Kp = .5f;
+      else if (angle <= 10){
+        Kp = -.05f;
       }
-      else if (angle <= 3){
-        Kp = .75f;
+      else if (angle <= 15){
+        Kp = -.06f;
       }
-      else if (angle <= 4){
-        Kp = .9f;
+      else if (angle <= 20){
+        Kp = -.07f;
       }
       float heading_error = -tx;
       float steering_adjust = 0.0f;
@@ -54,6 +55,9 @@ public class CameraTrackCommand extends Command {
       } else if (tx < 1.0) { //target is moving left
         steering_adjust = (Kp * heading_error);
       }
+// from 0 to -27 degrees we are off to the right. need to slide to left
+// from -90 to -70 you are off to the left. need to slide to right
+      SmartDashboard.putNumber("limelightSkew", LimelightCamera.getTargetSkew());
       
       SmartDashboard.putNumber("limelightSteeringAdjust", steering_adjust);
 
