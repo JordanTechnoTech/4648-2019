@@ -10,7 +10,6 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
-import frc.robot.camera.LimelightCamera;
 import frc.robot.commands.CameraTrackCommand;
 
 
@@ -53,14 +52,9 @@ public class OI {
   Button bButton = new XBoxButton(controller1, XBoxButton.kB);
 
   public OI() {
-	 if (bButton.whileHeld() = true;) {
-      new CameraTrackCommand();
+    bButton.whileHeld(new CameraTrackCommand());
 
   }
-	 else{
-      LimelightCamera.setLightMode(LimelightCamera.ledMode.OFF);
-      LimelightCamera.setCameraMode(LimelightCamera.cameraMode.CAMERA);
-    }
 
   //Forward back speed
   public double getArcardeSpeed() { // DriveCommand

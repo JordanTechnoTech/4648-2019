@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -131,6 +132,9 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    LimelightCamera.setLightMode(ledMode.OFF);
+    LimelightCamera.setCameraMode(LimelightCamera.cameraMode.CAMERA);
+    CameraServer.getInstance().startAutomaticCapture();
 
   }
 
