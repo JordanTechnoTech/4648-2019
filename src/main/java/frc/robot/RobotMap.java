@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.frc.imu.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.AnalogInput;
 
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -44,6 +45,8 @@ public class RobotMap {
 		rightDriveMotorController = new Spark(rightDriveMotor);
 		drivetrain = new DifferentialDrive(leftDriveMotorController, rightDriveMotorController);
 //		imu = new ADIS16448_IMU();
+	leftSonar = new AnalogInput(0);
+    rightSonar = new AnalogInput(1);
   }
   public static AnalogInput LeftSonar;
   public static AnalogInput RightSonar;
