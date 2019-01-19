@@ -49,8 +49,8 @@ public class CameraTrackCommand extends Command {
     SmartDashboard.putNumber("distance", LimelightCamera.getDistance(target.getHeight()));
 
     if (!LimelightCamera.hasTarget()) {
-      RobotMap.leftDriveMotorController.set(-.25);
-      RobotMap.rightDriveMotorController.set(-.25);
+      RobotMap.leftDriveMotorController.set(-.3);
+      RobotMap.rightDriveMotorController.set(-.3);
     } else {
       double kSetSpeed = getSpeed();
 
@@ -90,16 +90,22 @@ public class CameraTrackCommand extends Command {
     if (LimelightCamera.getDistance(target.getHeight()) < 190.0D) {
       kSetSpeed = 0.0;
     }
+    double distance = 0;
+    if(LimelightCamera.getDistance(target.getHeight()) >= 100 && LimelightCamera.hasTarget()) {
+      distance = LimelightCamera.getDistance(target.getHeight());
+    } else{
+      distance = (RobotMap.leftSonar.getValue() + RobotMap.rightSonar.getValue())/2;
+    }
 
-    if (LimelightCamera.getDistance(target.getHeight()) <= 50) {
+    if (distance <= 50) {
       kSetSpeed = 0d;
-    } else if (LimelightCamera.getDistance(target.getHeight()) <= 100){
+    } else if (distance <= 100){
       kSetSpeed = .2d;
-    } else if (LimelightCamera.getDistance(target.getHeight()) <= 150){
+    } else if (distance <= 150){
       kSetSpeed = .3d;
-    } else if (LimelightCamera.getDistance(target.getHeight()) <= 200) {
+    } else if (distance <= 200) {
       kSetSpeed = .5d;
-    } else if (LimelightCamera.getDistance(target.getHeight()) <= 250) {
+    } else if (distance <= 250) {
       kSetSpeed = .7d;
     }
     return kSetSpeed;
