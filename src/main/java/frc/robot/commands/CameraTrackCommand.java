@@ -27,10 +27,7 @@ public class CameraTrackCommand extends Command {
       RobotMap.leftDriveMotorController.set(-.25);
       RobotMap.rightDriveMotorController.set(-.25);
     } else {
-      double kSetSpeed = .4;
-      if (LimelightCamera.getDistance() < 190.0D) {
-        kSetSpeed = 0.0;
-      }
+      double kSetSpeed = getSpeed();
 
       float Kp = -0.06f;
       float min_command = 0.05f;
@@ -38,14 +35,11 @@ public class CameraTrackCommand extends Command {
       float angle = Math.abs(tx);
       if(angle <= 5){
         Kp = -.04f;
-      }
-      else if (angle <= 10){
+      } else if (angle <= 10){
         Kp = -.05f;
-      }
-      else if (angle <= 15){
+      } else if (angle <= 15){
         Kp = -.06f;
-      }
-      else if (angle <= 20){
+      } else if (angle <= 20){
         Kp = -.07f;
       }
       float heading_error = -tx;
@@ -64,6 +58,24 @@ public class CameraTrackCommand extends Command {
       RobotMap.leftDriveMotorController.set(kSetSpeed + steering_adjust);
       RobotMap.rightDriveMotorController.set(-kSetSpeed + steering_adjust);
     }
+  }
+
+  private double getSpeed() {
+    double kSetSpeed = .4;
+    if (LimelightCamera.getDistance() < 190.0D) {
+      kSetSpeed = 0.0;
+    }
+
+    if (LimelightCamera.getDistance() <= 20) {
+      kSetSpeed = 0d;
+    } else if (LimelightCamera.getDistance() <= 50){
+      kSetSpeed = .2d;
+    } else if (LimelightCamera.getDistance() <= 100){
+      kSetSpeed = .3d;
+    } else if (LimelightCamera.getDistance() <= 200) {
+      kSetSpeed = .7d;
+    }
+    return kSetSpeed;
   }
 
   @Override

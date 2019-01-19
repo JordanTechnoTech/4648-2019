@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.frc.imu.ADIS16448_IMU;
+import edu.wpi.first.wpilibj.AnalogInput;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -35,7 +36,8 @@ public class RobotMap {
   public static Spark rightDriveMotorController;
   public static DifferentialDrive drivetrain;
   public static ADIS16448_IMU imu;
-  
+  public static AnalogInput leftSonar;
+  public static AnalogInput rightSonar;
   public static void init() {
 		// drive initialization
 		leftDriveMotorController = new Spark(leftDriveMotor);
@@ -43,5 +45,7 @@ public class RobotMap {
 		drivetrain = new DifferentialDrive(leftDriveMotorController, rightDriveMotorController);
 //		imu = new ADIS16448_IMU();
   }
+  public static AnalogInput LeftSonar;
+  public static AnalogInput RightSonar;
 
 }
