@@ -46,6 +46,8 @@ public class CameraTrackCommand extends Command {
   @Override
   protected void execute() {
     //turn to target until in view
+    SmartDashboard.putNumber("distance", LimelightCamera.getDistance(target.getHeight()));
+
     if (!LimelightCamera.hasTarget()) {
       RobotMap.leftDriveMotorController.set(-.25);
       RobotMap.rightDriveMotorController.set(-.25);
