@@ -20,35 +20,33 @@ import edu.wpi.first.wpilibj.AnalogInput;
  * floating around.
  */
 public class RobotMap {
-  // For example to map the left and right motors, you could define the
-  // following variables to use with your drivetrain subsystem.
-  // public static int leftMotor = 1;
-  // public static int rightMotor = 2;
+    // For example to map the left and right motors, you could define the
+    // following variables to use with your drivetrain subsystem.
+    // public static int leftMotor = 1;
+    // public static int rightMotor = 2;
 
-  // If you are using multiple modules, make sure to define both the port
-  // number and the module. For example you with a rangefinder:
-  // public static int rangefinderPort = 1;
-  // public static int rangefinderModule = 1;
+    // If you are using multiple modules, make sure to define both the port
+    // number and the module. For example you with a rangefinder:
+    // public static int rangefinderPort = 1;
+    // public static int rangefinderModule = 1;
 
-  public static int rightDriveMotor = 0;
-  public static int leftDriveMotor = 3;
+    public static int rightDriveMotor = 0;
+    public static int leftDriveMotor = 3;
 
-  public static Spark leftDriveMotorController;
-  public static Spark rightDriveMotorController;
-  public static DifferentialDrive drivetrain;
-  public static ADIS16448_IMU imu;
-  public static AnalogInput leftSonar;
-  public static AnalogInput rightSonar;
-  public static void init() {
-		// drive initialization
-		leftDriveMotorController = new Spark(leftDriveMotor);
-		rightDriveMotorController = new Spark(rightDriveMotor);
-		drivetrain = new DifferentialDrive(leftDriveMotorController, rightDriveMotorController);
+    public static Spark leftDriveMotorController;
+    public static Spark rightDriveMotorController;
+    public static DifferentialDrive drivetrain;
+    public static ADIS16448_IMU imu;
+    public static AnalogInput leftSonar;
+    public static AnalogInput rightSonar;
+
+    public static void init() {
+        // drive initialization
+        leftDriveMotorController = new Spark(leftDriveMotor);
+        rightDriveMotorController = new Spark(rightDriveMotor);
+        drivetrain = new DifferentialDrive(leftDriveMotorController, rightDriveMotorController);
 //		imu = new ADIS16448_IMU();
-	leftSonar = new AnalogInput(0);
-    rightSonar = new AnalogInput(1);
-  }
-  public static AnalogInput LeftSonar;
-  public static AnalogInput RightSonar;
-
+        leftSonar = new AnalogInput(0);
+        rightSonar = new AnalogInput(1);
+    }
 }
