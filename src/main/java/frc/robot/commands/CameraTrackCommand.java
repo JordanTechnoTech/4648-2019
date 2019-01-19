@@ -9,10 +9,33 @@ import frc.robot.camera.LimelightCamera.ledMode;
 import frc.robot.camera.LimelightCamera.cameraMode;
 
 public class CameraTrackCommand extends Command {
+
+
+  public CameraTrackCommand(Target target) {
+    this.target = target;
+  }
+
+  private Target target;
   double defaultDriveForwardSpeed = .4D;
+
+  public enum Target {
+    ROCKET_BALL_HOLE(100.0d),
+    PANEL_HOLE(75.0d);
+
+    private final double height;
+
+    Target(double v) {
+      height = v;
+    }
+
+    public double getHeight() {
+      return height;
+    }
+  }
 
   @Override
   protected void initialize() {
+    LimelightCamera.setLightMode(ledMode.ON);
     LimelightCamera.setPipeline(0);
     LimelightCamera.setLightMode(ledMode.ON);
     LimelightCamera.setCameraMode(cameraMode.VISION);
@@ -52,7 +75,7 @@ public class CameraTrackCommand extends Command {
 // from 0 to -27 degrees we are off to the right. need to slide to left
 // from -90 to -70 you are off to the left. need to slide to right
       SmartDashboard.putNumber("limelightSkew", LimelightCamera.getTargetSkew());
-      
+
       SmartDashboard.putNumber("limelightSteeringAdjust", steering_adjust);
 
       RobotMap.leftDriveMotorController.set(kSetSpeed + steering_adjust);
@@ -62,17 +85,17 @@ public class CameraTrackCommand extends Command {
 
   private double getSpeed() {
     double kSetSpeed = .4;
-    if (LimelightCamera.getDistance() < 190.0D) {
+    if (LimelightCamera.getDistance(target.getHeight()) < 190.0D) {
       kSetSpeed = 0.0;
     }
 
-    if (LimelightCamera.getDistance() <= 20) {
+    if (LimelightCamera.getDistance(target.getHeight()) <= 20) {
       kSetSpeed = 0d;
-    } else if (LimelightCamera.getDistance() <= 50){
+    } else if (LimelightCamera.getDistance(target.getHeight()) <= 50){
       kSetSpeed = .2d;
-    } else if (LimelightCamera.getDistance() <= 100){
+    } else if (LimelightCamera.getDistance(target.getHeight()) <= 100){
       kSetSpeed = .3d;
-    } else if (LimelightCamera.getDistance() <= 200) {
+    } else if (LimelightCamera.getDistance(target.getHeight()) <= 200) {
       kSetSpeed = .7d;
     }
     return kSetSpeed;

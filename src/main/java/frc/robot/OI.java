@@ -50,10 +50,10 @@ public class OI {
   Button stickLeft = new XBoxButton(controller1, XBoxButton.kStickLeft);
   Button stickRight = new XBoxButton(controller1, XBoxButton.kStickRight);
   Button bButton = new XBoxButton(controller1, XBoxButton.kB);
-  Button rbButton = new XBoxButton(controller1, XBoxButton.kBumperRight)
+  Button rbButton = new XBoxButton(controller1, XBoxButton.kBumperRight);
 
   public OI() {
-    rbButton.whileHeld(new CameraTrackCommand());
+    rbButton.whileHeld(new CameraTrackCommand(CameraTrackCommand.Target.PANEL_HOLE));
 
   }
 

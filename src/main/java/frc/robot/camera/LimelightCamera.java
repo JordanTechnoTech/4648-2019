@@ -61,7 +61,6 @@ public class LimelightCamera {
 	  SmartDashboard.putNumber("limelight.tx", NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0));
 	  SmartDashboard.putNumber("limelight.ty", NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0));
 	  SmartDashboard.putNumber("limelight.ta", NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0));
-	  SmartDashboard.putNumber("limelight.distance", LimelightCamera.getDistance());
   }
 
 
@@ -98,7 +97,7 @@ public class LimelightCamera {
    *
    * @return the distance from the camera to the target
    */
-  public static double getDistance() {
+  public static double getDistance(double targetHeight) {
     /*
      *Uses the equation: tan(a + ty) = (ht - hc) / d
      * a: the angle of the camera from the ground
@@ -107,10 +106,26 @@ public class LimelightCamera {
      * hc: the height of the camera
      * d: the distance
      */
-    double a = 0.0;
+    double a = 14.57;
     double ty = getTargetVertical();
-    double ht = 64.7;
     double hc = 22.0;
-    return (ht - hc) / Math.tan(Math.toRadians(a + ty));
+    return (targetHeight - hc) / Math.tan(Math.toRadians(a + ty));
+  }
+
+  /**
+   * Assumes camera is 100cm away from target
+   *
+   * @param heightOfCamera
+   * @param heightOfCrosshairs
+   * @return
+   */
+  public static double figureOutCameraAngle(double heightOfCamera, double heightOfCrosshairs) {
+    double actualHeight = heightOfCrosshairs - heightOfCamera;
+    System.out.println("ACTUAL HEIGHT:" + actualHeight);
+    double radians = Math.atan(actualHeight / 100);
+    System.out.println("RADIANS:" + radians);
+    double degrees = Math.toDegrees(radians);
+    System.out.println("DEGREES:" + radians);
+    return degrees;
   }
 }
