@@ -91,13 +91,15 @@ public class CameraTrackCommand extends Command {
       kSetSpeed = 0.0;
     }
 
-    if (LimelightCamera.getDistance(target.getHeight()) <= 20) {
+    if (LimelightCamera.getDistance(target.getHeight()) <= 50) {
       kSetSpeed = 0d;
-    } else if (LimelightCamera.getDistance(target.getHeight()) <= 50){
-      kSetSpeed = .2d;
     } else if (LimelightCamera.getDistance(target.getHeight()) <= 100){
+      kSetSpeed = .2d;
+    } else if (LimelightCamera.getDistance(target.getHeight()) <= 150){
       kSetSpeed = .3d;
     } else if (LimelightCamera.getDistance(target.getHeight()) <= 200) {
+      kSetSpeed = .5d;
+    } else if (LimelightCamera.getDistance(target.getHeight()) <= 250) {
       kSetSpeed = .7d;
     }
     return kSetSpeed;
@@ -114,4 +116,6 @@ public class CameraTrackCommand extends Command {
     LimelightCamera.setCameraMode(cameraMode.CAMERA);
     super.cancel();
   }
+
+
 }
