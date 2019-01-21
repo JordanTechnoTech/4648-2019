@@ -128,4 +128,10 @@ public class LimelightCamera {
     System.out.println("DEGREES:" + radians);
     return degrees;
   }
+  public static double figureOutDistanceTillStraightOntoTarget(double distance, double skew){
+    double theDistance = Math.cos(90 - skew) * distance;
+    System.out.println("THE DISTANCE:" + theDistance);
+    SmartDashboard.putNumber("distance till straight on", theDistance);
+    return theDistance;
+  }
 }
