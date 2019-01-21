@@ -67,6 +67,10 @@ public class CameraTrackCommand extends Command {
       } else if (angle <= 20){
         Kp = -.07f;
       }
+      double skew = LimelightCamera.getTargetSkew();
+      if(LimelightCamera.getTargetSkew() <= -60){
+        skew = skew + 90;
+      }
       float heading_error = -tx;
       float steering_adjust = 0.0f;
       if (tx > 1.0) { //target is moving right
@@ -77,8 +81,9 @@ public class CameraTrackCommand extends Command {
 // from 0 to -27 degrees we are off to the right. need to slide to left
 // from -90 to -70 you are off to the left. need to slide to right
       SmartDashboard.putNumber("limelightSkew", LimelightCamera.getTargetSkew());
-
       SmartDashboard.putNumber("limelightSteeringAdjust", steering_adjust);
+      SmartDashboard.putNumber("skew", skew);
+
 
       RobotMap.leftDriveMotorController.set(kSetSpeed + steering_adjust);
       RobotMap.rightDriveMotorController.set(-kSetSpeed + steering_adjust);
@@ -110,6 +115,7 @@ public class CameraTrackCommand extends Command {
     }
     return kSetSpeed;
   }
+
 
   @Override
   protected boolean isFinished() {
