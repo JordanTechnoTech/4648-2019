@@ -106,7 +106,7 @@ public class LimelightCamera {
      * hc: the height of the camera
      * d: the distance
      */
-    double a = 14.57;
+    double a = 16.17 ;
     double ty = getTargetVertical();
     double hc = 22.0;
     return (targetHeight - hc) / Math.tan(Math.toRadians(a + ty));
@@ -119,6 +119,7 @@ public class LimelightCamera {
    * @param heightOfCrosshairs
    * @return
    */
+
   public static double figureOutCameraAngle(double heightOfCamera, double heightOfCrosshairs) {
     double actualHeight = heightOfCrosshairs - heightOfCamera;
     System.out.println("ACTUAL HEIGHT:" + actualHeight);
@@ -128,10 +129,18 @@ public class LimelightCamera {
     System.out.println("DEGREES:" + radians);
     return degrees;
   }
-  public static double figureOutDistanceTillStraightOntoTarget(double distance, double skew){
-    double theDistance = Math.cos(90 - skew) * distance;
-    System.out.println("THE DISTANCE:" + theDistance);
-    SmartDashboard.putNumber("distance till straight on", theDistance);
-    return theDistance;
+  /**
+   *
+   * @param distance
+   * @param skew
+   * @return
+   */
+  public static double findSkewDistance(double distance, double skew){
+    double radians = Math.cos(Math.toRadians(90 - skew));
+    double skewDistance = radians * distance;
+//    SmartDashboard.putNumber("distance till straight on", skewDistance);
+//    SmartDashboard.putNumber("DISTANCE:", distance);
+//    SmartDashboard.putNumber("SKEW:", skew);
+    return skewDistance;
   }
 }

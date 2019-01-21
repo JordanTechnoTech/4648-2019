@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import frc.robot.commands.CameraTrackCommand;
+import frc.robot.commands.FaceoffCommand;
 
 
 /**
@@ -51,9 +52,12 @@ public class OI {
   Button stickRight = new XBoxButton(controller1, XBoxButton.kStickRight);
   Button bButton = new XBoxButton(controller1, XBoxButton.kB);
   Button rbButton = new XBoxButton(controller1, XBoxButton.kBumperRight);
+  Button lbButton = new XBoxButton(controller1, XBoxButton.kBumperLeft);
+
 
   public OI() {
     rbButton.whileHeld(new CameraTrackCommand(CameraTrackCommand.Target.PANEL_HOLE));
+    lbButton.whileHeld(new FaceoffCommand(CameraTrackCommand.Target.PANEL_HOLE));
 
   }
 

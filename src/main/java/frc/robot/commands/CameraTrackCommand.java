@@ -37,7 +37,6 @@ public class CameraTrackCommand extends Command {
   protected void initialize() {
     LimelightCamera.setLightMode(ledMode.ON);
     LimelightCamera.setPipeline(0);
-    LimelightCamera.setLightMode(ledMode.ON);
     LimelightCamera.setCameraMode(cameraMode.VISION);
 
     super.initialize();
@@ -71,6 +70,7 @@ public class CameraTrackCommand extends Command {
       if(LimelightCamera.getTargetSkew() <= -60){
         skew = skew + 90;
       }
+      double skewDistance = LimelightCamera.findSkewDistance(12.5,13.5);
       float heading_error = -tx;
       float steering_adjust = 0.0f;
       if (tx > 1.0) { //target is moving right
@@ -80,6 +80,7 @@ public class CameraTrackCommand extends Command {
       }
 // from 0 to -27 degrees we are off to the right. need to slide to left
 // from -90 to -70 you are off to the left. need to slide to right
+      SmartDashboard.putNumber("SkewDistance", skewDistance);
       SmartDashboard.putNumber("limelightSkew", LimelightCamera.getTargetSkew());
       SmartDashboard.putNumber("limelightSteeringAdjust", steering_adjust);
       SmartDashboard.putNumber("skew", skew);
