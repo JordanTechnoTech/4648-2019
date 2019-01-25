@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.frc.imu.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.AnalogInput;
+import frc.robot.subsystems.MecanumDriveSubsystem;
 
 
 /**
@@ -29,22 +30,33 @@ public class RobotMap {
     // number and the module. For example you with a rangefinder:
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
-
+    private static final double rotationalDeadZone = 0.1;
+    private static final double translationalDeadZone = 0.1;
     public static int rightDriveMotor = 0;
     public static int leftDriveMotor = 3;
 
     public static Spark leftDriveMotorController;
     public static Spark rightDriveMotorController;
-    public static DifferentialDrive drivetrain;
+    public static MecanumDriveSubsystem drivetrain;
     public static ADIS16448_IMU imu;
     public static AnalogInput leftSonar;
     public static AnalogInput rightSonar;
+    private static final int raiseFrontLeft = 8;
+    private static final int raiseFrontRight = 9;
+    private static final int raiseBackLeft = 10;
+    private static final int raiseBackRight = 11;
+    public static double getRotationaldeadzone() {
+        return rotationalDeadZone;
+    }
+    public static double getTranslationaldeadzone() {
+        return translationalDeadZone;
+    }
 
     public static void init() {
         // drive initialization
         leftDriveMotorController = new Spark(leftDriveMotor);
         rightDriveMotorController = new Spark(rightDriveMotor);
-        drivetrain = new DifferentialDrive(leftDriveMotorController, rightDriveMotorController);
+        drivetrain = new MecanumDriveSubsystem(raiseFrontLeft, raiseFrontRight,raiseBackLeft, raiseBackRight);
 //		imu = new ADIS16448_IMU();
         leftSonar = new AnalogInput(0);
         rightSonar = new AnalogInput(1);

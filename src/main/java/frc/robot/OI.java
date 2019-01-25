@@ -58,7 +58,6 @@ public class OI {
   public OI() {
     rbButton.whileHeld(new CameraTrackCommand(CameraTrackCommand.Target.PANEL_HOLE));
     lbButton.whileHeld(new FaceoffCommand(CameraTrackCommand.Target.PANEL_HOLE));
-
   }
 
   //Forward back speed
@@ -68,6 +67,22 @@ public class OI {
   //Adjust for left and right turns
   public double getRotationSpeed() { // DriveCommand
     return controller1.getX(GenericHID.Hand.kLeft);
+  }
+  public double getStickRightYValue(){ return controller1.getY(GenericHID.Hand.kRight);}
+  public double getStickRightXValue(){ return controller1.getX(GenericHID.Hand.kRight);}
+
+  public double getStickLeftXValue() { // DriveCommand
+    return controller1.getX(GenericHID.Hand.kLeft);
+  }
+  public static double deadZone (double val, double deadZone){
+    if (Math.abs(val) > deadZone){
+      if (val > 0){
+        return (val - deadZone) / (1 - deadZone);
+      } else {
+        return -(-val - deadZone) / (1 - deadZone);
+      }
+    }
+    return 0;
   }
 
 }
