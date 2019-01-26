@@ -106,9 +106,9 @@ public class LimelightCamera {
      * hc: the height of the camera
      * d: the distance
      */
-    double a = 16.17 ;
+    double a = 3.14 ;
     double ty = getTargetVertical();
-    double hc = 22.0;
+    double hc = 47.5;
     return (targetHeight - hc) / Math.tan(Math.toRadians(a + ty));
   }
 

@@ -41,10 +41,10 @@ public class RobotMap {
     public static ADIS16448_IMU imu;
     public static AnalogInput leftSonar;
     public static AnalogInput rightSonar;
-    private static final int raiseFrontLeft = 8;
-    private static final int raiseFrontRight = 9;
-    private static final int raiseBackLeft = 10;
-    private static final int raiseBackRight = 11;
+    private static final int raiseFrontLeft = 1;
+    private static final int raiseFrontRight = 3;
+    private static final int raiseBackLeft = 2;
+    private static final int raiseBackRight = 0;
     public static double getRotationaldeadzone() {
         return rotationalDeadZone;
     }

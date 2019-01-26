@@ -29,7 +29,7 @@ public class MecanumDriveCommand extends Command {
         y = OI.deadZone(Robot.m_oi.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
         twist = OI.deadZone(Robot.m_oi.getStickRightXValue(), RobotMap.getRotationaldeadzone());
 
-        RobotMap.drivetrain.getDrivetrain().driveCartesian(x, y, twist);
+        RobotMap.drivetrain.getDrivetrain().driveCartesian(-x, y, -twist);
     }
 
     // Make this return true when this Command no longer needs to run execute()

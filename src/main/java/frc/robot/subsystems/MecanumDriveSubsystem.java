@@ -4,12 +4,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.MecanumDriveCommand;
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
-public class MecanumDriveSubsystem extends Subsystem {
+public class MecanumDriveSubsystem extends Subsystem implements TechnoTechSubsystem{
 
     protected MecanumDrive drive;
 
@@ -22,6 +23,7 @@ public class MecanumDriveSubsystem extends Subsystem {
         this.backRight = new WPI_TalonSRX(backRight);
 
         this.frontLeft.setNeutralMode(NeutralMode.Brake);
+        this.frontLeft.setInverted(true);
         this.frontRight.setNeutralMode(NeutralMode.Brake);
         this.backLeft.setNeutralMode(NeutralMode.Brake);
         this.backRight.setNeutralMode(NeutralMode.Brake);
@@ -39,5 +41,14 @@ public class MecanumDriveSubsystem extends Subsystem {
 
     public MecanumDrive getDrivetrain() {
         return drive;
+    }
+
+    @Override
+    public void log() {
+        SmartDashboard.putNumber("FrontLeft speed",this.frontLeft.get());
+        SmartDashboard.putNumber("FrontRight speed",this.frontRight.get());
+        SmartDashboard.putNumber("BackLeft speed",this.backLeft.get());
+        SmartDashboard.putNumber("BackRight",this.backRight.get());
+
     }
 }

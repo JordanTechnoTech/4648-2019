@@ -16,9 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.camera.LimelightCamera;
 import frc.robot.camera.LimelightCamera.ledMode;
 import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.TechnoTechSubsystem;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.AnalogInput;
 
 import java.util.ArrayList;
@@ -58,8 +56,8 @@ public class Robot extends TimedRobot {
   }
 
   public void initSubsystems(){
-    driveSubsystem = new DriveSubsystem();
-    subsystems.add(driveSubsystem);
+    subsystems.add(RobotMap.drivetrain);
+    subsystems.add(new SonarSubsystem());
   }
 
   /**

@@ -20,7 +20,7 @@ public class CameraTrackCommand extends Command {
 
   public enum Target {
     ROCKET_BALL_HOLE(100.0d),
-    PANEL_HOLE(75.0d);
+    PANEL_HOLE(71.0d);
 
     private final double height;
 
@@ -48,8 +48,8 @@ public class CameraTrackCommand extends Command {
     SmartDashboard.putNumber("distance", LimelightCamera.getDistance(target.getHeight()));
 
     if (!LimelightCamera.hasTarget()) {
-      RobotMap.leftDriveMotorController.set(-.3);
-      RobotMap.rightDriveMotorController.set(-.3);
+      //TODO twist robot.
+      //RobotMap.drivetrain.getDrivetrain().driveCartesian(0, 0, -0.4);
     } else {
       double kSetSpeed = getSpeed();
 
@@ -58,13 +58,13 @@ public class CameraTrackCommand extends Command {
       float tx = (float) LimelightCamera.getTargetHorizontal();
       float angle = Math.abs(tx);
       if(angle <= 5){
-        Kp = -.04f;
+        Kp = -.02f;
       } else if (angle <= 10){
-        Kp = -.05f;
+        Kp = -.025f;
       } else if (angle <= 15){
-        Kp = -.06f;
+        Kp = -.03f;
       } else if (angle <= 20){
-        Kp = -.07f;
+        Kp = -.035f;
       }
       double skew = LimelightCamera.getTargetSkew();
       if(LimelightCamera.getTargetSkew() <= -60){
@@ -85,34 +85,30 @@ public class CameraTrackCommand extends Command {
       SmartDashboard.putNumber("limelightSteeringAdjust", steering_adjust);
       SmartDashboard.putNumber("skew", skew);
 
+      RobotMap.drivetrain.getDrivetrain().driveCartesian(0, kSetSpeed, -steering_adjust);
 
-      RobotMap.leftDriveMotorController.set(kSetSpeed + steering_adjust);
-      RobotMap.rightDriveMotorController.set(-kSetSpeed + steering_adjust);
+     // RobotMap.leftDriveMotorController.set(kSetSpeed + steering_adjust);
+      //RobotMap.rightDriveMotorController.set(-kSetSpeed + steering_adjust);
     }
   }
 
   private double getSpeed() {
-    double kSetSpeed = .4;
-    if (LimelightCamera.getDistance(target.getHeight()) < 190.0D) {
-      kSetSpeed = 0.0;
-    }
-    double distance = 0;
-    if(LimelightCamera.getDistance(target.getHeight()) >= 100 && LimelightCamera.hasTarget()) {
-      distance = LimelightCamera.getDistance(target.getHeight());
-    } else{
-      distance = (RobotMap.leftSonar.getValue() + RobotMap.rightSonar.getValue())/2;
-    }
+    double kSetSpeed = -.4;
+//    if (LimelightCamera.getDistance(target.getHeight()) < 190.0D) {
+//      kSetSpeed = 0.0;
+//    }
+    double distance = LimelightCamera.getDistance(target.getHeight());
 
-    if (distance <= 50) {
+    if (distance <= 150) {
       kSetSpeed = 0d;
-    } else if (distance <= 100){
-      kSetSpeed = .2d;
-    } else if (distance <= 150){
-      kSetSpeed = .3d;
-    } else if (distance <= 200) {
-      kSetSpeed = .5d;
-    } else if (distance <= 250) {
-      kSetSpeed = .7d;
+    } else if (distance <= 200){
+      kSetSpeed = -.2d;
+    } else if (distance <= 250){
+      kSetSpeed = -.3d;
+    } else if (distance <= 300) {
+      kSetSpeed = -.4d;
+    } else if (distance <= 350) {
+      kSetSpeed = -.5d;
     }
     return kSetSpeed;
   }

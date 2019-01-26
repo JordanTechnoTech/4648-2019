@@ -17,18 +17,12 @@ public class DriveSubsystem extends Subsystem implements TechnoTechSubsystem {
 
   private final Spark leftDrive = RobotMap.leftDriveMotorController;
   private final Spark rightDrive = RobotMap.rightDriveMotorController;
-  private final DifferentialDrive differentialDrive1 = RobotMap.drivetrain;
+  private DifferentialDrive differentialDrive1;//= RobotMap.drivetrain;
 
   private final ADIS16448_IMU imu = RobotMap.imu;
 
   public DriveSubsystem() {
-    addChild("Left CIM", leftDrive);
-    addChild("Right CIM", rightDrive);
-//    addChild("IMU", imu);
-    differentialDrive1.setSafetyEnabled(false);
-    differentialDrive1.setExpiration(0.1);
-    differentialDrive1.setMaxOutput(1.0);
-  }
+   }
 
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
