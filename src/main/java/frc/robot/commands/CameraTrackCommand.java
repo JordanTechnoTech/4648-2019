@@ -99,16 +99,18 @@ public class CameraTrackCommand extends Command {
 //    }
     double distance = LimelightCamera.getDistance(target.getHeight());
 
-    if (distance <= 150) {
+    if (distance <= 50) {
       kSetSpeed = 0d;
-    } else if (distance <= 200){
+    } else if(distance <= 150){
       kSetSpeed = -.2d;
+    } else if (distance <= 200){
+      kSetSpeed = -.25d;
     } else if (distance <= 250){
-      kSetSpeed = -.3d;
+      kSetSpeed = -.35d;
     } else if (distance <= 300) {
-      kSetSpeed = -.4d;
+      kSetSpeed = -.45d;
     } else if (distance <= 350) {
-      kSetSpeed = -.5d;
+      kSetSpeed = -.55d;
     }
     return kSetSpeed;
   }
