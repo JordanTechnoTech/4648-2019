@@ -48,6 +48,7 @@ public class FaceoffCommand extends Command {
             //RobotMap.drivetrain.getDrivetrain().driveCartesian(0, 0, -0.4);
         } else {
             double kSetSpeed = getSpeed();
+            double vSetSpeed = getSpeed();
 
             float Kp = -0.06f;
             float min_command = 0.05f;
@@ -81,25 +82,39 @@ public class FaceoffCommand extends Command {
             SmartDashboard.putNumber("limelightSteeringAdjust", steering_adjust);
             SmartDashboard.putNumber("skew", skew);
 
-            RobotMap.drivetrain.getDrivetrain().driveCartesian(-kSetSpeed, 0, -steering_adjust);
+            RobotMap.drivetrain.getDrivetrain().driveCartesian(-kSetSpeed, vSetSpeed, -steering_adjust);
 
             // RobotMap.leftDriveMotorController.set(kSetSpeed + steering_adjust);
             //RobotMap.rightDriveMotorController.set(-kSetSpeed + steering_adjust);
         }
     }
-
     private double getSpeed() {
         double kSetSpeed;
-
+        double vSetSpeed;
         double skew = LimelightCamera.getTargetSkew();
+        double distance = LimelightCamera.getDistance(target.getHeight());
+
+        if (distance <= 50) {
+            vSetSpeed = 0d;
+        } else if(distance <= 150){
+            vSetSpeed = -.2d;
+        } else if (distance <= 200){
+            vSetSpeed = -.25d;
+        } else if (distance <= 250){
+            vSetSpeed = -.35d;
+        } else if (distance <= 300) {
+            vSetSpeed = -.45d;
+        } else if (distance <= 350) {
+            vSetSpeed = -.55d;
+        }
         if(LimelightCamera.getTargetSkew() <= -60){
             skew = skew + 90;
         }
 
-        if (skew <= -2) {
-            kSetSpeed = -.4d;
-        } else if (skew >= 2) {
-            kSetSpeed = .4d;
+        if (skew <= -3) {
+            kSetSpeed = -.3d;
+        } else if (skew >= 3) {
+            kSetSpeed = .3d;
         }  else {
             kSetSpeed = 0d;
         }
