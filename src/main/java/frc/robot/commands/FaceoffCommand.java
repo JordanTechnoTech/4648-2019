@@ -59,16 +59,16 @@ public class FaceoffCommand extends Command {
             float Kp = -0.06f;
             float min_command = 0.05f;
             float tx = (float) LimelightCamera.getTargetHorizontal();
-           // float angle = Math.abs(tx);
-           // if (angle <= 5) {
-           //     Kp = -.02f;
-           // } else if (angle <= 10) {
-           //     Kp = -.025f;
-           // } else if (angle <= 15) {
-           //     Kp = -.03f;
-           // } else if (angle <= 20) {
-           //     Kp = -.035f;
-           // }
+            float angle = Math.abs(tx);
+            if (angle <= 5) {
+                Kp = -.02f;
+            } else if (angle <= 10) {
+                Kp = -.025f;
+            } else if (angle <= 15) {
+                Kp = -.03f;
+            } else if (angle <= 20) {
+                Kp = -.035f;
+            }
             double skew = LimelightCamera.getTargetSkew();
             if (LimelightCamera.getTargetSkew() <= -60) {
                 skew = skew + 90;
