@@ -53,16 +53,16 @@ public class FaceoffCommand extends Command {
             float Kp = -0.06f;
             float min_command = 0.05f;
             float tx = (float) LimelightCamera.getTargetHorizontal();
-            float angle = Math.abs(tx);
-            if (angle <= 5) {
-                Kp = -.02f;
-            } else if (angle <= 10) {
-                Kp = -.025f;
-            } else if (angle <= 15) {
-                Kp = -.03f;
-            } else if (angle <= 20) {
-                Kp = -.035f;
-            }
+           // float angle = Math.abs(tx);
+           // if (angle <= 5) {
+           //     Kp = -.02f;
+           // } else if (angle <= 10) {
+           //     Kp = -.025f;
+           // } else if (angle <= 15) {
+           //     Kp = -.03f;
+           // } else if (angle <= 20) {
+           //     Kp = -.035f;
+           // }
             double skew = LimelightCamera.getTargetSkew();
             if (LimelightCamera.getTargetSkew() <= -60) {
                 skew = skew + 90;
@@ -72,11 +72,11 @@ public class FaceoffCommand extends Command {
             double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
             float heading_error = -tx;
             float steering_adjust = 0.0f;
-            if (tx > 1.0) { //target is moving right
-                steering_adjust = (Kp * heading_error);
-            } else if (tx < 1.0) { //target is moving left
-                steering_adjust = (Kp * heading_error);
-            }
+           // if (tx > 1.0) { //target is moving right
+           //     steering_adjust = (Kp * heading_error);
+           // } else if (tx < 1.0) { //target is moving left
+           //     steering_adjust = (Kp * heading_error);
+            //}
 // from 0 to -27 degrees we are off to the right. need to slide to left
 // from -90 to -70 you are off to the left. need to slide to right
             SmartDashboard.putNumber("SkewDistance", skewDistance);
