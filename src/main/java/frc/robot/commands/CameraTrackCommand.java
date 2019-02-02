@@ -17,6 +17,8 @@ public class CameraTrackCommand extends Command {
 
   private Target target;
   double defaultDriveForwardSpeed = .4D;
+  double ctccameraFail;
+
 
   public enum Target {
     ROCKET_BALL_HOLE(100.0d),
@@ -48,6 +50,9 @@ public class CameraTrackCommand extends Command {
     SmartDashboard.putNumber("distance", LimelightCamera.getDistance(target.getHeight()));
 
     if (!LimelightCamera.hasTarget()) {
+      ctccameraFail = ctccameraFail + 1;
+
+      SmartDashboard.putNumber("ctcCameraFail", ctccameraFail);
       //TODO twist robot.
       //RobotMap.drivetrain.getDrivetrain().driveCartesian(0, 0, -0.4);
     } else {

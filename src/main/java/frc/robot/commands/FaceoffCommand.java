@@ -20,6 +20,7 @@ public class FaceoffCommand extends Command {
     CameraTrackCommand.Target target;
     double initialZValue = 0.0;
     double initialSkew = 0.0;
+    double cameraFail;
 
     public FaceoffCommand(CameraTrackCommand.Target atarget) {
         target = atarget;
@@ -44,6 +45,11 @@ public class FaceoffCommand extends Command {
         SmartDashboard.putNumber("distance", LimelightCamera.getDistance(target.getHeight()));
         double distance = LimelightCamera.getDistance(target.getHeight());
         if (!LimelightCamera.hasTarget()) {
+            cameraFail = cameraFail + 1;
+
+            SmartDashboard.putNumber("CameraFail", cameraFail);
+
+
             //TODO twist robot.
             //RobotMap.drivetrain.getDrivetrain().driveCartesian(0, 0, -0.4);
         } else {
