@@ -42,6 +42,7 @@ public class FaceoffCommand extends Command {
     protected void execute() {
         //turn to target until in view
         SmartDashboard.putNumber("distance", LimelightCamera.getDistance(target.getHeight()));
+        double distance = LimelightCamera.getDistance(target.getHeight());
         if (!LimelightCamera.hasTarget()) {
             //TODO twist robot.
             //RobotMap.drivetrain.getDrivetrain().driveCartesian(0, 0, -0.4);
@@ -68,7 +69,7 @@ public class FaceoffCommand extends Command {
             }
             //distance and skew need to be input to this thing I don't have any idea why this has
             //been working we don't know how much the command even needs to go
-            double skewDistance = LimelightCamera.findSkewDistance(LimelightCamera.getDistance(target.getHeight()), skew);
+            double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
             float heading_error = -tx;
             float steering_adjust = 0.0f;
             if (tx > 1.0) { //target is moving right
