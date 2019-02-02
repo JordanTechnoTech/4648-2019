@@ -95,23 +95,26 @@ public class FaceoffCommand extends Command {
         double vSetSpeed;
         double skew = LimelightCamera.getTargetSkew();
         double distance = LimelightCamera.getDistance(target.getHeight());
+        double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
         if(LimelightCamera.getTargetSkew() <= -60){
             skew = skew + 90;
         }
-        if (distance <= 50) {
-            vSetSpeed = 0d;
-        } else if(distance <= 150){
-            vSetSpeed = -.2d;
-        } else if (distance <= 200){
-            vSetSpeed = -.25d;
-        } else if (distance <= 250){
-            vSetSpeed = -.35d;
-        } else if (distance <= 300) {
-            vSetSpeed = -.45d;
-        } else if (distance <= 350) {
-            vSetSpeed = -.55d;
-        }
-        if (skew <= -3) {
+       // if (distance <= 50) {
+      //      vSetSpeed = 0d;
+     //   } else if(distance <= 150){
+     //       vSetSpeed = -.2d;
+     //   } else if (distance <= 200){
+     //       vSetSpeed = -.25d;
+     //   } else if (distance <=   250){
+     //       vSetSpeed = -.35d;
+     //   } else if (distance <= 300) {
+     //       vSetSpeed = -.45d;
+    //    } else if (distance <= 350) {
+     //       vSetSpeed = -.55d;
+    //    }
+        if (Math.abs(skewDistance) <= 3){
+            kSetSpeed = 0d;
+        } else if (skew <= -3) {
             kSetSpeed = -.3d;
         } else if (skew >= 3) {
             kSetSpeed = .3d;
