@@ -72,11 +72,11 @@ public class FaceoffCommand extends Command {
             double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
             float heading_error = -tx;
             float steering_adjust = 0.0f;
-           // if (tx > 1.0) { //target is moving right
-           //     steering_adjust = (Kp * heading_error);
-           // } else if (tx < 1.0) { //target is moving left
-           //     steering_adjust = (Kp * heading_error);
-            //}
+            if (tx > 1.0) { //target is moving right
+                steering_adjust = (Kp * heading_error);
+            } else if (tx < 1.0) { //target is moving left
+                steering_adjust = (Kp * heading_error);
+            }
 // from 0 to -27 degrees we are off to the right. need to slide to left
 // from -90 to -70 you are off to the left. need to slide to right
             SmartDashboard.putNumber("SkewDistance", skewDistance);
@@ -99,19 +99,19 @@ public class FaceoffCommand extends Command {
         if(LimelightCamera.getTargetSkew() <= -60){
             skew = skew + 90;
         }
-       // if (distance <= 50) {
-      //      vSetSpeed = 0d;
-     //   } else if(distance <= 150){
-     //       vSetSpeed = -.2d;
-     //   } else if (distance <= 200){
-     //       vSetSpeed = -.25d;
-     //   } else if (distance <=   250){
-     //       vSetSpeed = -.35d;
-     //   } else if (distance <= 300) {
-     //       vSetSpeed = -.45d;
-    //    } else if (distance <= 350) {
-     //       vSetSpeed = -.55d;
-    //    }
+        if (distance <= 50) {
+            vSetSpeed = 0d;
+        } else if(distance <= 150){
+            vSetSpeed = -.2d;
+        } else if (distance <= 200){
+            vSetSpeed = -.25d;
+        } else if (distance <=   250){
+            vSetSpeed = -.35d;
+        } else if (distance <= 300) {
+            vSetSpeed = -.45d;
+        } else if (distance <= 350) {
+            vSetSpeed = -.55d;
+        }
         if (Math.abs(skewDistance) <= 3){
             kSetSpeed = 0d;
         } else if (skew <= -3) {
