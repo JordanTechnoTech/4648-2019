@@ -9,7 +9,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
 import frc.robot.camera.LimelightCamera;
 
@@ -51,13 +50,11 @@ public class FaceoffCommand extends Command {
 
 
             //TODO twist robot.
-            //RobotMap.drivetrain.getDrivetrain().driveCartesian(0, 0, -0.4);
         } else {
-            double kSetSpeed = getSpeed();
-            double vSetSpeed = getSpeed();
+            double slideSpeed = getSlideSpeed();
+            double forwardSpeed = getForwardSpeed();
 
             float Kp = -0.06f;
-            float min_command = 0.05f;
             float tx = (float) LimelightCamera.getTargetHorizontal();
             float angle = Math.abs(tx);
             if (angle <= 5) {
@@ -90,21 +87,37 @@ public class FaceoffCommand extends Command {
             SmartDashboard.putNumber("limelightSteeringAdjust", steering_adjust);
             SmartDashboard.putNumber("skew", skew);
 
-            RobotMap.drivetrain.getDrivetrain().driveCartesian(-kSetSpeed, vSetSpeed, -steering_adjust);
+            RobotMap.drivetrain.getDrivetrain().driveCartesian(-slideSpeed, forwardSpeed, -steering_adjust);
 
             // RobotMap.leftDriveMotorController.set(kSetSpeed + steering_adjust);
             //RobotMap.rightDriveMotorController.set(-kSetSpeed + steering_adjust);
         }
     }
-    private double getSpeed() {
+    private double getSlideSpeed() {
         double kSetSpeed;
-        double vSetSpeed;
         double skew = LimelightCamera.getTargetSkew();
         double distance = LimelightCamera.getDistance(target.getHeight());
         double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
         if(LimelightCamera.getTargetSkew() <= -60){
             skew = skew + 90;
         }
+
+        if (Math.abs(skewDistance) <= 3){
+            kSetSpeed = 0d;
+        } else if (skew <= -3) {
+            kSetSpeed = -.3d;
+        } else if (skew >= 3) {
+            kSetSpeed = .3d;
+        }  else {
+            kSetSpeed = 0d;
+        }
+        return kSetSpeed;
+    }
+
+    private double getForwardSpeed() {
+        double vSetSpeed = 0;
+        double distance = LimelightCamera.getDistance(target.getHeight());
+
         if (distance <= 50) {
             vSetSpeed = 0d;
         } else if(distance <= 150){
@@ -118,17 +131,9 @@ public class FaceoffCommand extends Command {
         } else if (distance <= 350) {
             vSetSpeed = -.55d;
         }
-        if (Math.abs(skewDistance) <= 3){
-            kSetSpeed = 0d;
-        } else if (skew <= -3) {
-            kSetSpeed = -.3d;
-        } else if (skew >= 3) {
-            kSetSpeed = .3d;
-        }  else {
-            kSetSpeed = 0d;
-        }
-        return kSetSpeed;
+        return vSetSpeed;
     }
+
 
 
     @Override
