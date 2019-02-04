@@ -25,9 +25,9 @@ public class MecanumDriveCommand extends Command {
     @Override
     protected void execute() {
         double x, y, twist;
-        x = OI.deadZone(Robot.m_oi.getStickLeftXValue(), RobotMap.getTranslationaldeadzone());
+        x = OI.deadZone(Robot.m_oi.getStickRightXValue(), RobotMap.getTranslationaldeadzone());
         y = OI.deadZone(Robot.m_oi.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
-        twist = OI.deadZone(Robot.m_oi.getStickRightXValue(), RobotMap.getRotationaldeadzone());
+        twist = OI.deadZone(Robot.m_oi.getStickLeftXValue(), RobotMap.getRotationaldeadzone());
 
         RobotMap.drivetrain.getDrivetrain().driveCartesian(-x, y, -twist);
     }
