@@ -1,5 +1,6 @@
 package frc.robot.camera;
 
+import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -35,27 +36,29 @@ public class LimelightCamera {
     }
   }
 
+  long pollTime;
+  LimeLightValues limeLightValues = new LimeLightValues();
 
-  //Table info
-  public static double getTargetHorizontal() {
-    return NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0);
+  public LimeLightValues poll(){
+
+    NetworkTable networkTable = NetworkTableInstance.getDefault().getTable("limelight");
+    if(networkTable.getEntry("tv").getDouble(0) == 1){
+      pollTime = System.currentTimeMillis();
+      limeLightValues.ta = networkTable.getEntry("ta").getDouble(0);
+      limeLightValues.tx = networkTable.getEntry("tx").getDouble(0);
+      limeLightValues.ty = networkTable.getEntry("ty").getDouble(0);
+      limeLightValues.ts = networkTable.getEntry("ts").getDouble(0);
+      limeLightValues.tv = networkTable.getEntry("tv").getDouble(0);
+    } else if( (System.currentTimeMillis() - pollTime ) >=200){
+      limeLightValues.ta = 0;
+      limeLightValues.tx = 0;
+      limeLightValues.ty = 0;
+      limeLightValues.ts = 0;
+      limeLightValues.tv = 0;
+    }
+    return limeLightValues;
   }
 
-  public static double getTargetVertical() {
-    return NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0);
-  }
-
-  public static double getTargetArea() {
-    return NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0);
-  }
-
-  public static double getTargetSkew() {
-    return NetworkTableInstance.getDefault().getTable("limelight").getEntry("ts").getDouble(0);
-  }
-
-  public static boolean hasTarget() {
-    return NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0) == 1;
-  }
   public static void log() {
 	  SmartDashboard.putNumber("limelight.tv", NetworkTableInstance.getDefault().getTable("limelight").getEntry("tv").getDouble(0));
 	  SmartDashboard.putNumber("limelight.tx", NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0));
@@ -97,7 +100,7 @@ public class LimelightCamera {
    *
    * @return the distance from the camera to the target
    */
-  public static double getDistance(double targetHeight) {
+  public static double getDistance(double targetHeight,double targetVertical) {
     /*
      *Uses the equation: tan(a + ty) = (ht - hc) / d
      * a: the angle of the camera from the ground
@@ -107,9 +110,8 @@ public class LimelightCamera {
      * d: the distance
      */
     double a = 3.14 ;
-    double ty = getTargetVertical();
     double hc = 47.5;
-    return (targetHeight - hc) / Math.tan(Math.toRadians(a + ty));
+    return (targetHeight - hc) / Math.tan(Math.toRadians(a + targetVertical));
   }
 
   /**
