@@ -23,7 +23,7 @@ public class FaceoffCommand extends Command {
     double initialSkew = 0.0;
     double cameraFail;
 
-    public FaceoffCommand(FaceoffCommand.Target atarget) {
+    public FaceoffCommand(FaceoffCommand. Target atarget) {
         target = atarget;
     }
 
@@ -49,90 +49,90 @@ public class FaceoffCommand extends Command {
             cameraFail = cameraFail + 1;
             SmartDashboard.putNumber("CameraFail", cameraFail);
         } else {
-            double slideSpeed = getSlideSpeed(limeLightValues);
-            double forwardSpeed = getForwardSpeed(limeLightValues);
+            double slideSpeed = getSlideSpeed(limeLightValues,distance);
+            double forwardSpeed = getForwardSpeed(distance);
+            double turnSpeed = getTurnSpeed(limeLightValues,distance);
 
-            float Kp = -0.06f;
-            float tx = (float) limeLightValues.getTargetHorizontal();
-            float angle = Math.abs(tx);
-            if (angle <= 5) {
-                Kp = -.02f;
-            } else if (angle <= 10) {
-                Kp = -.025f;
-            } else if (angle <= 15) {
-                Kp = -.03f;
-            } else if (angle <= 20) {
-                Kp = -.035f;
-            }
-            double skew = limeLightValues.getTargetSkew();
-            if (limeLightValues.getTargetSkew() <= -60) {
-                skew = skew + 90;
-            }
-            //distance and skew need to be input to this thing I don't have any idea why this has
-            //been working we don't know how much the command even needs to go
-            double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
-            float heading_error = -tx;
-            float steering_adjust = 0.0f;
-            if (tx > 1.0) { //target is moving right
-                steering_adjust = (Kp * heading_error);
-            } else if (tx < 1.0) { //target is moving left
-                steering_adjust = (Kp * heading_error);
-            }
+
 // from 0 to -27 degrees we are off to the right. need to slide to left
 // from -90 to -70 you are off to the left. need to slide to right
-            SmartDashboard.putNumber("SkewDistance", skewDistance);
             SmartDashboard.putNumber("limelightSkew", limeLightValues.getTargetSkew());
-            SmartDashboard.putNumber("limelightSteeringAdjust", steering_adjust);
-            SmartDashboard.putNumber("skew", skew);
+            SmartDashboard.putNumber("limelightSteeringAdjust", turnSpeed);
 
-            RobotMap.drivetrain.getDrivetrain().driveCartesian(-slideSpeed, forwardSpeed, -steering_adjust);
+
+//            RobotMap.drivetrain.getDrivetrain().driveCartesian(-slideSpeed, forwardSpeed, -turnSpeed);
+//            RobotMap.drivetrain.getDrivetrain().driveCartesian(-slideSpeed, 0, -turnSpeed);
+            RobotMap.drivetrain.getDrivetrain().driveCartesian(0, forwardSpeed, -turnSpeed);
 
             // RobotMap.leftDriveMotorController.set(kSetSpeed + steering_adjust);
             //RobotMap.rightDriveMotorController.set(-kSetSpeed + steering_adjust);
         }
     }
-    private double getSlideSpeed(LimeLightValues limeLightValues) {
-        double kSetSpeed;
-        double skew = limeLightValues.getTargetSkew();
-        double distance = LimelightCamera.getDistance(target.getHeight(),limeLightValues.getTargetVertical());
-        double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
-        if(limeLightValues.getTargetSkew() <= -60){
-            skew = skew + 90;
+
+    private double getTurnSpeed(LimeLightValues limeLightValues, double distance) {
+        float Kp = -0.06f;
+        float tx = (float) limeLightValues.getTargetHorizontal();
+        float angle = Math.abs(tx);
+        if (angle <= 5) {
+            Kp = -.02f;
+        } else if (angle <= 10) {
+            Kp = -.025f;
+        } else if (angle <= 15) {
+            Kp = -.03f;
+        } else if (angle <= 20) {
+            Kp = -.035f;
         }
 
-        if (Math.abs(skewDistance) <= 3){
-            kSetSpeed = 0d;
-        } else if (skew <= -3) {
-            kSetSpeed = -.3d;
-        } else if (skew >= 3) {
-            kSetSpeed = .3d;
-        }  else {
-            kSetSpeed = 0d;
+        float heading_error = -tx;
+        float steering_adjust = 0.0f;
+        if (tx > 1.0) { //target is moving right
+            steering_adjust = (Kp * heading_error);
+        } else if (tx < 1.0) { //target is moving left
+            steering_adjust = (Kp * heading_error);
+        }
+
+        return steering_adjust;
+    }
+
+    private double getSlideSpeed(LimeLightValues limeLightValues, double distance) {
+        double kSetSpeed;
+        double skew = limeLightValues.getTargetSkew();
+        if(skew <= -60){
+            skew = skew + 90;
+        }
+        double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
+        SmartDashboard.putNumber("skew", skew);
+        SmartDashboard.putNumber("SkewDistance", skewDistance);
+        if (skewDistance <= -1) {
+            kSetSpeed = -.4d;
+        } else if (skewDistance >= 1) {
+            kSetSpeed = .4d;
+        } else {
+            kSetSpeed = 0;
         }
         return kSetSpeed;
     }
 
-    private double getForwardSpeed(LimeLightValues limeLightValues) {
+    private double getForwardSpeed( double distance) {
         double vSetSpeed = 0;
-        double distance = LimelightCamera.getDistance(target.getHeight(),limeLightValues.getTargetVertical());
 
-        if (distance <= 50) {
+        if (distance <= 120) {
             vSetSpeed = 0d;
         } else if(distance <= 150){
             vSetSpeed = -.2d;
         } else if (distance <= 200){
             vSetSpeed = -.25d;
         } else if (distance <=   250){
-            vSetSpeed = -.35d;
+            vSetSpeed = -.3d;
         } else if (distance <= 300) {
-            vSetSpeed = -.45d;
+            vSetSpeed = -.35d;
         } else if (distance <= 350) {
-            vSetSpeed = -.55d;
+            vSetSpeed = -.4d;
+        } else {
+            vSetSpeed = -.45d;
         }
         return vSetSpeed;
     }
-
-
 
     @Override
     protected boolean isFinished() {
