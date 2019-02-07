@@ -45,13 +45,17 @@ public class FaceoffCommand extends Command {
         //turn to target until in view
         double distance = LimelightCamera.getDistance(target.getHeight(),limeLightValues.getTargetVertical());
         SmartDashboard.putNumber("distance", distance);
+        SmartDashboard.putNumber("cachedTA", limeLightValues.ta);
+        SmartDashboard.putNumber("cachedTX", limeLightValues.tx);
+        SmartDashboard.putNumber("cachedTY", limeLightValues.ty);
+        SmartDashboard.putNumber("cachedTS", limeLightValues.ts);
         if (!limeLightValues.hasTarget()) {
             cameraFail = cameraFail + 1;
             SmartDashboard.putNumber("CameraFail", cameraFail);
         } else {
             double slideSpeed = getSlideSpeed(limeLightValues,distance);
             double forwardSpeed = getForwardSpeed(distance);
-            double turnSpeed = getTurnSpeed(limeLightValues,distance);
+            double turnSpeed = getTurnSpeed(limeLightValues);
 
 
 // from 0 to -27 degrees we are off to the right. need to slide to left
@@ -69,7 +73,7 @@ public class FaceoffCommand extends Command {
         }
     }
 
-    private double getTurnSpeed(LimeLightValues limeLightValues, double distance) {
+    public double getTurnSpeed(LimeLightValues limeLightValues) {
         float Kp = -0.06f;
         float tx = (float) limeLightValues.getTargetHorizontal();
         float angle = Math.abs(tx);

@@ -12,7 +12,7 @@ public class LimeLightValues {
     }
 
     public double getTargetHorizontal(){
-        return ta;
+        return tx;
     }
 
     public double getTargetVertical(){
