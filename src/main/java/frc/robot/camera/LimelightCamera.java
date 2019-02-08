@@ -37,6 +37,7 @@ public class LimelightCamera {
   }
 
   long pollTime;
+  long tsPollTime;
   LimeLightValues limeLightValues = new LimeLightValues();
 
   public LimeLightValues poll(){
@@ -47,14 +48,17 @@ public class LimelightCamera {
       limeLightValues.ta = networkTable.getEntry("ta").getDouble(0);
       limeLightValues.tx = networkTable.getEntry("tx").getDouble(0);
       limeLightValues.ty = networkTable.getEntry("ty").getDouble(0);
-      limeLightValues.ts = networkTable.getEntry("ts").getDouble(0);
       limeLightValues.tv = networkTable.getEntry("tv").getDouble(0);
     } else if( (System.currentTimeMillis() - pollTime ) >=200){
       limeLightValues.ta = 0;
       limeLightValues.tx = 0;
       limeLightValues.ty = 0;
-      limeLightValues.ts = 0;
       limeLightValues.tv = 0;
+    }
+    double tsValue = networkTable.getEntry("ts").getDouble(0);
+    if (tsValue != 0.0 ){
+      limeLightValues.ts =  tsValue;
+      tsPollTime = System.currentTimeMillis();
     }
     return limeLightValues;
   }
@@ -64,6 +68,7 @@ public class LimelightCamera {
 	  SmartDashboard.putNumber("limelight.tx", NetworkTableInstance.getDefault().getTable("limelight").getEntry("tx").getDouble(0));
 	  SmartDashboard.putNumber("limelight.ty", NetworkTableInstance.getDefault().getTable("limelight").getEntry("ty").getDouble(0));
 	  SmartDashboard.putNumber("limelight.ta", NetworkTableInstance.getDefault().getTable("limelight").getEntry("ta").getDouble(0));
+	  SmartDashboard.putNumber("limelight.ts", NetworkTableInstance.getDefault().getTable("limelight").getEntry("ts").getDouble(0));
   }
 
 

@@ -17,6 +17,8 @@ import frc.robot.camera.LimelightCamera;
  * An example command.  You can replace me with your own command.
  */
 public class FaceoffCommand extends Command {
+    public static final double degreesAdjust = -1.5;  //OFFSET FOR CAMERA ANGLE ADJUST
+
     FaceoffCommand.Target target;
     LimelightCamera limelightCamera = new LimelightCamera();
     double initialZValue = 0.0;
@@ -61,12 +63,14 @@ public class FaceoffCommand extends Command {
 // from 0 to -27 degrees we are off to the right. need to slide to left
 // from -90 to -70 you are off to the left. need to slide to right
             SmartDashboard.putNumber("limelightSkew", limeLightValues.getTargetSkew());
-            SmartDashboard.putNumber("limelightSteeringAdjust", turnSpeed);
+            SmartDashboard.putNumber("faceOffTTurnSpeed", turnSpeed);
+            SmartDashboard.putNumber("faceOffForwardSpeed", forwardSpeed);
+            SmartDashboard.putNumber("faceOffTSlideSpeed", slideSpeed);
 
 
-//            RobotMap.drivetrain.getDrivetrain().driveCartesian(-slideSpeed, forwardSpeed, -turnSpeed);
+            RobotMap.drivetrain.getDrivetrain().driveCartesian(-slideSpeed, forwardSpeed, -turnSpeed);
 //            RobotMap.drivetrain.getDrivetrain().driveCartesian(-slideSpeed, 0, -turnSpeed);
-            RobotMap.drivetrain.getDrivetrain().driveCartesian(0, forwardSpeed, -turnSpeed);
+//            RobotMap.drivetrain.getDrivetrain().driveCartesian(-slideSpeed, 0, -turnSpeed);
 
             // RobotMap.leftDriveMotorController.set(kSetSpeed + steering_adjust);
             //RobotMap.rightDriveMotorController.set(-kSetSpeed + steering_adjust);
@@ -98,26 +102,39 @@ public class FaceoffCommand extends Command {
         return steering_adjust;
     }
 
-    private double getSlideSpeed(LimeLightValues limeLightValues, double distance) {
+    public double getSlideSpeed(LimeLightValues limeLightValues, double distance) {
         double kSetSpeed;
         double skew = limeLightValues.getTargetSkew();
         if(skew <= -60){
             skew = skew + 90;
         }
         double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
+        skewDistance = skewDistance + degreesAdjust;
         SmartDashboard.putNumber("skew", skew);
         SmartDashboard.putNumber("SkewDistance", skewDistance);
-        if (skewDistance <= -1) {
+        if (skewDistance <= -.5) {
+            kSetSpeed = -.32d;
+        } else if (skewDistance >= .5) {
+            kSetSpeed = .32d;
+        } else if (skewDistance <= -2) {
             kSetSpeed = -.4d;
-        } else if (skewDistance >= 1) {
+        } else if (skewDistance >= 2) {
             kSetSpeed = .4d;
-        } else {
+        } else if (skewDistance <= -3) {
+            kSetSpeed = -.45d;
+        } else if (skewDistance >= 3) {
+            kSetSpeed = .45d;
+        } else if (skewDistance <= -4) {
+            kSetSpeed = -.5d;
+        } else if (skewDistance >= 4) {
+            kSetSpeed = .5d;
+        }else {
             kSetSpeed = 0;
         }
         return kSetSpeed;
     }
 
-    private double getForwardSpeed( double distance) {
+    public double getForwardSpeed( double distance) {
         double vSetSpeed = 0;
 
         if (distance <= 120) {
