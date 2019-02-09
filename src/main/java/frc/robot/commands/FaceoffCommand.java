@@ -152,8 +152,8 @@ public class FaceoffCommand extends Command {
             RobotMap.drivetrain.backLeft.stopMotor();
             RobotMap.drivetrain.backRight.stopMotor(); */
 
-            vSetSpeed = 0d;
-            new CloseoutCommand();
+            vSetSpeed = .2d;
+           // new CloseoutCommand();
            // return 0.0;
         } else if(distance <= 150){
             vSetSpeed = -.2d;

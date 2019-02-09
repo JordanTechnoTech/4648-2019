@@ -34,7 +34,7 @@ public class MecanumDriveSubsystem extends Subsystem implements TechnoTechSubsys
         this.frontLeft.setNeutralMode(NeutralMode.Brake);
         this.backLeft.setNeutralMode(NeutralMode.Brake);
         this.backRight.setNeutralMode(NeutralMode.Brake);
-        addChild("IMU",imu);
+        //addChild("IMU",imu);
 
 
         drive = new MecanumDrive(this.frontLeft, this.backLeft, this.frontRight, this.backRight);
