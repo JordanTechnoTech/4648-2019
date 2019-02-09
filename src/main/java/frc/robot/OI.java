@@ -56,7 +56,7 @@ public class OI {
 
 
   public OI() {
-    lbButton.whileHeld(new FaceoffCommand(FaceoffCommand.Target.PANEL_HOLE));
+    lbButton.toggleWhenPressed(new FaceoffCommand(FaceoffCommand.Target.PANEL_HOLE));
 
 
     rbButton.whileHeld(new CloseoutCommand());

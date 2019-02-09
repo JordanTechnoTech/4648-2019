@@ -17,13 +17,14 @@ import frc.robot.camera.LimelightCamera;
  * An example command.  You can replace me with your own command.
  */
 public class FaceoffCommand extends Command {
-    public static final double degreesAdjust = -1.5;  //OFFSET FOR CAMERA ANGLE ADJUST
+    public static final double degreesAdjust = 3;  //OFFSET FOR CAMERA ANGLE ADJUST
 
     FaceoffCommand.Target target;
     LimelightCamera limelightCamera = new LimelightCamera();
     double initialZValue = 0.0;
     double initialSkew = 0.0;
     double cameraFail;
+    LimeLightValues limeLightValues;
 
     public FaceoffCommand(FaceoffCommand. Target atarget) {
         target = atarget;
@@ -43,7 +44,8 @@ public class FaceoffCommand extends Command {
 
     @Override
     protected void execute() {
-        LimeLightValues limeLightValues = limelightCamera.poll();
+        limeLightValues = limelightCamera.poll();
+       // RobotMap.sonar.ping();
         //turn to target until in view
         double distance = LimelightCamera.getDistance(target.getHeight(),limeLightValues.getTargetVertical());
         SmartDashboard.putNumber("distance", distance);
@@ -56,7 +58,7 @@ public class FaceoffCommand extends Command {
             SmartDashboard.putNumber("CameraFail", cameraFail);
         } else {
             double slideSpeed = getSlideSpeed(limeLightValues,distance);
-            double forwardSpeed = getForwardSpeed(distance);  //for this only pass in distance from sonar if distance is under 150
+            double forwardSpeed = getForwardSpeed(distance < 150 ? RobotMap.sonar.ultrasonicRange(): distance);  //for this only pass in distance from sonar if distance is under 150
             double turnSpeed = getTurnSpeed(limeLightValues);
 
 
@@ -133,16 +135,18 @@ public class FaceoffCommand extends Command {
     }
 
     public double getForwardSpeed(double distance) {
-        double vSetSpeed;
+        double vSetSpeed = 0;
+        if (vSetSpeed == 0.0) {
+
+        }
         //TODO if your under 100 cm in then reverse slowly only set speed to 0 when
         // range between 110 and 120
-        if (distance <= 100){
-            RobotMap.sonar.ultrasonicRange();
-            vSetSpeed = .15;
-        } else if (distance <= 120){
-            vSetSpeed = .0d;
-           // new CloseoutCommand();
-           // return 0.0;
+        if (distance <= 110){
+            vSetSpeed = .25d;
+        } else if (distance <= 120) {
+            vSetSpeed = 0;
+        } else if (distance <= 130) {
+            vSetSpeed = 0.0d;
         } else if(distance <= 150){
             vSetSpeed = -.2d;
         } else if (distance <= 200){
@@ -161,6 +165,17 @@ public class FaceoffCommand extends Command {
 
     @Override
     protected boolean isFinished() {
+        double skew = limeLightValues.getTargetSkew();
+        if(skew <= -60){
+            skew = skew + 90;
+        }
+        double distance = LimelightCamera.getDistance(target.getHeight(),limeLightValues.getTargetVertical());
+
+        if(distance <170 && distance> 130 && skew > -2 && skew <2 ){
+            SmartDashboard.putNumber("FINISHED distance",distance);
+            SmartDashboard.putNumber("FINISHED skew",skew);
+            return true;
+        }
         return false;
     }
 

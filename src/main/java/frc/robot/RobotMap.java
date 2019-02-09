@@ -30,8 +30,8 @@ public class RobotMap {
     // number and the module. For example you with a rangefinder:
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
-    private static final double rotationalDeadZone = 0.1;
-    private static final double translationalDeadZone = 0.1;
+    private static final double rotationalDeadZone = 0.15;
+    private static final double translationalDeadZone = 0.15;
     public static int rightDriveMotor = 0;
     public static int leftDriveMotor = 3;
 

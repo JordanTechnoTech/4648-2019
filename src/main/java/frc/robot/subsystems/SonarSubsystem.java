@@ -3,11 +3,9 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.RobotMap;
 
 public class SonarSubsystem extends Subsystem implements TechnoTechSubsystem {
-    Ultrasonic ultrasonic;
-
+    public Ultrasonic ultrasonic;
 
     public SonarSubsystem() {
         ultrasonic = new Ultrasonic(1,0);
@@ -16,6 +14,10 @@ public class SonarSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     public double ultrasonicRange() {
         return ultrasonic.getRangeInches();
+    }
+
+    public void ping(){
+        ultrasonic.ping();
     }
 
     @Override
@@ -27,6 +29,5 @@ public class SonarSubsystem extends Subsystem implements TechnoTechSubsystem {
     public void log() {
         SmartDashboard.putNumber("SonarValue",ultrasonicRange());
         SmartDashboard.putNumber("SonarValueCentimeters",ultrasonicRange()*2.54);
-
     }
 }

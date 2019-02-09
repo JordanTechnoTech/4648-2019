@@ -46,4 +46,33 @@ public class FaceoffCommandTest {
         //Then
         assertEquals(-.32, slideSpeed, .0001);
     }
+
+    @Test
+    public void testForwardSpeed(){
+        //Setup
+        FaceoffCommand subject = new FaceoffCommand(FaceoffCommand.Target.PANEL_HOLE);
+
+        //When
+        double forwardSpeed = subject.getForwardSpeed(50);
+
+        //Then
+        assertTrue(forwardSpeed>0);
+
+
+        //When
+        forwardSpeed = subject.getForwardSpeed(250);
+
+        //Then
+        assertTrue(forwardSpeed<0);
+
+
+        //When
+        forwardSpeed = subject.getForwardSpeed(115);
+
+        //Then
+        assertEquals(0.0,forwardSpeed,0.01);
+
+
+
+    }
 }
