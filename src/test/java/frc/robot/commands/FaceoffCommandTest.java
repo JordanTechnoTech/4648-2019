@@ -44,6 +44,6 @@ public class FaceoffCommandTest {
         double slideSpeed = subject.getSlideSpeed(values, 4);
 
         //Then
-        assertEquals(-.25, slideSpeed, .0001);
+        assertEquals(-.32, slideSpeed, .0001);
     }
 }

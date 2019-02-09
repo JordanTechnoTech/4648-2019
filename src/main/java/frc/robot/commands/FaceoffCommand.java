@@ -56,7 +56,7 @@ public class FaceoffCommand extends Command {
             SmartDashboard.putNumber("CameraFail", cameraFail);
         } else {
             double slideSpeed = getSlideSpeed(limeLightValues,distance);
-            double forwardSpeed = getForwardSpeed(distance);
+            double forwardSpeed = getForwardSpeed(distance);  //for this only pass in distance from sonar if distance is under 150
             double turnSpeed = getTurnSpeed(limeLightValues);
 
 
@@ -110,8 +110,6 @@ public class FaceoffCommand extends Command {
         }
         double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
         skewDistance = skewDistance + degreesAdjust;
-        SmartDashboard.putNumber("skew", skew);
-        SmartDashboard.putNumber("SkewDistance", skewDistance);
         if (skewDistance <= -.5) {
             kSetSpeed = -.32d;
         } else if (skewDistance >= .5) {
@@ -136,23 +134,13 @@ public class FaceoffCommand extends Command {
 
     public double getForwardSpeed(double distance) {
         double vSetSpeed;
-//        if (distance <= 120) {
-//            distance = RobotMap.sonar.ultrasonicRange();
-//
-//        } else {
-//            distance = distance + 0;
-//        }
-
-//        if (distance <= 10) {
-//            vSetSpeed = 0;
-//        } else
-        if (distance <= 120) {
-           /* RobotMap.drivetrain.frontLeft.stopMotor();
-            RobotMap.drivetrain.frontRight.stopMotor();
-            RobotMap.drivetrain.backLeft.stopMotor();
-            RobotMap.drivetrain.backRight.stopMotor(); */
-
-            vSetSpeed = .2d;
+        //TODO if your under 100 cm in then reverse slowly only set speed to 0 when
+        // range between 110 and 120
+        if (distance <= 100){
+            RobotMap.sonar.ultrasonicRange();
+            vSetSpeed = .15;
+        } else if (distance <= 120){
+            vSetSpeed = .0d;
            // new CloseoutCommand();
            // return 0.0;
         } else if(distance <= 150){

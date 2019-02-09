@@ -15,9 +15,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.camera.LimelightCamera;
 import frc.robot.camera.LimelightCamera.ledMode;
-import frc.robot.commands.ExampleCommand;
-import frc.robot.subsystems.*;
-import edu.wpi.first.wpilibj.AnalogInput;
+import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.TechnoTechSubsystem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,139 +29,136 @@ import java.util.List;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
-  public static OI m_oi;
+    public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
+    public static OI m_oi;
 
-  Command m_autonomousCommand;
-  SendableChooser<Command> m_chooser = new SendableChooser<>();
+    Command m_autonomousCommand;
+    SendableChooser<Command> m_chooser = new SendableChooser<>();
 
-  List<TechnoTechSubsystem> subsystems = new ArrayList<>();
+    List<TechnoTechSubsystem> subsystems = new ArrayList<>();
 
-  public static DriveSubsystem driveSubsystem;
-
-  /**
-   * This function is run when the robot is first started up and should be
-   * used for any initialization code.
-   */
-  @Override
-  public void robotInit() {
-	  RobotMap.init();
-    m_oi = new OI();
+    /**
+     * This function is run when the robot is first started up and should be
+     * used for any initialization code.
+     */
+    @Override
+    public void robotInit() {
+        RobotMap.init();
+        m_oi = new OI();
 //    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-    // chooser.addOption("My Auto", new MyAutoCommand());
+        // chooser.addOption("My Auto", new MyAutoCommand());
 //    SmartDashboard.putData("Auto mode", m_chooser);
 
-    initSubsystems();
-  }
+        initSubsystems();
+    }
 
-  public void initSubsystems(){
-    subsystems.add(RobotMap.drivetrain);
-    subsystems.add(RobotMap.sonar);
-  }
+    public void initSubsystems() {
+        subsystems.add(RobotMap.drivetrain);
+        subsystems.add(RobotMap.sonar);
+    }
 
-  /**
-   * This function is called every robot packet, no matter the mode. Use
-   * this for items like diagnostics that you want ran during disabled,
-   * autonomous, teleoperated and test.
-   *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
-   */
-  @Override
-  public void robotPeriodic() {
-  }
-
-  /**
-   * This function is called once each time the robot enters Disabled mode.
-   * You can use it to reset any subsystem information you want to clear when
-   * the robot is disabled.
-   */
-  @Override
-  public void disabledInit() {
-  }
-
-  @Override
-  public void disabledPeriodic() {
-    Scheduler.getInstance().run();
-  }
-
-  /**
-   * This autonomous (along with the chooser code above) shows how to select
-   * between different autonomous modes using the dashboard. The sendable
-   * chooser code works with the Java SmartDashboard. If you prefer the
-   * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-   * getString code to get the auto name from the text box below the Gyro
-   *
-   * <p>You can add additional auto modes by adding additional commands to the
-   * chooser code above (like the commented example) or additional comparisons
-   * to the switch structure below with additional strings & commands.
-   */
-  @Override
-  public void autonomousInit() {
-    m_autonomousCommand = m_chooser.getSelected();
-
-    /*
-     * String autoSelected = SmartDashboard.getString("Auto Selector",
-     * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-     * = new MyAutoCommand(); break; case "Default Auto": default:
-     * autonomousCommand = new ExampleCommand(); break; }
+    /**
+     * This function is called every robot packet, no matter the mode. Use
+     * this for items like diagnostics that you want ran during disabled,
+     * autonomous, teleoperated and test.
+     *
+     * <p>This runs after the mode specific periodic functions, but before
+     * LiveWindow and SmartDashboard integrated updating.
      */
-
-    // schedule the autonomous command (example)
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.start();
+    @Override
+    public void robotPeriodic() {
     }
-  }
 
-  /**
-   * This function is called periodically during autonomous.
-   */
-  @Override
-  public void autonomousPeriodic() {
-    Scheduler.getInstance().run();
-  }
-
-  @Override
-  public void teleopInit() {
-    // This makes sure that the autonomous stops running when
-    // teleop starts running. If you want the autonomous to
-    // continue until interrupted by another command, remove
-    // this line or comment it out.
-    if (m_autonomousCommand != null) {
-      m_autonomousCommand.cancel();
+    /**
+     * This function is called once each time the robot enters Disabled mode.
+     * You can use it to reset any subsystem information you want to clear when
+     * the robot is disabled.
+     */
+    @Override
+    public void disabledInit() {
     }
-    LimelightCamera.setLightMode(ledMode.OFF);
-    LimelightCamera.setCameraMode(LimelightCamera.cameraMode.CAMERA);
-    LimelightCamera.setPipeline(1);
-    CameraServer.getInstance().startAutomaticCapture();
-  }
 
-  /**
-   * This function is called periodically during operator control.
-   */
-  @Override
-  public void teleopPeriodic() {
-    Scheduler.getInstance().run();
-    log();
-  }
+    @Override
+    public void disabledPeriodic() {
+        Scheduler.getInstance().run();
+    }
 
-  /**
-   * This function is called periodically during test mode.
-   */
-  @Override
-  public void testPeriodic() {
-  }
+    /**
+     * This autonomous (along with the chooser code above) shows how to select
+     * between different autonomous modes using the dashboard. The sendable
+     * chooser code works with the Java SmartDashboard. If you prefer the
+     * LabVIEW Dashboard, remove all of the chooser code and uncomment the
+     * getString code to get the auto name from the text box below the Gyro
+     *
+     * <p>You can add additional auto modes by adding additional commands to the
+     * chooser code above (like the commented example) or additional comparisons
+     * to the switch structure below with additional strings & commands.
+     */
+    @Override
+    public void autonomousInit() {
+        m_autonomousCommand = m_chooser.getSelected();
 
-  public void log() {
-    SmartDashboard.putNumber("Gyro-Angle", RobotMap.imu.getAngle());
-    SmartDashboard.putNumber("Gyro-X", RobotMap.imu.getAngleX());
-    SmartDashboard.putNumber("Gyro-Y", RobotMap.imu.getAngleY());
-    SmartDashboard.putNumber("Gyro-Z", RobotMap.imu.getAngleZ());
-    SmartDashboard.putNumber("Accel-X", RobotMap.imu.getAccelX());
-    SmartDashboard.putNumber("Accel-Y", RobotMap.imu.getAccelY());
-    SmartDashboard.putNumber("Accel-Z", RobotMap.imu.getAccelZ());
+        /*
+         * String autoSelected = SmartDashboard.getString("Auto Selector",
+         * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
+         * = new MyAutoCommand(); break; case "Default Auto": default:
+         * autonomousCommand = new ExampleCommand(); break; }
+         */
 
-    LimelightCamera.log();
-    subsystems.forEach(TechnoTechSubsystem::log);
-  }
+        // schedule the autonomous command (example)
+        if (m_autonomousCommand != null) {
+            m_autonomousCommand.start();
+        }
+    }
+
+    /**
+     * This function is called periodically during autonomous.
+     */
+    @Override
+    public void autonomousPeriodic() {
+        Scheduler.getInstance().run();
+    }
+
+    @Override
+    public void teleopInit() {
+        // This makes sure that the autonomous stops running when
+        // teleop starts running. If you want the autonomous to
+        // continue until interrupted by another command, remove
+        // this line or comment it out.
+        if (m_autonomousCommand != null) {
+            m_autonomousCommand.cancel();
+        }
+        LimelightCamera.setLightMode(ledMode.OFF);
+        LimelightCamera.setCameraMode(LimelightCamera.cameraMode.CAMERA);
+        LimelightCamera.setPipeline(1);
+        CameraServer.getInstance().startAutomaticCapture();
+    }
+
+    /**
+     * This function is called periodically during operator control.
+     */
+    @Override
+    public void teleopPeriodic() {
+        Scheduler.getInstance().run();
+        log();
+    }
+
+    /**
+     * This function is called periodically during test mode.
+     */
+    @Override
+    public void testPeriodic() {
+    }
+
+    public void log() {
+        SmartDashboard.putNumber("Gyro-Angle", RobotMap.imu.getAngle());
+        SmartDashboard.putNumber("Gyro-X", RobotMap.imu.getAngleX());
+        SmartDashboard.putNumber("Gyro-Y", RobotMap.imu.getAngleY());
+        SmartDashboard.putNumber("Gyro-Z", RobotMap.imu.getAngleZ());
+        SmartDashboard.putNumber("Accel-X", RobotMap.imu.getAccelX());
+        SmartDashboard.putNumber("Accel-Y", RobotMap.imu.getAccelY());
+        SmartDashboard.putNumber("Accel-Z", RobotMap.imu.getAccelZ());
+        LimelightCamera.log();
+        subsystems.forEach(TechnoTechSubsystem::log);
+    }
 }

@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
+import frc.robot.commands.CloseoutCommand;
 import frc.robot.commands.FaceoffCommand;
 
 
@@ -56,20 +57,16 @@ public class OI {
 
   public OI() {
     lbButton.whileHeld(new FaceoffCommand(FaceoffCommand.Target.PANEL_HOLE));
+
+
+    rbButton.whileHeld(new CloseoutCommand());
+
   }
 
-  //Forward back speed
-  public double getArcardeSpeed() { // DriveCommand
-    return controller1.getY(GenericHID.Hand.kLeft);
-  }
-  //Adjust for left and right turns
-  public double getRotationSpeed() { // DriveCommand
-    return controller1.getX(GenericHID.Hand.kLeft);
-  }
   public double getStickRightYValue(){ return controller1.getY(GenericHID.Hand.kRight);}
   public double getStickRightXValue(){ return controller1.getX(GenericHID.Hand.kRight);}
 
-  public double getStickLeftXValue() { // DriveCommand
+  public double getStickLeftXValue() {
     return controller1.getX(GenericHID.Hand.kLeft);
   }
   public static double deadZone (double val, double deadZone){

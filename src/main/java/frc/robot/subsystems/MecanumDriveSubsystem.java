@@ -1,16 +1,10 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
-import edu.wpi.first.wpilibj.BuiltInAccelerometer;
-import edu.wpi.first.wpilibj.GyroBase;
-import edu.wpi.first.wpilibj.interfaces.Gyro;
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.frc.imu.ADIS16448_IMU;
-import frc.robot.RobotMap;
 import frc.robot.commands.MecanumDriveCommand;
 
 /**
@@ -21,7 +15,6 @@ public class MecanumDriveSubsystem extends Subsystem implements TechnoTechSubsys
     protected MecanumDrive drive;
 
     public WPI_TalonSRX frontLeft, frontRight, backLeft, backRight;
-    private final ADIS16448_IMU imu = RobotMap.imu;
 
     public MecanumDriveSubsystem(int frontLeft, int frontRight, int backLeft, int backRight){
         this.frontLeft = new WPI_TalonSRX(frontLeft);

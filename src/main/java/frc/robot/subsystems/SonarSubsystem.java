@@ -6,10 +6,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
 public class SonarSubsystem extends Subsystem implements TechnoTechSubsystem {
-    Ultrasonic ultrasonic = null;// new Ultrasonic(1,1);
+    Ultrasonic ultrasonic;
+
 
     public SonarSubsystem() {
-        //ultrasonic.setAutomaticMode(true);
+        ultrasonic = new Ultrasonic(1,0);
+        ultrasonic.setAutomaticMode(true);
     }
 
     public double ultrasonicRange() {
@@ -23,6 +25,8 @@ public class SonarSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     @Override
     public void log() {
-        //SmartDashboard.putNumber("SonarValue",ultrasonicRange());
+        SmartDashboard.putNumber("SonarValue",ultrasonicRange());
+        SmartDashboard.putNumber("SonarValueCentimeters",ultrasonicRange()*2.54);
+
     }
 }
