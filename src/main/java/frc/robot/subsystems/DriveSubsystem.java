@@ -44,8 +44,6 @@ public class DriveSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     SmartDashboard.putNumber("Left Speed", leftDrive.get());
     SmartDashboard.putNumber("Right Speed", rightDrive.get());
-    SmartDashboard.putNumber("Left Sonar Distance: ", RobotMap.leftSonar.getValue());
-    SmartDashboard.putNumber("Left Sonar Distance: ", RobotMap.rightSonar.getValue());
 
 //    SmartDashboard.putNumber("Left Encoder", RobotMap.leftEncoder.get());
 //    SmartDashboard.putNumber("Right Encoder", RobotMap.rightEncoder.get());

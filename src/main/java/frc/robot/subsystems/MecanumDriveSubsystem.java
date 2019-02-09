@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.NeutralMode;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.RobotMap;
 import frc.robot.commands.MecanumDriveCommand;
 
 /**
@@ -23,9 +24,9 @@ public class MecanumDriveSubsystem extends Subsystem implements TechnoTechSubsys
         this.backLeft = new WPI_TalonSRX(backLeft);
         this.backRight = new WPI_TalonSRX(backRight);
 
-        this.frontLeft.setNeutralMode(NeutralMode.Brake);
         this.frontLeft.setInverted(true);
         this.frontRight.setNeutralMode(NeutralMode.Brake);
+        this.frontLeft.setNeutralMode(NeutralMode.Brake);
         this.backLeft.setNeutralMode(NeutralMode.Brake);
         this.backRight.setNeutralMode(NeutralMode.Brake);
 
@@ -50,7 +51,7 @@ public class MecanumDriveSubsystem extends Subsystem implements TechnoTechSubsys
         SmartDashboard.putNumber("FrontLeft speed",this.frontLeft.get());
         SmartDashboard.putNumber("FrontRight speed",this.frontRight.get());
         SmartDashboard.putNumber("BackLeft speed",this.backLeft.get());
-        SmartDashboard.putNumber("BackRight",this.backRight.get());
+        SmartDashboard.putNumber("BackRight speed",this.backRight.get());
 
     }
 }

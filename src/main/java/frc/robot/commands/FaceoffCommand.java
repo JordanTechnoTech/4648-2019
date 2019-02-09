@@ -20,6 +20,8 @@ public class FaceoffCommand extends Command {
     public static final double degreesAdjust = -1.5;  //OFFSET FOR CAMERA ANGLE ADJUST
 
     FaceoffCommand.Target target;
+    // (the above)assigns ultra to be an ultrasonic sensor which uses DigitalOutput 1 for
+    // the echo pulse and DigitalInput 1 for the trigger pulse
     LimelightCamera limelightCamera = new LimelightCamera();
     double initialZValue = 0.0;
     double initialSkew = 0.0;
@@ -135,10 +137,25 @@ public class FaceoffCommand extends Command {
     }
 
     public double getForwardSpeed( double distance) {
-        double vSetSpeed = 0;
+        double vSetSpeed;
+//        if (distance <= 120) {
+//            distance = RobotMap.sonar.ultrasonicRange();
+//
+//        } else {
+//            distance = distance + 0;
+//        }
 
+//        if (distance <= 10) {
+//            vSetSpeed = 0;
+//        } else
         if (distance <= 120) {
+           /* RobotMap.drivetrain.frontLeft.stopMotor();
+            RobotMap.drivetrain.frontRight.stopMotor();
+            RobotMap.drivetrain.backLeft.stopMotor();
+            RobotMap.drivetrain.backRight.stopMotor(); */
+
             vSetSpeed = 0d;
+           // return 0.0;
         } else if(distance <= 150){
             vSetSpeed = -.2d;
         } else if (distance <= 200){

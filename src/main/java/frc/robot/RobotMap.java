@@ -10,8 +10,8 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import frc.frc.imu.ADIS16448_IMU;
-import edu.wpi.first.wpilibj.AnalogInput;
 import frc.robot.subsystems.MecanumDriveSubsystem;
+import frc.robot.subsystems.SonarSubsystem;
 
 
 /**
@@ -39,12 +39,12 @@ public class RobotMap {
     public static Spark rightDriveMotorController;
     public static MecanumDriveSubsystem drivetrain;
     public static ADIS16448_IMU imu;
-    public static AnalogInput leftSonar;
-    public static AnalogInput rightSonar;
     private static final int raiseFrontLeft = 1;
     private static final int raiseFrontRight = 3;
     private static final int raiseBackLeft = 2;
     private static final int raiseBackRight = 0;
+    public static SonarSubsystem sonar;
+
     public static double getRotationaldeadzone() {
         return rotationalDeadZone;
     }
@@ -56,9 +56,8 @@ public class RobotMap {
         // drive initialization
         leftDriveMotorController = new Spark(leftDriveMotor);
         rightDriveMotorController = new Spark(rightDriveMotor);
+        sonar = new SonarSubsystem();
         drivetrain = new MecanumDriveSubsystem(raiseFrontLeft, raiseFrontRight,raiseBackLeft, raiseBackRight);
-//		imu = new ADIS16448_IMU();
-        leftSonar = new AnalogInput(0);
-        rightSonar = new AnalogInput(1);
+		imu = new ADIS16448_IMU();
     }
 }
