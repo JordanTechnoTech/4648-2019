@@ -17,7 +17,7 @@ import frc.robot.camera.LimelightCamera;
  * An example command.  You can replace me with your own command.
  */
 public class FaceoffCommand extends Command {
-    public static final double degreesAdjust = 3;  //OFFSET FOR CAMERA ANGLE ADJUST
+    public static final double degreesAdjust = 4;  //OFFSET FOR CAMERA ANGLE ADJUST
 
     FaceoffCommand.Target target;
     LimelightCamera limelightCamera = new LimelightCamera();
@@ -112,22 +112,20 @@ public class FaceoffCommand extends Command {
         }
         double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
         skewDistance = skewDistance + degreesAdjust;
-        if (skewDistance <= -.5) {
-            kSetSpeed = -.32d;
-        } else if (skewDistance >= .5) {
-            kSetSpeed = .32d;
-        } else if (skewDistance <= -2) {
-            kSetSpeed = -.4d;
-        } else if (skewDistance >= 2) {
-            kSetSpeed = .4d;
+        SmartDashboard.putNumber("SkewDistance",skewDistance);
+        SmartDashboard.putNumber("skew",skew);
+        if (skewDistance >= -2 && skewDistance <=0) {
+            kSetSpeed = -.25d;
+        } else if (skewDistance <= 2 && skewDistance >0) {
+            kSetSpeed = .25d;
         } else if (skewDistance <= -3) {
-            kSetSpeed = -.45d;
+            kSetSpeed = -.28d;
         } else if (skewDistance >= 3) {
-            kSetSpeed = .45d;
+            kSetSpeed = .28d;
         } else if (skewDistance <= -4) {
-            kSetSpeed = -.5d;
+            kSetSpeed = -.3d;
         } else if (skewDistance >= 4) {
-            kSetSpeed = .5d;
+            kSetSpeed = .3d;
         }else {
             kSetSpeed = 0;
         }
@@ -171,7 +169,7 @@ public class FaceoffCommand extends Command {
         }
         double distance = LimelightCamera.getDistance(target.getHeight(),limeLightValues.getTargetVertical());
 
-        if(distance <170 && distance> 130 && skew > -2 && skew <2 ){
+        if(distance <170 && distance> 130 && skew > -1 && skew <1 ){
             SmartDashboard.putNumber("FINISHED distance",distance);
             SmartDashboard.putNumber("FINISHED skew",skew);
             return true;
