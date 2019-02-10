@@ -9,6 +9,7 @@ package frc.robot;
 
 import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.Talon;
 import frc.robot.subsystems.MecanumDriveSubsystem;
 import frc.robot.subsystems.SonarSubsystem;
 
@@ -44,6 +45,8 @@ public class RobotMap {
     private static final int raiseBackLeft = 2;
     private static final int raiseBackRight = 0;
     public static SonarSubsystem sonar;
+
+    public static final int DIO_CHANNEL_WRIST_ENCODER = 2;
 
     public static double getRotationaldeadzone() {
         return rotationalDeadZone;

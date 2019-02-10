@@ -128,9 +128,9 @@ public class Robot extends TimedRobot {
         if (m_autonomousCommand != null) {
             m_autonomousCommand.cancel();
         }
-        LimelightCamera.setLightMode(ledMode.ON);
-        LimelightCamera.setCameraMode(LimelightCamera.cameraMode.VISION);
-        LimelightCamera.setPipeline(0);
+        LimelightCamera.setLightMode(ledMode.OFF);
+        LimelightCamera.setCameraMode(LimelightCamera.cameraMode.CAMERA);
+        LimelightCamera.setPipeline(1);
         CameraServer.getInstance().startAutomaticCapture();
     }
 

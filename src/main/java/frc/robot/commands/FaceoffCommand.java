@@ -13,26 +13,56 @@ import frc.robot.RobotMap;
 import frc.robot.camera.LimeLightValues;
 import frc.robot.camera.LimelightCamera;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * An example command.  You can replace me with your own command.
  */
 public class FaceoffCommand extends Command {
-    public static final double degreesAdjust = 4;  //OFFSET FOR CAMERA ANGLE ADJUST
+    public static final double degreesAdjust = 2;  //OFFSET FOR CAMERA ANGLE ADJUST increase number to angle more to right
+
+    public static List<RangeValue> forwardSpeedRangeValues = Arrays.asList(
+            new RangeValue(-1, 110, .25),
+            new RangeValue(110, 150, 0),
+            new RangeValue(150, 200, -.2),
+            new RangeValue(200, 350, -.3),
+            new RangeValue(350, 9999, -.4)
+    );
+
+    public static List<RangeValue> slideSpeedRangeValues = Arrays.asList(
+            new RangeValue(-999, -4, -.3),
+            new RangeValue(-4, -2, -.28),
+//            new RangeValue(-2, -1, -.25),
+            new RangeValue(-2, 2, 0),
+//            new RangeValue(1, 2, .25),
+            new RangeValue(2, 4, .28),
+            new RangeValue(4, 9999, .3)
+    );
+
+    public static List<RangeValue> turnSpeedRangeValues = Arrays.asList(
+            new RangeValue(-1, 1, 0.0),
+            new RangeValue(1, 5, -.023),
+            new RangeValue(5, 10, -.025),
+            new RangeValue(10, 15, -.03),
+            new RangeValue(15, 9999, -.035)
+    );
+
 
     FaceoffCommand.Target target;
     LimelightCamera limelightCamera = new LimelightCamera();
-    double initialZValue = 0.0;
-    double initialSkew = 0.0;
     double cameraFail;
     LimeLightValues limeLightValues;
+    private boolean finished = false;
 
-    public FaceoffCommand(FaceoffCommand. Target atarget) {
+    public FaceoffCommand(FaceoffCommand.Target atarget) {
         target = atarget;
     }
 
     // Called just before this Command runs the first time
     @Override
     protected void initialize() {
+        finished = false;
         LimelightCamera.setLightMode(LimelightCamera.ledMode.ON);
         LimelightCamera.setPipeline(0);
         LimelightCamera.setCameraMode(LimelightCamera.cameraMode.VISION);
@@ -41,13 +71,11 @@ public class FaceoffCommand extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-
     @Override
     protected void execute() {
         limeLightValues = limelightCamera.poll();
-       // RobotMap.sonar.ping();
         //turn to target until in view
-        double distance = LimelightCamera.getDistance(target.getHeight(),limeLightValues.getTargetVertical());
+        double distance = LimelightCamera.getDistance(target.getHeight(), limeLightValues.getTargetVertical());
         SmartDashboard.putNumber("distance", distance);
         SmartDashboard.putNumber("cachedTA", limeLightValues.ta);
         SmartDashboard.putNumber("cachedTX", limeLightValues.tx);
@@ -57,41 +85,40 @@ public class FaceoffCommand extends Command {
             cameraFail = cameraFail + 1;
             SmartDashboard.putNumber("CameraFail", cameraFail);
         } else {
-            double slideSpeed = getSlideSpeed(limeLightValues,distance);
-            double forwardSpeed = getForwardSpeed(distance < 150 ? RobotMap.sonar.ultrasonicRange(): distance);  //for this only pass in distance from sonar if distance is under 150
+            double slideSpeed = 0.0;
+            if (distance < 200)
+                slideSpeed = getSlideSpeed(limeLightValues, distance);
+            double forwardSpeed = getForwardSpeed(distance < 150 ? RobotMap.sonar.getRangeCentimeters() + 40 : distance);  //for this only pass in distance from sonar if distance is under 150
+            if (slideSpeed == 0 && forwardSpeed == 0 && limeLightValues.tx > -1 && limeLightValues.tx <1) {
+                finished = true;
+                RobotMap.drivetrain.getDrivetrain().stopMotor();
+                return;
+            }
             double turnSpeed = getTurnSpeed(limeLightValues);
 
-
-// from 0 to -27 degrees we are off to the right. need to slide to left
-// from -90 to -70 you are off to the left. need to slide to right
             SmartDashboard.putNumber("limelightSkew", limeLightValues.getTargetSkew());
             SmartDashboard.putNumber("faceOffTTurnSpeed", turnSpeed);
             SmartDashboard.putNumber("faceOffForwardSpeed", forwardSpeed);
             SmartDashboard.putNumber("faceOffTSlideSpeed", slideSpeed);
 
-
             RobotMap.drivetrain.getDrivetrain().driveCartesian(-slideSpeed, forwardSpeed, -turnSpeed);
-//            RobotMap.drivetrain.getDrivetrain().driveCartesian(-slideSpeed, 0, -turnSpeed);
-//            RobotMap.drivetrain.getDrivetrain().driveCartesian(-slideSpeed, 0, -turnSpeed);
-
-            // RobotMap.leftDriveMotorController.set(kSetSpeed + steering_adjust);
-            //RobotMap.rightDriveMotorController.set(-kSetSpeed + steering_adjust);
         }
     }
 
+    public double findInCollection(List<RangeValue> rangeValues, double itemToFind) {
+        for (RangeValue rangeValue : rangeValues) {
+            if (itemToFind > rangeValue.startValue && itemToFind <= rangeValue.endValue) {
+                return rangeValue.result;
+            }
+        }
+        throw new RuntimeException("Item not found:" + itemToFind);
+    }
+
     public double getTurnSpeed(LimeLightValues limeLightValues) {
-        float Kp = -0.06f;
         float tx = (float) limeLightValues.getTargetHorizontal();
         float angle = Math.abs(tx);
-        if (angle <= 5) {
-            Kp = -.02f;
-        } else if (angle <= 10) {
-            Kp = -.025f;
-        } else if (angle <= 15) {
-            Kp = -.03f;
-        } else if (angle <= 20) {
-            Kp = -.035f;
-        }
+
+        float Kp = (float) findInCollection(turnSpeedRangeValues, angle);
 
         float heading_error = -tx;
         float steering_adjust = 0.0f;
@@ -100,87 +127,38 @@ public class FaceoffCommand extends Command {
         } else if (tx < 1.0) { //target is moving left
             steering_adjust = (Kp * heading_error);
         }
-
         return steering_adjust;
     }
 
     public double getSlideSpeed(LimeLightValues limeLightValues, double distance) {
-        double kSetSpeed;
         double skew = limeLightValues.getTargetSkew();
-        if(skew <= -60){
+        if (skew <= -60) {
             skew = skew + 90;
         }
-        double skewDistance = LimelightCamera.findSkewDistance(distance, skew);
-        skewDistance = skewDistance + degreesAdjust;
-        SmartDashboard.putNumber("SkewDistance",skewDistance);
-        SmartDashboard.putNumber("skew",skew);
-        if (skewDistance >= -2 && skewDistance <=0) {
-            kSetSpeed = -.25d;
-        } else if (skewDistance <= 2 && skewDistance >0) {
-            kSetSpeed = .25d;
-        } else if (skewDistance <= -3) {
-            kSetSpeed = -.28d;
-        } else if (skewDistance >= 3) {
-            kSetSpeed = .28d;
-        } else if (skewDistance <= -4) {
-            kSetSpeed = -.3d;
-        } else if (skewDistance >= 4) {
-            kSetSpeed = .3d;
-        }else {
-            kSetSpeed = 0;
-        }
-        return kSetSpeed;
+        final double skewDistance = LimelightCamera.findSkewDistance(distance, skew) + degreesAdjust;
+        SmartDashboard.putNumber("SkewDistance", skewDistance);
+        return findInCollection(slideSpeedRangeValues, skewDistance);
     }
 
     public double getForwardSpeed(double distance) {
-        double vSetSpeed = 0;
-        if (vSetSpeed == 0.0) {
-
-        }
-        //TODO if your under 100 cm in then reverse slowly only set speed to 0 when
-        // range between 110 and 120
-        if (distance <= 110){
-            vSetSpeed = .25d;
-        } else if (distance <= 120) {
-            vSetSpeed = 0;
-        } else if (distance <= 130) {
-            vSetSpeed = 0.0d;
-        } else if(distance <= 150){
-            vSetSpeed = -.2d;
-        } else if (distance <= 200){
-            vSetSpeed = -.25d;
-        } else if (distance <=   250){
-            vSetSpeed = -.3d;
-        } else if (distance <= 300) {
-            vSetSpeed = -.35d;
-        } else if (distance <= 350) {
-            vSetSpeed = -.4d;
-        } else {
-            vSetSpeed = -.45d;
-        }
-        return vSetSpeed;
+        return findInCollection(forwardSpeedRangeValues, distance);
     }
 
     @Override
     protected boolean isFinished() {
-        double skew = limeLightValues.getTargetSkew();
-        if(skew <= -60){
-            skew = skew + 90;
+        if(finished){
+            LimelightCamera.setLightMode(LimelightCamera.ledMode.OFF);
+            LimelightCamera.setPipeline(1);
+            LimelightCamera.setCameraMode(LimelightCamera.cameraMode.CAMERA);
         }
-        double distance = LimelightCamera.getDistance(target.getHeight(),limeLightValues.getTargetVertical());
-
-        if(distance <170 && distance> 130 && skew > -1 && skew <1 ){
-            SmartDashboard.putNumber("FINISHED distance",distance);
-            SmartDashboard.putNumber("FINISHED skew",skew);
-            return true;
-        }
-        return false;
+        return finished;
     }
 
     @Override
     public synchronized void cancel() {
         LimelightCamera.setLightMode(LimelightCamera.ledMode.OFF);
         LimelightCamera.setCameraMode(LimelightCamera.cameraMode.CAMERA);
+        LimelightCamera.setPipeline(1);
         super.cancel();
     }
 
