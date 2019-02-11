@@ -8,8 +8,8 @@
 package frc.robot;
 
 import com.analog.adis16448.frc.ADIS16448_IMU;
-import edu.wpi.first.wpilibj.Spark;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.*;
+import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.MecanumDriveSubsystem;
 import frc.robot.subsystems.SonarSubsystem;
 
@@ -33,8 +33,6 @@ public class RobotMap {
     // public static int rangefinderModule = 1;
     private static final double rotationalDeadZone = 0.15;
     private static final double translationalDeadZone = 0.15;
-    public static int rightDriveMotor = 0;
-    public static int leftDriveMotor = 3;
 
     public static Spark leftDriveMotorController;
     public static Spark rightDriveMotorController;
@@ -45,8 +43,12 @@ public class RobotMap {
     private static final int raiseBackLeft = 2;
     private static final int raiseBackRight = 0;
     public static SonarSubsystem sonar;
+    public static ArmSubsystem armSubsystem;
 
     public static final int DIO_CHANNEL_WRIST_ENCODER = 2;
+ //   public static Counter wristCounterEncoder;
+    public static AnalogInput wristCounterEncoder;
+    public static Talon wristMotorController;
 
     public static double getRotationaldeadzone() {
         return rotationalDeadZone;
@@ -56,11 +58,11 @@ public class RobotMap {
     }
 
     public static void init() {
-        // drive initialization
-        leftDriveMotorController = new Spark(leftDriveMotor);
-        rightDriveMotorController = new Spark(rightDriveMotor);
+        wristMotorController = new Talon(0);
+        wristCounterEncoder =new AnalogInput(0);
         sonar = new SonarSubsystem();
         drivetrain = new MecanumDriveSubsystem(raiseFrontLeft, raiseFrontRight,raiseBackLeft, raiseBackRight);
 		imu = new ADIS16448_IMU();
+        armSubsystem = new ArmSubsystem();
     }
 }

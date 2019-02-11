@@ -55,6 +55,7 @@ public class Robot extends TimedRobot {
     public void initSubsystems() {
         subsystems.add(RobotMap.drivetrain);
         subsystems.add(RobotMap.sonar);
+        subsystems.add(RobotMap.armSubsystem);
     }
 
     /**
