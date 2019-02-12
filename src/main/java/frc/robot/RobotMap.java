@@ -59,7 +59,7 @@ public class RobotMap {
 
     public static void init() {
         wristMotorController = new Talon(0);
-        wristCounterEncoder =new AnalogInput(0);
+        wristCounterEncoder = new AnalogInput(2);
         sonar = new SonarSubsystem();
         drivetrain = new MecanumDriveSubsystem(raiseFrontLeft, raiseFrontRight,raiseBackLeft, raiseBackRight);
 		imu = new ADIS16448_IMU();
