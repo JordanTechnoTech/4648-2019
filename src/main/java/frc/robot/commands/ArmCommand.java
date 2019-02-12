@@ -8,17 +8,17 @@ import frc.robot.subsystems.ArmSubsystem;
 public class ArmCommand extends Command {
     @Override
     protected void execute() {
-        double position = ArmSubsystem.getPosition();
+        boolean position = ArmSubsystem.getPosition();
         SmartDashboard.putNumber("WristMotor",.6);
-        SmartDashboard.putNumber("Wrist Encoder1", RobotMap.wristCounterEncoder.getValue());
+        SmartDashboard.putBoolean("Wrist Encoder1", RobotMap.wristCounterEncoder.get());
         RobotMap.wristMotorController.set(.6);
         super.execute();
-        double wristSpeed = getWristSpeed(position);
+        boolean wristSpeed = getWristSpeed(position);
     }
 
     double position;
-    public double getWristSpeed(double position){
-        double wSpeed = 0;
+    public boolean getWristSpeed(boolean position){
+        boolean wSpeed = false;
         return wSpeed;
     }
 

@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.Counter;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 
@@ -13,10 +12,10 @@ public class ArmSubsystem implements TechnoTechSubsystem{
 
     @Override
     public void log() {
-        SmartDashboard.putNumber("Wrist Encoder", RobotMap.wristCounterEncoder.getValue());
+        SmartDashboard.putBoolean("Wrist Encoder", RobotMap.wristCounterEncoder.get());
     }
-    public static double getPosition() {
-    return RobotMap.wristCounterEncoder.getValue();
+    public static boolean getPosition() {
+    return RobotMap.wristCounterEncoder.get();
     }
 
     }
