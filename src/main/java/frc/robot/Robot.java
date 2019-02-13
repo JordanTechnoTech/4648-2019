@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -15,6 +16,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.camera.LimelightCamera;
 import frc.robot.camera.LimelightCamera.ledMode;
+import frc.robot.commands.SparkMotorTestCommand;
+import frc.robot.commands.TalonMotorTestCommand;
+import frc.robot.commands.TalonSrxMotorTestCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.TechnoTechSubsystem;
 
@@ -48,7 +52,9 @@ public class Robot extends TimedRobot {
 //    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
         // chooser.addOption("My Auto", new MyAutoCommand());
 //    SmartDashboard.putData("Auto mode", m_chooser);
-
+        new TalonMotorTestCommand(2);
+        new TalonSrxMotorTestCommand(5);
+        new SparkMotorTestCommand(3);
         initSubsystems();
     }
 
@@ -159,6 +165,8 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("Accel-X", RobotMap.imu.getAccelX());
         SmartDashboard.putNumber("Accel-Y", RobotMap.imu.getAccelY());
         SmartDashboard.putNumber("Accel-Z", RobotMap.imu.getAccelZ());
+        SmartDashboard.putBoolean("Wrist Encoder:", RobotMap.wristCounterEncoder.get());
+//        SmartDashboard.putNumber("Wrist Encoder Analog:", RobotMap.wristCounterEncoder.getValue());
         LimelightCamera.log();
         subsystems.forEach(TechnoTechSubsystem::log);
     }

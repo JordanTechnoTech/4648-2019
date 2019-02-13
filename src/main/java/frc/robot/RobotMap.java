@@ -41,7 +41,7 @@ public class RobotMap {
     private static final int raiseFrontLeft = 1;
     private static final int raiseFrontRight = 3;
     private static final int raiseBackLeft = 2;
-    private static final int raiseBackRight = 0;
+    private static final int raiseBackRight = 4;
     public static SonarSubsystem sonar;
     public static ArmSubsystem armSubsystem;
 
@@ -59,7 +59,8 @@ public class RobotMap {
 
     public static void init() {
         wristMotorController = new Talon(0);
-        wristCounterEncoder = new DigitalInput(2);
+        wristCounterEncoder = new DigitalInput(3);
+//        wristCounterEncoder = new AnalogInput(0);
         sonar = new SonarSubsystem();
         drivetrain = new MecanumDriveSubsystem(raiseFrontLeft, raiseFrontRight,raiseBackLeft, raiseBackRight);
 		imu = new ADIS16448_IMU();

@@ -9,9 +9,8 @@ public class ArmCommand extends Command {
     @Override
     protected void execute() {
         boolean position = ArmSubsystem.getPosition();
-        SmartDashboard.putNumber("WristMotor",.6);
-        SmartDashboard.putBoolean("Wrist Encoder1", RobotMap.wristCounterEncoder.get());
-        RobotMap.wristMotorController.set(.6);
+        SmartDashboard.putNumber("WristMotor",-1);
+        RobotMap.wristMotorController.set(-1);
         super.execute();
         boolean wristSpeed = getWristSpeed(position);
     }
