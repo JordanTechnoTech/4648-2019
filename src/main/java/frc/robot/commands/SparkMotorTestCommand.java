@@ -15,7 +15,7 @@ public class SparkMotorTestCommand extends Command {
 
     @Override
     protected void execute() {
-        motorController.set(.5);
+        motorController.set(1);
         log();
         super.execute();
     }
