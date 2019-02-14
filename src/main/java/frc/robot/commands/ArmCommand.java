@@ -6,6 +6,7 @@ import frc.robot.RobotMap;
 import frc.robot.subsystems.ArmSubsystem;
 
 public class ArmCommand extends Command {
+
     @Override
     protected void execute() {
         super.execute();
