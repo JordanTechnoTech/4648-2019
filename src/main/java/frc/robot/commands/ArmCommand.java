@@ -8,18 +8,7 @@ import frc.robot.RobotMap;
 import frc.robot.subsystems.ArmSubsystem;
 
 public class ArmCommand extends Command {
-    public ArmCommand(){
-        requires(Robot.m_subsystem);
-        requires(RobotMap.armSubsystem);
-    }
 
-    private void requires(ArmSubsystem armSubsystem) {
-
-    }
-
-    public void log(){
-
-    }
     @Override
     protected void execute() {
         double shoulder, elbow, wrist;
