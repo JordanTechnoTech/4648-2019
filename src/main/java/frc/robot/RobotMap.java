@@ -38,7 +38,7 @@ public class RobotMap {
     public static Spark rightDriveMotorController;
     public static MecanumDriveSubsystem drivetrain;
     public static ADIS16448_IMU imu;
-    private static final int raiseFrontLeft = 1;
+    private static final int raiseFrontLeft  = 1;
     private static final int raiseFrontRight = 3;
     private static final int raiseBackLeft = 2;
     private static final int raiseBackRight = 4;
@@ -47,7 +47,7 @@ public class RobotMap {
 
     public static final int DIO_CHANNEL_WRIST_ENCODER = 2;
  //   public static Counter wristCounterEncoder;
-    public static DigitalInput wristCounterEncoder;
+    public static AnalogInput wristCounterEncoder;
     public static Talon wristMotorController;
 
     public static double getRotationaldeadzone() {
@@ -58,12 +58,12 @@ public class RobotMap {
     }
 
     public static void init() {
-        wristMotorController = new Talon(0);
-        wristCounterEncoder = new DigitalInput(3);
+//        wristMotorController = new Talon(0);
+        wristCounterEncoder = new AnalogInput(2);
 //        wristCounterEncoder = new AnalogInput(0);
         sonar = new SonarSubsystem();
         drivetrain = new MecanumDriveSubsystem(raiseFrontLeft, raiseFrontRight,raiseBackLeft, raiseBackRight);
 		imu = new ADIS16448_IMU();
-        armSubsystem = new ArmSubsystem();
+        armSubsystem = new ArmSubsystem(0,0,0);
     }
 }

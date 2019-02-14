@@ -9,7 +9,7 @@ public class TalonSrxMotorTestCommand extends Command {
     private WPI_TalonSRX motorController;
 
     public TalonSrxMotorTestCommand(int canChannelId) {
-        SmartDashboard.putData("Talon SRX motorTest", this);
+        SmartDashboard.putData("Talon SRX Test", this);
         motorController = new WPI_TalonSRX(canChannelId);
         motorController.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
     }

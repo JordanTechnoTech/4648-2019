@@ -51,6 +51,7 @@ public class OI {
   Button stickRight = new XBoxButton(controller1, XBoxButton.kStickRight);
   Button yButton = new XBoxButton(controller1, XBoxButton.kY);
   Button xButton = new XBoxButton(controller1, XBoxButton.kX);
+  Button aButton = new XBoxButton(controller1, XBoxButton.kA);
   Button rbButton = new XBoxButton(controller1, XBoxButton.kBumperRight);
   Button lbButton = new XBoxButton(controller1, XBoxButton.kBumperLeft);
 
@@ -58,8 +59,9 @@ public class OI {
   public OI() {
     lbButton.toggleWhenPressed(new AutoCommandGroup(FaceoffCommand.Target.PANEL_HOLE));
     rbButton.whileHeld(new CloseoutCommand());
-    yButton.toggleWhenPressed(new SparkMotorTestCommand(5));
-    xButton.toggleWhenPressed(new TalonSrxMotorTestCommand(5));
+//    yButton.toggleWhenPressed(new SparkMotorTestCommand(5));
+//    xButton.toggleWhenPressed(new TalonSrxMotorTestCommand(5));
+//    aButton.toggleWhenPressed(new TalonMotorTestCommand(0));
   }
 
   public double getStickRightYValue(){ return controller1.getY(GenericHID.Hand.kRight);}

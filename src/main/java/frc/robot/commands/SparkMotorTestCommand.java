@@ -9,13 +9,13 @@ public class SparkMotorTestCommand extends Command {
     private Spark motorController;
 
     public SparkMotorTestCommand(int pwmChannel) {
-        SmartDashboard.putData("Spark Motor Test",this);
+        SmartDashboard.putData("Spark Test",this);
         motorController = new Spark(pwmChannel);
     }
 
     @Override
     protected void execute() {
-        motorController.set(1);
+        motorController.set(.5);
         log();
         super.execute();
     }
