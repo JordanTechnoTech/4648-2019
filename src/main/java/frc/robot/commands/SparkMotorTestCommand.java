@@ -4,6 +4,8 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.command.Subsystem;
+
 
 public class SparkMotorTestCommand extends Command {
     private Spark motorController;
