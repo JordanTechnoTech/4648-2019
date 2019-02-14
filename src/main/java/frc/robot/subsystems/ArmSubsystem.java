@@ -21,6 +21,7 @@ public class ArmSubsystem implements TechnoTechSubsystem {
         this.shoulder.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
         this.elbow.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative);
         this.wristEncoder = new Counter(new AnalogTrigger(wristEncoderChannel));
+
     }
 
     @Override
@@ -28,19 +29,18 @@ public class ArmSubsystem implements TechnoTechSubsystem {
         SmartDashboard.putNumber("FrontLeft speed",this.shoulder.get());
         SmartDashboard.putNumber("FrontRight speed",this.elbow.get());
         SmartDashboard.putNumber("BackLeft speed",this.wrist.get());
-        SmartDashboard.putNumber("Wrist Encoder", RobotMap.wristCounterEncoder.getValue());
         SmartDashboard.putNumber("shoulder sensor value", shoulder.getSelectedSensorPosition());
         SmartDashboard.putNumber("elbow sensor value", elbow.getSelectedSensorPosition());
         SmartDashboard.putNumber("wrist sensor value", counter.get());
     }
-    
+
     public void moveWrist(double speed){
         //wristTalon.set(speed);
     }
     public void moveElbow(double speed){
-        //elbowTalon.set(speed);
+       // elbowTalon.set(speed);
     }
     public void moveShoulder(double speed){
-        //shoulderTalon.set(speed);
+      //  shoulderTalon.set(speed);
     }
 }
