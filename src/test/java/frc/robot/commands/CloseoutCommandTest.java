@@ -16,7 +16,7 @@ public class CloseoutCommandTest {
         double forwardSpeed = command.getForwardSpeed(distance);
 
         //then
-        assertEquals(0,forwardSpeed,0.1);
+        assertEquals(0.25,forwardSpeed,0.1);
 
     }
 }
