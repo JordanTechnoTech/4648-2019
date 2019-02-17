@@ -53,6 +53,6 @@ public class TalonInitializer {
     }
 
     /* Set the quadrature (relative) sensor to match absolute */
-    _talon.setSelectedSensorPosition(absolutePosition, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
+    _talon.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
   }
 }

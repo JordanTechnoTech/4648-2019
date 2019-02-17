@@ -14,14 +14,15 @@ public class ArmCommandGroup extends CommandGroup {
         this.shoulderPosition = shoulderPosition;
         this.elbowPosition = elbowPosition;
         this.wristPosition = wristPosition;
-        addSequential(new ResetArmCommand());
+//        addSequential(new ResetArmCommand());
         addSequential(new ArmCommand(shoulderPosition, elbowPosition, wristPosition), 1);
     }
 
+
     @Override
     public synchronized void cancel() {
-        RobotMap.armSubsystem.stopShoulder();
-        RobotMap.armSubsystem.stopElbow();
+//        RobotMap.armSubsystem.stopShoulder();
+//        RobotMap.armSubsystem.stopElbow();
         super.cancel();
     }
 }

@@ -8,8 +8,6 @@
 package frc.robot;
 
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -17,9 +15,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.camera.LimelightCamera;
 import frc.robot.camera.LimelightCamera.ledMode;
-import frc.robot.commands.SparkMotorTestCommand;
-import frc.robot.commands.TalonMotorTestCommand;
-import frc.robot.commands.TalonSrxMotorTestCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.TechnoTechSubsystem;
 
@@ -129,7 +124,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopInit() {
-        RobotMap.armSubsystem.initInitialEncoder();
+        RobotMap.armSubsystem.initSubSystem();
         // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
         // continue until interrupted by another command, remove

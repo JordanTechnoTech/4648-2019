@@ -22,14 +22,14 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         this.shoulder = new WPI_TalonSRX(shoulderCanId);
         this.shoulder.setInverted(true);
         this.elbow = new WPI_TalonSRX(elbowCanId);
-        Gains kGains = new Gains(0.16, 0, 1, 0.0, 0, 1.0);
-        TalonInitializer.initTalon(this.shoulder, kGains);
-        TalonInitializer.initTalon(this.elbow, kGains);
         this.wrist = new Talon(wrist);
         this.wristEncoder = new Counter(new AnalogTrigger(wristEncoderChannel));
     }
 
-    public void initInitialEncoder(){
+    public void initSubSystem(){
+        Gains kGains = new Gains(0.23, 0, 1, 0.0, 0, 1.0);
+        TalonInitializer.initTalon(this.shoulder, kGains);
+        TalonInitializer.initTalon(this.elbow, kGains);
         this.initialElbowPosition = this.elbow.getSelectedSensorPosition();
     }
 
@@ -42,6 +42,8 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         SmartDashboard.putNumber("Elbow sensor value", elbow.getSelectedSensorPosition());
         SmartDashboard.putNumber("FrontLeft speed",this.shoulder.get());
         SmartDashboard.putNumber("Shoulder sensor value", shoulder.getSelectedSensorPosition());
+        SmartDashboard.putNumber("Shoulder motor output", shoulder.getMotorOutputPercent());
+        SmartDashboard.putNumber("Elbow motor output", elbow.getMotorOutputPercent());
     }
 
     public void moveWrist(double speed){
@@ -67,7 +69,7 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
     }
 
     public int getElbowPosition() {
-        return this.elbow.getSelectedSensorPosition() - initialElbowPosition;
+        return this.elbow.getSelectedSensorPosition();
     }
 
     @Override

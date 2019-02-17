@@ -7,7 +7,6 @@ public class AutoCommandGroup extends CommandGroup {
     public AutoCommandGroup(FaceoffCommand.Target target) {
         addSequential(new FaceoffCommand(target));
         addSequential(new TimedCommand(.5));
-//        addSequential(new FaceoffCommand(target));
         addSequential(new CloseoutCommand());
     }
 
