@@ -139,7 +139,8 @@ $RECYCLE.BIN/
 /build/
 
 ### IntelliJ ###
-/.idea
+.idea
+/.idea/**
 *.iml
 
 
