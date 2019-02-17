@@ -16,6 +16,7 @@ public class ArmCommand extends Command {
         this.shoulderPosition = shoulderPosition;
         this.elbowPosition = elbowPosition;
         this.wristPosition = wristPosition;
+        requires(RobotMap.armSubsystem);
     }
 
     @Override
@@ -24,19 +25,6 @@ public class ArmCommand extends Command {
         RobotMap.armSubsystem.moveElbow(elbowPosition);
         super.initialize();
     }
-
-    @Override
-    protected void execute() {
-    }
-
-    @Override
-    public synchronized void cancel()
-    {
-        RobotMap.armSubsystem.stopShoulder();
-        RobotMap.armSubsystem.stopElbow();
-        super.cancel();
-    }
-
     @Override
     protected boolean isFinished() {
         return false;

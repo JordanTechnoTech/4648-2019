@@ -10,4 +10,6 @@ public class AutoCommandGroup extends CommandGroup {
 //        addSequential(new FaceoffCommand(target));
         addSequential(new CloseoutCommand());
     }
+
+
 }
