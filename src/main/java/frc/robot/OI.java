@@ -61,17 +61,15 @@ public class OI {
   public OI() {
     lbButton.toggleWhenPressed(new AutoCommandGroup(FaceoffCommand.Target.PANEL_HOLE));
     rbButton.whileHeld(new CloseoutCommand());
-//    aButton.toggleWhenPressed(new ArmCommandGroup(0,300,0));
-//    xButton.toggleWhenPressed(new ArmCommandGroup(0 ,400,0));
-//    yButton.toggleWhenPressed(new ArmCommandGroup(5000,500,0));
+
     aButton.toggleWhenPressed(new ResetArmCommand(0 ,1500,0));
-    xButton.toggleWhenPressed(new ResetArmCommand(0 ,2000,0));
-//    aButton.toggleWhenPressed(new ResetArmCommand(0 ,0,0));
-//    xButton.toggleWhenPressed(new ResetArmCommand(4096 ,0,0));
-//    xButton.toggleWhenPressed(new ArmCommand(0 ,1000,0));
+    xButton.toggleWhenPressed(new ResetArmCommand(250 ,2000,0));
+    yButton.toggleWhenPressed(new ResetArmCommand(500 ,2000,0));
+
   }
 
   public double getStickRightYValue(){ return controller1.getY(GenericHID.Hand.kRight);}
+  public double getStickLeftYValue(){ return controller1.getY(GenericHID.Hand.kLeft);}
   public double getStickRightXValue(){ return controller1.getX(GenericHID.Hand.kRight);}
 
   public boolean getAButtonValue(){

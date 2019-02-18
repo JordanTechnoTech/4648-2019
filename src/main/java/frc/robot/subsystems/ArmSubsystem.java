@@ -8,12 +8,10 @@ import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.RobotMap;
 import frc.robot.talon.Gains;
 import frc.robot.talon.TalonInitializer;
 
 public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
-    private int initialElbowPosition;
     private WPI_TalonSRX shoulder, elbow;
     private Talon wrist;
     private Counter wristEncoder;
@@ -30,17 +28,11 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         Gains kGains = new Gains(0.23, 0, 1, 0.0, 0, 1.0);
         TalonInitializer.initTalon(this.shoulder, kGains);
         TalonInitializer.initTalon(this.elbow, kGains);
-        this.initialElbowPosition = this.elbow.getSelectedSensorPosition();
     }
 
     @Override
     public void log() {
-      //  SmartDashboard.putNumber("BackLeft speed",this.wrist.get());
-      //  SmartDashboard.putNumber("wrist sensor value", counter.get());
-        SmartDashboard.putNumber("elbow sensor value", elbow.getSelectedSensorPosition());
-        SmartDashboard.putNumber("FrontRight speed",this.elbow.get());
         SmartDashboard.putNumber("Elbow sensor value", elbow.getSelectedSensorPosition());
-        SmartDashboard.putNumber("FrontLeft speed",this.shoulder.get());
         SmartDashboard.putNumber("Shoulder sensor value", shoulder.getSelectedSensorPosition());
         SmartDashboard.putNumber("Shoulder motor output", shoulder.getMotorOutputPercent());
         SmartDashboard.putNumber("Elbow motor output", elbow.getMotorOutputPercent());
@@ -49,9 +41,11 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
     public void moveWrist(double speed){
         //wristTalon.set(speed);
     }
+
     public void moveElbow(double position){
         this.elbow.set(ControlMode.Position, position);
     }
+
     public void moveElbowPower(double power){
         this.elbow.set(ControlMode.PercentOutput, power);
     }
@@ -75,5 +69,9 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
     @Override
     protected void initDefaultCommand() {
 
+    }
+
+    public void moveShoulderPower(double power) {
+        this.shoulder.set(ControlMode.PercentOutput, power);
     }
 }

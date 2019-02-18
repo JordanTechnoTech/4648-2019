@@ -10,11 +10,13 @@ import frc.robot.subsystems.ArmSubsystem;
 public class ArmCommand extends Command {
     private double shoulderPosition;
     private double elbowPosition;
+    private double wristPosition;
     private boolean finished = false;
 
     public ArmCommand(double shoulderPosition, double elbowPosition, double wristPosition) {
         this.shoulderPosition = shoulderPosition;
         this.elbowPosition = elbowPosition;
+        this.wristPosition = wristPosition;
         requires(RobotMap.armSubsystem);
     }
 
@@ -28,6 +30,5 @@ public class ArmCommand extends Command {
     @Override
     protected boolean isFinished() {
         return finished;
-
     }
 }
