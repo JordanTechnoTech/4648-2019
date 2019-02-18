@@ -26,7 +26,7 @@ public class SparkWristTest extends Command {
     protected void execute() {
         XboxController controller1 = new XboxController(1);
         double leftX;
-        leftX = OI.deadZone(Robot.m_oi.getStickLeftXValue(), RobotMap.getTranslationaldeadzone());
+        leftX = OI.deadZone(Robot.m_oi.controller0.getStickLeftXValue(), RobotMap.getTranslationaldeadzone());
         motorController.set(.5 * leftX);
         log();
         super.execute();
@@ -49,6 +49,6 @@ public class SparkWristTest extends Command {
         SmartDashboard.putBoolean("Spark Wrist Test digital ", digitalInput.get());
         SmartDashboard.putNumber("Spark Wrist Test counter raw", counter.get());
         SmartDashboard.putNumber("Spark Wrist Test counter distance", counter.getDistance());
-      //  SmartDashboard.putNumber("Spark Wrist Test counter pid", counter.pidGet());
+        //  SmartDashboard.putNumber("Spark Wrist Test counter pid", counter.pidGet());
     }
 }
