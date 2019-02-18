@@ -8,38 +8,28 @@ import frc.robot.RobotMap;
 import frc.robot.subsystems.ArmSubsystem;
 
 public class ArmCommand extends Command {
+    private double shoulderPosition;
+    private double elbowPosition;
+  //  private double wristPosition;
+    private boolean finished = false;
+
+    public ArmCommand(double shoulderPosition, double elbowPosition, double wristPosition) {
+        this.shoulderPosition = shoulderPosition;
+        this.elbowPosition = elbowPosition;
+    //    this.wristPosition = wristPosition;
+        requires(RobotMap.armSubsystem);
+    }
 
     @Override
     protected void execute() {
-        double shoulder, elbow, wrist;
-        //shoulderTalon.set(getShoulderSpeed)
-        //elbowTalon.set(getElbowSpeed)
-        //wristTalon.set(getWristSpeed)
-
-
-    }
-    public double getShoulderSpeed(){
-        double shoulderSetSpeed = 0;
-        return shoulderSetSpeed;
-    }
-    public double getElbowSpeed(){
-        double elbowSetSpeed = 0;
-        return elbowSetSpeed;
-    }
-    public double getWristSpeed(){
-        double wristSetSpeed = 0;
-        return wristSetSpeed;
-    }
-
-
-
-    @Override
-    public synchronized void cancel() {
-        super.cancel();
+        RobotMap.armSubsystem.moveShoulder(shoulderPosition);
+        RobotMap.armSubsystem.moveElbow(elbowPosition);
+//        RobotMap.armSubsystem.moveWrist(wristPosition);
+        finished = true;
     }
 
     @Override
     protected boolean isFinished() {
-        return false;
+        return finished;
     }
 }

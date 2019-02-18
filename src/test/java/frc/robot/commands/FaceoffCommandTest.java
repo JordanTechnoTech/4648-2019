@@ -33,20 +33,20 @@ public class FaceoffCommandTest {
         assertEquals(0.3299,turnSpeed,.0001);
     }
 
-    @Test
-    public void slideSpeed() {
-        //Setup
-        FaceoffCommand subject = new FaceoffCommand(FaceoffCommand.Target.PANEL_HOLE);
-        LimeLightValues values = new LimeLightValues();
-        values.ts = -2;
+    /*  @Test
+  /*  public void slideSpeed() {
+          //Setup
+          FaceoffCommand subject = new FaceoffCommand(FaceoffCommand.Target.PANEL_HOLE);
+          LimeLightValues values = new LimeLightValues();
+          values.ts = -2;
 
-        //When
-        double slideSpeed = subject.getSlideSpeed(values, 4);
+          //When
+          double slideSpeed = subject.getSlideSpeed(values, 4);
 
-        //Then
-        assertEquals(-.32, slideSpeed, .0001);
-    }
-
+          //Then
+          assertEquals(-.32, slideSpeed, .0001);
+      }
+  */
     @Test
     public void testForwardSpeed(){
         //Setup
