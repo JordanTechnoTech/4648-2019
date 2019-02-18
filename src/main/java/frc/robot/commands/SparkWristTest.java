@@ -19,12 +19,12 @@ public class SparkWristTest extends Command {
         SmartDashboard.putData("Spark Wrist Test", this);
         this.digitalInput = new DigitalInput(6);
         counter = new Counter(5);
+        counter.setReverseDirection(true);
         motorController = new Spark(5);
     }
 
     @Override
     protected void execute() {
-        XboxController controller1 = new XboxController(1);
         double leftX;
         leftX = OI.deadZone(Robot.m_oi.controller0.getStickLeftXValue(), RobotMap.getTranslationaldeadzone());
         motorController.set(.5 * leftX);

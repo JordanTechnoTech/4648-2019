@@ -1,7 +1,6 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -14,6 +13,7 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
     private Spark wrist;
 
     private Counter wristEncoder;
+    private double diff;
 
     public ArmSubsystem(int shoulderCanId, int elbowCanId, int wrist ,int wristEncoderChannel) {//TODO add args for all motors tied to the arm
         this.shoulder = new WPI_TalonSRX(shoulderCanId);
@@ -21,7 +21,8 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         this.elbow = new WPI_TalonSRX(elbowCanId);
         this.wrist = new Spark(wrist);
         this.wristEncoder = new Counter(new DigitalInput(wristEncoderChannel));
-        new Solenoid();
+        //new Solenoid();
+        this.wristEncoder = new Counter(wristEncoderChannel);
     }
 
     public void initSubSystem(){
@@ -29,6 +30,15 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         TalonInitializer.initTalon(this.shoulder, kGains);
         TalonInitializer.initTalon(this.elbow, kGains);
     }
+
+    public double getWristCounter(){
+        double diff;
+        double storedWristPosition = 0;
+        if (wrist.getSpeed() > 0){
+            diff = wristEncoder.get() - storedWristPosition;
+        }
+        return storedWristPosition;
+    };
 
     @Override
     public void log() {

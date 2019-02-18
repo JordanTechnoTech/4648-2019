@@ -63,6 +63,6 @@ public class RobotMap {
         sonar = new SonarSubsystem();
         drivetrain = new MecanumDriveSubsystem(raiseFrontLeft, raiseFrontRight,raiseBackLeft, raiseBackRight);
 		imu = new ADIS16448_IMU();
-        armSubsystem = new ArmSubsystem(4,5,0,0);
+        armSubsystem = new ArmSubsystem(4,5,9,8);
     }
 }
