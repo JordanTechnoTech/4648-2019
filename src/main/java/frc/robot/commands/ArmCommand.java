@@ -1,22 +1,18 @@
 package frc.robot.commands;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.Robot;
 import frc.robot.RobotMap;
-import frc.robot.subsystems.ArmSubsystem;
 
 public class ArmCommand extends Command {
     private double shoulderPosition;
     private double elbowPosition;
-  //  private double wristPosition;
+    private double wristPosition;
     private boolean finished = false;
 
     public ArmCommand(double shoulderPosition, double elbowPosition, double wristPosition) {
         this.shoulderPosition = shoulderPosition;
         this.elbowPosition = elbowPosition;
-    //    this.wristPosition = wristPosition;
+        this.wristPosition = wristPosition;
         requires(RobotMap.armSubsystem);
     }
 
@@ -24,8 +20,17 @@ public class ArmCommand extends Command {
     protected void execute() {
         RobotMap.armSubsystem.moveShoulder(shoulderPosition);
         RobotMap.armSubsystem.moveElbow(elbowPosition);
-//        RobotMap.armSubsystem.moveWrist(wristPosition);
-        finished = true;
+        double currentPosition = RobotMap.armSubsystem.getStoredWristPosition();
+        if (currentPosition > wristPosition - 1) {
+            RobotMap.armSubsystem.moveWristPower(-.5);
+        } else if (currentPosition < wristPosition + 1) {
+            RobotMap.armSubsystem.moveWristPower(.5);
+        } else {
+            RobotMap.armSubsystem.moveWristPower(0);
+            finished = true;
+        }
+        RobotMap.armSubsystem.moveWristPower(wristPosition);
+
     }
 
     @Override

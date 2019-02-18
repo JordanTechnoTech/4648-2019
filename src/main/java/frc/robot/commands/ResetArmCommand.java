@@ -23,9 +23,9 @@ public class ResetArmCommand extends Command {
 
     @Override
     protected void execute() {
-        SmartDashboard.putNumber("Elbow position",RobotMap.armSubsystem.getElbowPosition());
+        SmartDashboard.putNumber("Elbow position", RobotMap.armSubsystem.getElbowPosition());
         RobotMap.armSubsystem.moveElbow(0);
-        if(RobotMap.armSubsystem.getElbowPosition()< LOWEST_ELBOW_POSITION)
+        if (RobotMap.armSubsystem.getElbowPosition() < LOWEST_ELBOW_POSITION)
             finished = true;
        /* RobotMap.armSubsystem.moveShoulder(0);
         if(RobotMap.armSubsystem.getShoulderPosition()< LOWEST_SHOULDER_POSITION)
@@ -34,8 +34,8 @@ public class ResetArmCommand extends Command {
 
     @Override
     protected boolean isFinished() {
-        if(finished){
-            ArmCommand command = new ArmCommand(shoulderPosition,elbowPosition,wristPosition );
+        if (finished) {
+            ArmCommand command = new ArmCommand(shoulderPosition, elbowPosition, wristPosition);
             command.start();
             finished = false;
             return true;
