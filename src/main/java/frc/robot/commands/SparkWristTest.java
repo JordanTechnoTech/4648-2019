@@ -18,7 +18,10 @@ public class SparkWristTest extends Command {
     public SparkWristTest() {
         SmartDashboard.putData("Spark Wrist Test", this);
         this.digitalInput = new DigitalInput(5);
-        counter = new Counter(this.digitalInput);
+        counter = new Counter();
+        counter.setSemiPeriodMode(true);
+        counter.setUpSource(6);
+        counter.setUpDownCounterMode();
         motorController = new Spark(5);
     }
 
@@ -49,6 +52,6 @@ public class SparkWristTest extends Command {
         SmartDashboard.putBoolean("Spark Wrist Test digital ", digitalInput.get());
         SmartDashboard.putNumber("Spark Wrist Test counter raw", counter.get());
         SmartDashboard.putNumber("Spark Wrist Test counter distance", counter.getDistance());
-//        SmartDashboard.putNumber("Spark Wrist Test counter pid", counter.pidGet());
+      //  SmartDashboard.putNumber("Spark Wrist Test counter pid", counter.pidGet());
     }
 }
