@@ -21,6 +21,7 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         this.elbow = new WPI_TalonSRX(elbowCanId);
         this.wrist = new Spark(wrist);
         this.wristEncoder = new Counter(new DigitalInput(wristEncoderChannel));
+        new Solenoid();
     }
 
     public void initSubSystem(){
