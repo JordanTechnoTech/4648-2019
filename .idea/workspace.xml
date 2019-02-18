@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="45b9cd92-8cf2-49a8-aff2-ebd54783b2fb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/META-INF/4648-2019_main.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/commands/SparkWristTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/commands/SparkWristTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/VacuumSubsystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/RobotMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/RobotMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/commands/ExampleCommand.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/commands/SparkWristTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/ExampleSubsystem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/SonarSubsystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/SonarSubsystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/SparkMotorTestCommand.java" beforeDir="false" />
     </list>
     <list id="4208e801-0abb-4569-b54b-6f454a64136a" name="Adding driving and camera controls." comment="Adding driving and camera controls.">
       <changelist_data name="Manuel Quinones" email="manuel.quinones@target.com" />
@@ -58,6 +64,11 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="embeddedtools" type="c8890929:TasksNode$1" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="4648-2019" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -71,19 +82,105 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/commands/SparkWristTest.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/RobotMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+            <state relative-caret-position="331">
+              <caret line="79" column="40" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2324#2325#0" expanded="true" />
+                <element signature="e#2365#2366#0" expanded="true" />
+                <element signature="e#2419#2420#0" expanded="true" />
+                <element signature="e#2463#2464#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/SonarSubsystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/RobotMap.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/VacuumSubsystem.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+            <state relative-caret-position="315">
+              <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#572#573#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.editorconfig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/ArmSubsystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/OI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="69" column="2" selection-start-line="69" selection-start-column="2" selection-end-line="69" selection-end-column="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/commands/ArmJoystickCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/XBoxButton.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="5" column="37" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilibj/wpilibj-java/2019.2.1/599923037b305f46559b710b67dde971ea94fdb3/wpilibj-java-2019.2.1-sources.jar!/edu/wpi/first/wpilibj/Spark.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/edu.wpi.first.wpilibj/wpilibj-java/2019.2.1/599923037b305f46559b710b67dde971ea94fdb3/wpilibj-java-2019.2.1-sources.jar!/edu/wpi/first/wpilibj/Talon.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-7">
+              <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -122,19 +219,16 @@
         <option value="$PROJECT_DIR$/src/main/java/frc/robot/commands/CameraTrackCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/robot/Robot.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/DriveSubsystem.java" />
-        <option value="$PROJECT_DIR$/src/main/java/frc/robot/RobotMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/robot/OI.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/robot/commands/SparkMotorTestCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/robot/commands/TalonMotorTestCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/robot/commands/SparkWristTest.java" />
+        <option value="$PROJECT_DIR$/.editorconfig" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/SonarSubsystem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/robot/RobotMap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/frc/robot/subsystems/VacuumSubsystem.java" />
       </list>
     </option>
-  </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
-  <component name="JsGulpfileManager">
-    <detection-done>true</detection-done>
-    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="269" />
@@ -144,19 +238,203 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="deploy" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="analog" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="analog" type="462c0819:PsiDirectoryNode" />
+              <item name="adis16448" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="frc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="frc" type="462c0819:PsiDirectoryNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="frc" type="462c0819:PsiDirectoryNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="commands" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="frc" type="462c0819:PsiDirectoryNode" />
+              <item name="robot" type="462c0819:PsiDirectoryNode" />
+              <item name="subsystems" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="4648-2019" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="vendordeps" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="4648-2019" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="frc" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="frc" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="robot" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="frc" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="robot" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="commands" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="4648-2019" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="src" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="main" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="java" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="frc" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="robot" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="subsystems" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550514064167" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550530099030" />
+    <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/local/bin/node" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -168,6 +446,9 @@
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="frc.robot.subsystems" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -324,12 +605,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10553000" />
+    <option name="totallyTimeSpent" value="12463000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4951613" visible="true" weight="0.28144988" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4951613" visible="true" weight="0.28898427" />
       <window_info id="Structure" order="1" sideWeight="0.5048387" side_tool="true" visible="true" weight="0.28144988" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -339,7 +621,7 @@
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32974428" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32827735" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -359,7 +641,7 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="right" id="Gradle" order="6" visible="true" weight="0.24147122" />
+      <window_info anchor="right" id="Gradle" order="6" visible="true" weight="0.1602289" />
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Palette&#9;" order="8" />
       <window_info anchor="right" id="Theme Preview" order="9" />
@@ -462,9 +744,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#1443#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -538,7 +817,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/XBoxButton.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="-7">
           <caret line="5" column="37" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="37" />
         </state>
       </provider>
@@ -553,29 +832,20 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/commands/TalonMotorTestCommand.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/ArmSubsystem.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+        <state relative-caret-position="-7">
+          <caret line="90" column="5" selection-start-line="90" selection-start-column="5" selection-end-line="90" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/commands/SparkMotorTestCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/commands/TalonSrxMotorTestCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="65">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/commands/SparkMotorTestCommand.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/commands/TalonSrxMotorTestCommand.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/OI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="538">
-          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        <state relative-caret-position="-7">
+          <caret line="69" column="2" selection-start-line="69" selection-start-column="2" selection-end-line="69" selection-end-column="2" />
         </state>
       </provider>
     </entry>
@@ -586,10 +856,120 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.editorconfig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/SonarSubsystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/analog/adis16448/frc/ADIS16448_IMU.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-7">
+          <caret line="1224" column="31" selection-start-line="1224" selection-start-column="31" selection-end-line="1224" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#44942#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1356#1383#0" expanded="true" />
+            <element signature="e#8687#8688#0" expanded="true" />
+            <element signature="e#8715#8716#0" expanded="true" />
+            <element signature="e#8754#8755#0" expanded="true" />
+            <element signature="e#8781#8782#0" expanded="true" />
+            <element signature="e#8921#8922#0" expanded="true" />
+            <element signature="e#8949#8950#0" expanded="true" />
+            <element signature="e#8988#8989#0" expanded="true" />
+            <element signature="e#9017#9018#0" expanded="true" />
+            <element signature="e#11948#11949#0" expanded="true" />
+            <element signature="e#12002#12003#0" expanded="true" />
+            <element signature="e#12117#12118#0" expanded="true" />
+            <element signature="e#12170#12171#0" expanded="true" />
+            <element signature="e#12726#12727#0" expanded="true" />
+            <element signature="e#12769#12770#0" expanded="true" />
+            <element signature="e#12993#12994#0" expanded="true" />
+            <element signature="e#13036#13037#0" expanded="true" />
+            <element signature="e#13080#13081#0" expanded="true" />
+            <element signature="e#13135#13136#0" expanded="true" />
+            <element signature="e#13174#13175#0" expanded="true" />
+            <element signature="e#13222#13223#0" expanded="true" />
+            <element signature="e#41857#41858#0" expanded="true" />
+            <element signature="e#41888#41889#0" expanded="true" />
+            <element signature="e#41932#41933#0" expanded="true" />
+            <element signature="e#41963#41964#0" expanded="true" />
+            <element signature="e#42007#42008#0" expanded="true" />
+            <element signature="e#42038#42039#0" expanded="true" />
+            <element signature="e#42081#42082#0" expanded="true" />
+            <element signature="e#42106#42107#0" expanded="true" />
+            <element signature="e#42149#42150#0" expanded="true" />
+            <element signature="e#42174#42175#0" expanded="true" />
+            <element signature="e#42217#42218#0" expanded="true" />
+            <element signature="e#42242#42243#0" expanded="true" />
+            <element signature="e#42286#42287#0" expanded="true" />
+            <element signature="e#42312#42313#0" expanded="true" />
+            <element signature="e#42356#42357#0" expanded="true" />
+            <element signature="e#42382#42383#0" expanded="true" />
+            <element signature="e#42426#42427#0" expanded="true" />
+            <element signature="e#42452#42453#0" expanded="true" />
+            <element signature="e#42494#42495#0" expanded="true" />
+            <element signature="e#42518#42519#0" expanded="true" />
+            <element signature="e#42560#42561#0" expanded="true" />
+            <element signature="e#42584#42585#0" expanded="true" />
+            <element signature="e#42626#42627#0" expanded="true" />
+            <element signature="e#42650#42651#0" expanded="true" />
+            <element signature="e#42693#42694#0" expanded="true" />
+            <element signature="e#42717#42718#0" expanded="true" />
+            <element signature="e#42759#42760#0" expanded="true" />
+            <element signature="e#42782#42783#0" expanded="true" />
+            <element signature="e#42823#42824#0" expanded="true" />
+            <element signature="e#42845#42846#0" expanded="true" />
+            <element signature="e#42897#42898#0" expanded="true" />
+            <element signature="e#42932#42933#0" expanded="true" />
+            <element signature="e#42988#42989#0" expanded="true" />
+            <element signature="e#43011#43012#0" expanded="true" />
+            <element signature="e#43060#43061#0" expanded="true" />
+            <element signature="e#43083#43084#0" expanded="true" />
+            <element signature="e#43225#43226#0" expanded="true" />
+            <element signature="e#43251#43252#0" expanded="true" />
+            <element signature="e#43393#43394#0" expanded="true" />
+            <element signature="e#43419#43420#0" expanded="true" />
+            <element signature="e#43561#43562#0" expanded="true" />
+            <element signature="e#43587#43588#0" expanded="true" />
+            <element signature="e#43729#43730#0" expanded="true" />
+            <element signature="e#43755#43756#0" expanded="true" />
+            <element signature="e#44165#44166#0" expanded="true" />
+            <element signature="e#44200#44201#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/RobotMap.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="31" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        <state relative-caret-position="331">
+          <caret line="79" column="40" selection-start-line="79" selection-start-column="40" selection-end-line="79" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2324#2325#0" expanded="true" />
+            <element signature="e#2365#2366#0" expanded="true" />
+            <element signature="e#2419#2420#0" expanded="true" />
+            <element signature="e#2463#2464#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/frc/robot/subsystems/VacuumSubsystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

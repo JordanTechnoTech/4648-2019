@@ -7,17 +7,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class SonarSubsystem extends Subsystem implements TechnoTechSubsystem {
     public Ultrasonic ultrasonic;
 
-    public SonarSubsystem() {
-        ultrasonic = new Ultrasonic(1, 0);
+    public SonarSubsystem(int dioSonarPingChannel, int dioSonarEchoChannel) {
+        ultrasonic = new Ultrasonic(dioSonarPingChannel, dioSonarEchoChannel);
         ultrasonic.setAutomaticMode(true);
     }
 
     public double getRangeCentimeters() {
         return ultrasonic.getRangeInches() * 2.54;
-    }
-
-    public void ping() {
-        ultrasonic.ping();
     }
 
     @Override

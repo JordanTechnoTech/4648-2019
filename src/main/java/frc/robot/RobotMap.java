@@ -8,11 +8,11 @@
 package frc.robot;
 
 import com.analog.adis16448.frc.ADIS16448_IMU;
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.Spark;
 import frc.robot.subsystems.ArmSubsystem;
 import frc.robot.subsystems.MecanumDriveSubsystem;
 import frc.robot.subsystems.SonarSubsystem;
-
+import frc.robot.subsystems.VacuumSubsystem;
 
 
 /**
@@ -22,6 +22,25 @@ import frc.robot.subsystems.SonarSubsystem;
  * floating around.
  */
 public class RobotMap {
+    //CAN BUS CHANNEL MAPPINGS
+    private static final int canDriveFrontLeft = 1;
+    private static final int canDriveFrontRight = 3;
+    private static final int canDriveBackLeft = 2;
+    private static final int canDriveBackRight = 9;
+
+    private static final int canArmShoulderDeviceID = 4;
+    private static final int canArmElbowDeviceID = 5;
+
+    //DIO CHANNEL MAPPINGS
+    private static final int dioSonarPingChannel = 0; //3wire
+    private static final int dioSonarEchoChannel = 1;  //1wire to signal
+    private static final int dioWristEncoderChannel = 2;
+
+    //PWM CHANNEL MAPPINGS
+    private static final int pwmWristChannel = 0;
+    private static final int pwmVacuumChannel = 1;
+
+
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
     // public static int leftMotor = 1;
@@ -34,35 +53,30 @@ public class RobotMap {
     private static final double rotationalDeadZone = 0.15;
     private static final double translationalDeadZone = 0.15;
 
-    public static Spark leftDriveMotorController;
-    public static Spark rightDriveMotorController;
     public static MecanumDriveSubsystem drivetrain;
     public static ADIS16448_IMU imu;
-    private static final int raiseFrontLeft  = 1;
-    private static final int raiseFrontRight = 3;
-    private static final int raiseBackLeft = 2;
-    private static final int raiseBackRight = 9;
+
     public static SonarSubsystem sonar;
     public static ArmSubsystem armSubsystem;
+    public static VacuumSubsystem vacuumSubsystem;
 
-    public static final int DIO_CHANNEL_WRIST_ENCODER = 2;
- //   public static Counter wristCounterEncoder;
-    public static DigitalInput wristCounterEncoder;
+    //   public static Counter wristCounterEncoder;
     public static Spark wristMotorController;
 
     public static double getRotationaldeadzone() {
         return rotationalDeadZone;
     }
+
     public static double getTranslationaldeadzone() {
         return translationalDeadZone;
     }
 
     public static void init() {
+        imu = new ADIS16448_IMU();
         wristMotorController = new Spark(0);
-        wristCounterEncoder = new DigitalInput(2);
-        sonar = new SonarSubsystem();
-        drivetrain = new MecanumDriveSubsystem(raiseFrontLeft, raiseFrontRight,raiseBackLeft, raiseBackRight);
-		imu = new ADIS16448_IMU();
-        armSubsystem = new ArmSubsystem(4,5,9,8);
+        sonar = new SonarSubsystem(dioSonarPingChannel, dioSonarEchoChannel);
+        drivetrain = new MecanumDriveSubsystem(canDriveFrontLeft, canDriveFrontRight, canDriveBackLeft, canDriveBackRight);
+        armSubsystem = new ArmSubsystem(canArmShoulderDeviceID, canArmElbowDeviceID, pwmWristChannel, dioWristEncoderChannel);
+        vacuumSubsystem = new VacuumSubsystem(pwmVacuumChannel);
     }
 }
