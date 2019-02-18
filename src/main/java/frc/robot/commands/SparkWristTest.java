@@ -17,11 +17,8 @@ public class SparkWristTest extends Command {
 
     public SparkWristTest() {
         SmartDashboard.putData("Spark Wrist Test", this);
-        this.digitalInput = new DigitalInput(5);
-        counter = new Counter();
-        counter.setSemiPeriodMode(true);
-        counter.setUpSource(6);
-        counter.setUpDownCounterMode();
+        this.digitalInput = new DigitalInput(6);
+        counter = new Counter(5);
         motorController = new Spark(5);
     }
 

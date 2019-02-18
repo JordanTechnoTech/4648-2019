@@ -19,8 +19,8 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         this.shoulder = new WPI_TalonSRX(shoulderCanId);
         this.shoulder.setInverted(true);
         this.elbow = new WPI_TalonSRX(elbowCanId);
-       // this.wrist = new Spark(wrist);
-      //  this.wristEncoder = new Counter(new DigitalInput(wristEncoderChannel));
+        this.wrist = new Spark(wrist);
+        this.wristEncoder = new Counter(new DigitalInput(wristEncoderChannel));
     }
 
     public void initSubSystem(){
@@ -35,8 +35,8 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         SmartDashboard.putNumber("Shoulder sensor value", shoulder.getSelectedSensorPosition());
         SmartDashboard.putNumber("Shoulder motor output", shoulder.getMotorOutputPercent());
         SmartDashboard.putNumber("Elbow motor output", elbow.getMotorOutputPercent());
-    //    SmartDashboard.putNumber("Wrist motor position", wristEncoder.get());
-    //    SmartDashboard.putNumber("wrist motor Speed", wrist.getSpeed());
+        SmartDashboard.putNumber("Wrist motor position", wristEncoder.get());
+        SmartDashboard.putNumber("wrist motor Speed", wrist.getSpeed());
     }
 
   //  public void moveWrist(double speed){this.wrist.set(speed);}
@@ -72,5 +72,10 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     public void moveShoulderPower(double power) {
         this.shoulder.set(ControlMode.PercentOutput, power);
+    }
+
+    public void moveWrist(double power) {
+        this.wrist.set(power);
+
     }
 }
