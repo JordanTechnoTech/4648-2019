@@ -11,7 +11,6 @@ import frc.robot.RobotMap;
 public class MecanumDriveCommand extends Command {
     public MecanumDriveCommand() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.m_subsystem);
         requires(RobotMap.drivetrain);
     }
 

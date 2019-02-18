@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-public class VacuumSubsystem extends Subsystem {
+public class VacuumSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     private final Spark motorController;
 
@@ -15,7 +15,6 @@ public class VacuumSubsystem extends Subsystem {
 
     @Override
     protected void initDefaultCommand() {
-
     }
 
     public void setVacuumPower(double power) {
@@ -23,4 +22,8 @@ public class VacuumSubsystem extends Subsystem {
     }
 
 
+    @Override
+    public void log() {
+
+    }
 }

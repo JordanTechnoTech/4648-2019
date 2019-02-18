@@ -15,9 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.camera.LimelightCamera;
 import frc.robot.camera.LimelightCamera.ledMode;
-import frc.robot.commands.SparkWristTest;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.SparkMotorTestCommand;
+import frc.robot.commands.VacuumJoystickCommand;
 import frc.robot.subsystems.TechnoTechSubsystem;
 
 import java.util.ArrayList;
@@ -31,7 +29,6 @@ import java.util.List;
  * project.
  */
 public class Robot extends TimedRobot {
-    public static ExampleSubsystem m_subsystem = new ExampleSubsystem();
     public static OI m_oi;
 
     Command m_autonomousCommand;
@@ -54,13 +51,14 @@ public class Robot extends TimedRobot {
 //        new SparkWristTest(0, new AnalogInput(0), null);
 //        new SparkMotorTestCommand(5);
         initSubsystems();
-        new SparkWristTest();
+        new VacuumJoystickCommand();
     }
 
     public void initSubsystems() {
         subsystems.add(RobotMap.drivetrain);
         subsystems.add(RobotMap.sonar);
         subsystems.add(RobotMap.armSubsystem);
+        subsystems.add(RobotMap.vacuumSubsystem);
     }
 
     /**

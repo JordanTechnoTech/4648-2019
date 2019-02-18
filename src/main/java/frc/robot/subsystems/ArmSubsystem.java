@@ -5,6 +5,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.ArmJoystickCommand;
 import frc.robot.talon.Gains;
 import frc.robot.talon.TalonInitializer;
 
@@ -84,7 +85,7 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     @Override
     protected void initDefaultCommand() {
-
+        setDefaultCommand(new ArmJoystickCommand());
     }
 
     public void moveShoulderPower(double power) {
