@@ -9,9 +9,10 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import edu.wpi.first.wpilibj.buttons.Button;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.robot.commands.*;
+import frc.robot.commands.AutoCommandGroup;
+import frc.robot.commands.CloseoutCommand;
+import frc.robot.commands.FaceoffCommand;
+import frc.robot.commands.ResetArmCommand;
 
 
 /**
@@ -19,85 +20,54 @@ import frc.robot.commands.*;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-  //// CREATING BUTTONS
-  // One type of button is a joystick button which is any button on a
-  //// joystick.
-  // You create one by telling it which joystick it's on and which button
-  // number it is.
-  // Joystick stick = new Joystick(port);
-  // Button button = new JoystickButton(stick, buttonNumber);
+    //// CREATING BUTTONS
+    // One type of button is a joystick button which is any button on a
+    //// joystick.
+    // You create one by telling it which joystick it's on and which button
+    // number it is.
+    // Joystick stick = new Joystick(port);
+    // Button button = new JoystickButton(stick, buttonNumber);
 
-  // There are a few additional built in buttons you can use. Additionally,
-  // by subclassing Button you can create custom triggers and bind those to
-  // commands the same as any other Button.
+    // There are a few additional built in buttons you can use. Additionally,
+    // by subclassing Button you can create custom triggers and bind those to
+    // commands the same as any other Button.
 
-  //// TRIGGERING COMMANDS WITH BUTTONS
-  // Once you have a button, it's trivial to bind it to a button in one of
-  // three ways:
+    //// TRIGGERING COMMANDS WITH BUTTONS
+    // Once you have a button, it's trivial to bind it to a button in one of
+    // three ways:
 
-  // Start the command when the button is pressed and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenPressed(new ExampleCommand());
+    // Start the command when the button is pressed and let it run the command
+    // until it is finished as determined by it's isFinished method.
+    // button.whenPressed(new ExampleCommand());
 
-  // Run the command while the button is being held down and interrupt it once
-  // the button is released.
-  // button.whileHeld(new ExampleCommand());
+    // Run the command while the button is being held down and interrupt it once
+    // the button is released.
+    // button.whileHeld(new ExampleCommand());
 
-  // Start the command when the button is released and let it run the command
-  // until it is finished as determined by it's isFinished method.
-  // button.whenReleased(new ExampleCommand());
-  XboxController controller1 = new XboxController(1);
+    // Start the command when the button is released and let it run the command
+    // until it is finished as determined by it's isFinished method.
+    // button.whenReleased(new ExampleCommand());
+    public final TechnoTechXBoxController controller0 = new TechnoTechXBoxController(0);
+    public final TechnoTechXBoxController controller1 = new TechnoTechXBoxController(1);
 
-  Button stickLeft = new XBoxButton(controller1, XBoxButton.kStickLeft);
-  Button stickRight = new XBoxButton(controller1, XBoxButton.kStickRight);
-  Button yButton = new XBoxButton(controller1, XBoxButton.kY);
-  Button xButton = new XBoxButton(controller1, XBoxButton.kX);
-  Button bButton = new XBoxButton(controller1, XBoxButton.kB);
-  Button aButton = new XBoxButton(controller1, XBoxButton.kA);
-  Button rbButton = new XBoxButton(controller1, XBoxButton.kBumperRight);
-  Button lbButton = new XBoxButton(controller1, XBoxButton.kBumperLeft);
-  //Button downDPad = new JoystickButton(controller1, JoystickButton.)
+    public OI() {
 
-
-  public OI() {
-    lbButton.toggleWhenPressed(new AutoCommandGroup(FaceoffCommand.Target.PANEL_HOLE));
-    rbButton.whileHeld(new CloseoutCommand());
-
-    aButton.toggleWhenPressed(new ResetArmCommand(0 ,1600,0));
-    xButton.toggleWhenPressed(new ResetArmCommand(250 ,2000,0));
-    yButton.toggleWhenPressed(new ResetArmCommand(500 ,2000,0));
-    bButton.toggleWhenPressed(new ResetArmCommand(500 ,2000,0));
-
-  }
-
-  public double getStickRightYValue(){ return controller1.getY(GenericHID.Hand.kRight);}
-  public double getStickLeftYValue(){ return controller1.getY(GenericHID.Hand.kLeft);}
-  public double getStickRightXValue(){ return controller1.getX(GenericHID.Hand.kRight);}
-
-  public boolean getAButtonValue(){
-    return controller1.getAButton();
-  }
-
-  public boolean getXButtonValue(){
-    return controller1.getXButton();
-  }
-
-  public boolean getYButtonValue(){
-    return controller1.getYButton();
-  }
-
-  public double getStickLeftXValue() {
-    return controller1.getX(GenericHID.Hand.kLeft);
-  }
-  public static double deadZone (double val, double deadZone){
-    if (Math.abs(val) > deadZone){
-      if (val > 0){
-        return (val - deadZone) / (1 - deadZone);
-      } else {
-        return -(-val - deadZone) / (1 - deadZone);
-      }
+        controller0.lbButton.toggleWhenPressed(new AutoCommandGroup(FaceoffCommand.Target.PANEL_HOLE));
+        controller0.rbButton.whileHeld(new CloseoutCommand());
+        controller0.aButton.toggleWhenPressed(new ResetArmCommand(0, 1600, 0));
+        controller0.xButton.toggleWhenPressed(new ResetArmCommand(250, 2000, 0));
+        controller0.yButton.toggleWhenPressed(new ResetArmCommand(500, 2000, 0));
+        controller0.bButton.toggleWhenPressed(new ResetArmCommand(500, 2000, 0));
     }
-    return 0;
-  }
 
+    public static double deadZone(double val, double deadZone) {
+        if (Math.abs(val) > deadZone) {
+            if (val > 0) {
+                return (val - deadZone) / (1 - deadZone);
+            } else {
+                return -(-val - deadZone) / (1 - deadZone);
+            }
+        }
+        return 0;
+    }
 }

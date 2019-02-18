@@ -2,7 +2,6 @@ package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
 
@@ -25,18 +24,19 @@ public class MecanumDriveCommand extends Command {
     public void log() {
 
     }
+
     @Override
     protected void execute() {
         double x, y, twist;
-        x = OI.deadZone(Robot.m_oi.getStickLeftXValue(), RobotMap.getTranslationaldeadzone());
-        y = OI.deadZone(Robot.m_oi.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
-        twist = OI.deadZone(Robot.m_oi.getStickRightXValue(), RobotMap.getRotationaldeadzone());
-        twist = twist *.35;
+        x = Robot.m_oi.controller0.deadZone(Robot.m_oi.controller0.getStickLeftXValue(), RobotMap.getTranslationaldeadzone());
+        y = Robot.m_oi.controller0.deadZone(Robot.m_oi.controller0.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
+        twist = Robot.m_oi.controller0.deadZone(Robot.m_oi.controller0.getStickRightXValue(), RobotMap.getRotationaldeadzone());
+        twist = twist * .35;
 
         RobotMap.drivetrain.getDrivetrain().driveCartesian(-x, y, -twist);
-        SmartDashboard.putNumber("Drive twist",twist);
-        SmartDashboard.putNumber("Drive x",x);
-        SmartDashboard.putNumber("Drive y",y);
+        SmartDashboard.putNumber("Drive twist", twist);
+        SmartDashboard.putNumber("Drive x", x);
+        SmartDashboard.putNumber("Drive y", y);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -74,7 +74,7 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         this.shoulder.set(ControlMode.PercentOutput, power);
     }
 
-    public void moveWrist(double power) {
+    public void moveWristPower(double power) {
         this.wrist.set(power);
 
     }
