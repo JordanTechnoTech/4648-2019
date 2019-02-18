@@ -52,6 +52,7 @@ public class OI {
   Button stickRight = new XBoxButton(controller1, XBoxButton.kStickRight);
   Button yButton = new XBoxButton(controller1, XBoxButton.kY);
   Button xButton = new XBoxButton(controller1, XBoxButton.kX);
+  Button bButton = new XBoxButton(controller1, XBoxButton.kB);
   Button aButton = new XBoxButton(controller1, XBoxButton.kA);
   Button rbButton = new XBoxButton(controller1, XBoxButton.kBumperRight);
   Button lbButton = new XBoxButton(controller1, XBoxButton.kBumperLeft);
@@ -62,9 +63,10 @@ public class OI {
     lbButton.toggleWhenPressed(new AutoCommandGroup(FaceoffCommand.Target.PANEL_HOLE));
     rbButton.whileHeld(new CloseoutCommand());
 
-    aButton.toggleWhenPressed(new ResetArmCommand(0 ,1500,0));
+    aButton.toggleWhenPressed(new ResetArmCommand(0 ,1600,0));
     xButton.toggleWhenPressed(new ResetArmCommand(250 ,2000,0));
     yButton.toggleWhenPressed(new ResetArmCommand(500 ,2000,0));
+    bButton.toggleWhenPressed(new ResetArmCommand(500 ,2000,0));
 
   }
 

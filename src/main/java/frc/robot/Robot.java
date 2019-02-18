@@ -15,7 +15,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.camera.LimelightCamera;
 import frc.robot.camera.LimelightCamera.ledMode;
+import frc.robot.commands.SparkWristTest;
 import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.SparkMotorTestCommand;
 import frc.robot.subsystems.TechnoTechSubsystem;
 
 import java.util.ArrayList;
@@ -52,6 +54,7 @@ public class Robot extends TimedRobot {
 //        new SparkWristTest(0, new AnalogInput(0), null);
 //        new SparkMotorTestCommand(5);
         initSubsystems();
+        new SparkWristTest();
     }
 
     public void initSubsystems() {
