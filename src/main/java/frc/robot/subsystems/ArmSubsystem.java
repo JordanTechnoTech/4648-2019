@@ -31,14 +31,20 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         TalonInitializer.initTalon(this.elbow, kGains);
     }
 
-    public double getWristCounter(){
-        double diff;
-        double storedWristPosition = 0;
+    double storedWristPosition = 0;
+    public void trackWristCounter(){
+        double diff = 0;
         if (wrist.getSpeed() > 0){
             diff = wristEncoder.get() - storedWristPosition;
+        } else {
+            diff = storedWristPosition - wristEncoder.get();
         }
+        storedWristPosition += diff;
+    }
+
+    public double getStoredWristPosition() {
         return storedWristPosition;
-    };
+    }
 
     @Override
     public void log() {

@@ -148,6 +148,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopPeriodic() {
+        RobotMap.armSubsystem.trackWristCounter();
         Scheduler.getInstance().run();
         log();
     }
