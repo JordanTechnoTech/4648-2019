@@ -3,9 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import edu.wpi.first.wpilibj.AnalogTrigger;
-import edu.wpi.first.wpilibj.Counter;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.talon.Gains;
@@ -13,15 +11,16 @@ import frc.robot.talon.TalonInitializer;
 
 public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
     private WPI_TalonSRX shoulder, elbow;
-    private Talon wrist;
+    private Spark wrist;
+
     private Counter wristEncoder;
 
     public ArmSubsystem(int shoulderCanId, int elbowCanId, int wrist ,int wristEncoderChannel) {//TODO add args for all motors tied to the arm
         this.shoulder = new WPI_TalonSRX(shoulderCanId);
         this.shoulder.setInverted(true);
         this.elbow = new WPI_TalonSRX(elbowCanId);
-        this.wrist = new Talon(wrist);
-        this.wristEncoder = new Counter(new AnalogTrigger(wristEncoderChannel));
+       // this.wrist = new Spark(wrist);
+      //  this.wristEncoder = new Counter(new DigitalInput(wristEncoderChannel));
     }
 
     public void initSubSystem(){
@@ -36,11 +35,11 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         SmartDashboard.putNumber("Shoulder sensor value", shoulder.getSelectedSensorPosition());
         SmartDashboard.putNumber("Shoulder motor output", shoulder.getMotorOutputPercent());
         SmartDashboard.putNumber("Elbow motor output", elbow.getMotorOutputPercent());
+    //    SmartDashboard.putNumber("Wrist motor position", wristEncoder.get());
+    //    SmartDashboard.putNumber("wrist motor Speed", wrist.getSpeed());
     }
 
-    public void moveWrist(double speed){
-        //wristTalon.set(speed);
-    }
+  //  public void moveWrist(double speed){this.wrist.set(speed);}
 
     public void moveElbow(double position){
         this.elbow.set(ControlMode.Position, position);

@@ -35,7 +35,7 @@ public class ResetArmCommand extends Command {
     @Override
     protected boolean isFinished() {
         if(finished){
-            ArmCommand command = new ArmCommand(shoulderPosition,elbowPosition,0);
+            ArmCommand command = new ArmCommand(shoulderPosition,elbowPosition,wristPosition );
             command.start();
             finished = false;
             return true;

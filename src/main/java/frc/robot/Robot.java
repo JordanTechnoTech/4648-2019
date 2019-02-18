@@ -49,7 +49,7 @@ public class Robot extends TimedRobot {
         // chooser.addOption("My Auto", new MyAutoCommand());
 //    SmartDashboard.putData("Auto mode", m_chooser);
 //        new TalonSrxMotorTestCommand(5);
-//        new TalonMotorTestCommand(0, new AnalogInput(0), null);
+//        new SparkWristTest(0, new AnalogInput(0), null);
 //        new SparkMotorTestCommand(5);
         initSubsystems();
     }

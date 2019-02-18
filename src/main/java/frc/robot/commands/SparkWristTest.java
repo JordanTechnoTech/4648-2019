@@ -1,27 +1,31 @@
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.OI;
+import frc.robot.Robot;
+import frc.robot.RobotMap;
 
-public class TalonMotorTestCommand extends Command {
+public class SparkWristTest extends Command {
     private final AnalogInput analogInput;
     private final DigitalInput digitalInput;
-    private Talon motorController;
+    private Spark motorController;
 
-    public TalonMotorTestCommand(int pwmChannel, AnalogInput analogInput, DigitalInput digitalInput) {
+    public SparkWristTest(int pwmChannel, AnalogInput analogInput, DigitalInput digitalInput) {
         SmartDashboard.putData("Talon Test",this);
         this.analogInput = analogInput;
         this.digitalInput = digitalInput;
 
-        motorController = new Talon(pwmChannel);
+        motorController = new Spark(pwmChannel);
     }
 
     @Override
     protected void execute() {
-        motorController.set(.5);
+        XboxController controller1 = new XboxController(1);
+        double leftY, rightY, leftX, twist;
+        leftX = OI.deadZone(Robot.m_oi.getStickLeftXValue(), RobotMap.getTranslationaldeadzone());
+        motorController.set(.5*leftX);
         log();
         super.execute();
     }

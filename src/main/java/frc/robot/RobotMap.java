@@ -47,8 +47,8 @@ public class RobotMap {
 
     public static final int DIO_CHANNEL_WRIST_ENCODER = 2;
  //   public static Counter wristCounterEncoder;
-    public static AnalogInput wristCounterEncoder;
-    public static Talon wristMotorController;
+    public static DigitalInput wristCounterEncoder;
+    public static Spark wristMotorController;
 
     public static double getRotationaldeadzone() {
         return rotationalDeadZone;
@@ -58,9 +58,8 @@ public class RobotMap {
     }
 
     public static void init() {
-//        wristMotorController = new Talon(0);
-        wristCounterEncoder = new AnalogInput(2);
-//        wristCounterEncoder = new AnalogInput(0);
+        wristMotorController = new Spark(0);
+        wristCounterEncoder = new DigitalInput(2);
         sonar = new SonarSubsystem();
         drivetrain = new MecanumDriveSubsystem(raiseFrontLeft, raiseFrontRight,raiseBackLeft, raiseBackRight);
 		imu = new ADIS16448_IMU();

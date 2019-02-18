@@ -28,13 +28,14 @@ public class ArmJoystickCommand extends Command {
         XboxController controller1 = new XboxController(1);
         Button rbButton = new XBoxButton(controller1, XBoxButton.kBumperRight);
         Button lbButton = new XBoxButton(controller1, XBoxButton.kBumperLeft);
-        double leftY, rightY, twist;
+        double leftY, rightY, leftX, twist;
         leftY = OI.deadZone(Robot.m_oi.getStickLeftYValue(), RobotMap.getTranslationaldeadzone());
+        leftX = OI.deadZone(Robot.m_oi.getStickLeftXValue(), RobotMap.getTranslationaldeadzone());
         rightY = OI.deadZone(Robot.m_oi.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
-        rbButton.whileHeld(new CloseoutCommand());
-        lbButton.whileHeld(new CloseoutCommand());
+
         RobotMap.armSubsystem.moveElbowPower(leftY*.5);
         RobotMap.armSubsystem.moveShoulderPower(rightY*.5);
+       // RobotMap.armSubsystem.moveWrist(leftX*.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
