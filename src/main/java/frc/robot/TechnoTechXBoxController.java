@@ -13,7 +13,8 @@ public class TechnoTechXBoxController {
     public final XBoxButton xButton;
     public final XBoxButton bButton;
     public final XBoxButton aButton;
-    XboxController controller; 
+    public final XBoxButton backButton;
+    XboxController controller;
 
     public TechnoTechXBoxController(int channel) {
         this.channel = channel;
@@ -26,6 +27,7 @@ public class TechnoTechXBoxController {
         this.aButton = new XBoxButton(controller, XBoxButton.kA);
         this.xButton = new XBoxButton(controller, XBoxButton.kX);
         this.bButton = new XBoxButton(controller, XBoxButton.kB);
+        this.backButton = new XBoxButton(controller, XBoxButton.kBack);
     }
 
     public double getStickRightYValue(){ return controller.getY(GenericHID.Hand.kRight);}

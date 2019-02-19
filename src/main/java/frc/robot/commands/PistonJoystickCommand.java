@@ -11,11 +11,11 @@ import java.nio.channels.Channel;
 /**
  * An example command.  You can replace me with your own command.
  */
-public class VacuumJoystickCommand extends Command {
-    public VacuumJoystickCommand() {
+public class PistonJoystickCommand extends Command {
+    public PistonJoystickCommand() {
         // Use requires() here to declare subsystem dependencies
-        requires(RobotMap.vacuumSubsystem);
-        SmartDashboard.putData("VacuumJoystickCommand", this);
+        requires(RobotMap.pistonSubsystem);
+        SmartDashboard.putData("PistonJoystickCommand", this);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -24,9 +24,9 @@ public class VacuumJoystickCommand extends Command {
 
     @Override
     protected void execute() {
-        double leftY;
-        leftY = OI.deadZone(Robot.m_oi.controller1.getStickLeftYValue(), RobotMap.getTranslationaldeadzone());
-        RobotMap.vacuumSubsystem.setVacuumPower(leftY * .5);
+        double rightY;
+        rightY = OI.deadZone(Robot.m_oi.controller1.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
+        RobotMap.pistonSubsystem.setPistonPower(rightY * .5);
     }
 
     // Make this return true when this Command no longer needs to run execute()

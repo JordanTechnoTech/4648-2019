@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.camera.LimelightCamera;
 import frc.robot.camera.LimelightCamera.ledMode;
+import frc.robot.commands.PistonJoystickCommand;
 import frc.robot.commands.VacuumJoystickCommand;
 import frc.robot.subsystems.TechnoTechSubsystem;
 
@@ -52,6 +53,7 @@ public class Robot extends TimedRobot {
 //        new SparkMotorTestCommand(5);
         initSubsystems();
         new VacuumJoystickCommand();
+        new PistonJoystickCommand();
     }
 
     public void initSubsystems() {

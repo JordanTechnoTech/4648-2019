@@ -9,10 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.AutoCommandGroup;
-import frc.robot.commands.CloseoutCommand;
-import frc.robot.commands.FaceoffCommand;
-import frc.robot.commands.ResetArmCommand;
+import frc.robot.commands.*;
 
 
 /**

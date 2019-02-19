@@ -9,10 +9,7 @@ package frc.robot;
 
 import com.analog.adis16448.frc.ADIS16448_IMU;
 import edu.wpi.first.wpilibj.Spark;
-import frc.robot.subsystems.ArmSubsystem;
-import frc.robot.subsystems.MecanumDriveSubsystem;
-import frc.robot.subsystems.SonarSubsystem;
-import frc.robot.subsystems.VacuumSubsystem;
+import frc.robot.subsystems.*;
 
 
 /**
@@ -39,6 +36,7 @@ public class RobotMap {
     //PWM CHANNEL MAPPINGS
     private static final int pwmWristChannel = 0;
     private static final int pwmVacuumChannel = 1;
+    private static final int pwmPistonChannel = 2;
 
 
     // For example to map the left and right motors, you could define the
@@ -59,6 +57,7 @@ public class RobotMap {
     public static SonarSubsystem sonar;
     public static ArmSubsystem armSubsystem;
     public static VacuumSubsystem vacuumSubsystem;
+    public static PistonSubsystem pistonSubsystem;
 
     //   public static Counter wristCounterEncoder;
     public static Spark wristMotorController;
@@ -78,5 +77,6 @@ public class RobotMap {
         drivetrain = new MecanumDriveSubsystem(canDriveFrontLeft, canDriveFrontRight, canDriveBackLeft, canDriveBackRight);
         armSubsystem = new ArmSubsystem(canArmShoulderDeviceID, canArmElbowDeviceID, pwmWristChannel, dioWristEncoderChannel);
         vacuumSubsystem = new VacuumSubsystem(pwmVacuumChannel);
+        pistonSubsystem = new PistonSubsystem(pwmPistonChannel);
     }
 }
