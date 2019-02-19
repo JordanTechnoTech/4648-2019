@@ -28,8 +28,17 @@ public class ArmJoystickCommand extends Command {
         leftX = OI.deadZone(Robot.m_oi.controller1.getStickLeftXValue(), RobotMap.getTranslationaldeadzone());
         rightY = OI.deadZone(Robot.m_oi.controller1.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
 
-        RobotMap.armSubsystem.moveElbowPower(leftY * .5);
-        RobotMap.armSubsystem.moveShoulderPower(rightY * .5);
+        if (RobotMap.armSubsystem.getElbowPosition() < 50 && leftY < 0) {
+            RobotMap.armSubsystem.stopElbow();
+        } else {
+            RobotMap.armSubsystem.moveElbowPower(leftY * .5);
+        }
+
+        if (RobotMap.armSubsystem.getShoulderPosiion() < 50 && rightY < 0) {
+            RobotMap.armSubsystem.stopShoulder();
+        } else {
+            RobotMap.armSubsystem.moveShoulderPower(rightY * .5);
+        }
         RobotMap.armSubsystem.moveWristPower(leftX * .5);
     }
 

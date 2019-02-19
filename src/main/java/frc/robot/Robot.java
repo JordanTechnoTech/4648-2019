@@ -161,6 +161,7 @@ public class Robot extends TimedRobot {
     }
 
     public void log() {
+        SmartDashboard.putNumber("SONAR" ,RobotMap.sonar.getRangeCentimeters());
         SmartDashboard.putNumber("Gyro-Angle", RobotMap.imu.getAngle());
         SmartDashboard.putNumber("Gyro-X", RobotMap.imu.getAngleX());
         SmartDashboard.putNumber("Gyro-Y", RobotMap.imu.getAngleY());

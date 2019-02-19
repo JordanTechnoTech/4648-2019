@@ -3,7 +3,6 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Counter;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -23,7 +22,6 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         this.shoulder.setInverted(true);
         this.elbow = new WPI_TalonSRX(elbowCanId);
         this.wrist = new Spark(pwmWristChannel);
-        this.wristEncoder = new Counter(new DigitalInput(wristEncoderChannel));
         this.wristEncoder = new Counter(wristEncoderChannel);
     }
 
@@ -83,6 +81,10 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     public int getElbowPosition() {
         return this.elbow.getSelectedSensorPosition();
+    }
+
+    public int getShoulderPosiion() {
+        return this.shoulder.getSelectedSensorPosition();
     }
 
     @Override

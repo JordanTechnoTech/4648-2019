@@ -29,8 +29,8 @@ public class RobotMap {
     private static final int canArmElbowDeviceID = 5;
 
     //DIO CHANNEL MAPPINGS
-    private static final int dioSonarPingChannel = 0; //3wire
-    private static final int dioSonarEchoChannel = 1;  //1wire to signal
+    private static final int dioSonarPingChannel = 4; //3wire
+    private static final int dioSonarEchoChannel = 3;  //1wire to signal
     private static final int dioWristEncoderChannel = 2;
 
     //PWM CHANNEL MAPPINGS

@@ -8,6 +8,7 @@ public class SonarSubsystem extends Subsystem implements TechnoTechSubsystem {
     public Ultrasonic ultrasonic;
 
     public SonarSubsystem(int dioSonarPingChannel, int dioSonarEchoChannel) {
+        SmartDashboard.putData("SonarSubsystem",this);
         ultrasonic = new Ultrasonic(dioSonarPingChannel, dioSonarEchoChannel);
         ultrasonic.setAutomaticMode(true);
     }
@@ -18,11 +19,10 @@ public class SonarSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     @Override
     protected void initDefaultCommand() {
-
     }
 
     @Override
     public void log() {
-        SmartDashboard.putNumber("SonarValueCentimeters", getRangeCentimeters());
+        SmartDashboard.putNumber("SonarValueInCentimeters", getRangeCentimeters());
     }
 }

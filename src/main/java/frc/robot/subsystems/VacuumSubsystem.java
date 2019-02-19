@@ -15,6 +15,7 @@ public class VacuumSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     @Override
     protected void initDefaultCommand() {
+
     }
 
     public void setVacuumPower(double power) {
@@ -24,6 +25,6 @@ public class VacuumSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     @Override
     public void log() {
-
+        
     }
 }

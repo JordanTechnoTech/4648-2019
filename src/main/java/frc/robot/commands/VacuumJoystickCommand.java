@@ -15,7 +15,7 @@ public class VacuumJoystickCommand extends Command {
     public VacuumJoystickCommand() {
         // Use requires() here to declare subsystem dependencies
         requires(RobotMap.vacuumSubsystem);
-        SmartDashboard.putData("VacuumJoystickCommand", this);
+     //   SmartDashboard.putData("VacuumJoystickCommand", this);
     }
 
     // Called repeatedly when this Command is scheduled to run

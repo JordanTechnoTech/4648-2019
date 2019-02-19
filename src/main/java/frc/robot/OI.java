@@ -51,10 +51,10 @@ public class OI {
 
         controller0.lbButton.toggleWhenPressed(new AutoCommandGroup(FaceoffCommand.Target.PANEL_HOLE));
         controller0.rbButton.whileHeld(new CloseoutCommand());
-        controller0.aButton.toggleWhenPressed(new ResetArmCommand(0, 1600, 0));
-        controller0.xButton.toggleWhenPressed(new ResetArmCommand(250, 2000, 0));
-        controller0.yButton.toggleWhenPressed(new ResetArmCommand(500, 2000, 0));
-        controller0.bButton.toggleWhenPressed(new ResetArmCommand(500, 2000, 0));
+        controller1.aButton.toggleWhenPressed(new ResetArmCommand(0, 1600, 0));
+        controller1.xButton.toggleWhenPressed(new ResetArmCommand(250, 2000, 0));
+        controller1.yButton.toggleWhenPressed(new ResetArmCommand(500, 2000, 0));
+        controller1.bButton.toggleWhenPressed(new ResetArmCommand(0, 600, 0));
     }
 
     public static double deadZone(double val, double deadZone) {
