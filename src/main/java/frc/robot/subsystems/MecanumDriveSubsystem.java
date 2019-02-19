@@ -22,7 +22,7 @@ public class MecanumDriveSubsystem extends Subsystem implements TechnoTechSubsys
         this.backLeft = new WPI_TalonSRX(backLeft);
         this.backRight = new WPI_TalonSRX(backRight);
 
-        this.frontLeft.setInverted(true);
+       // this.frontLeft.setInverted(true);
         this.frontRight.setNeutralMode(NeutralMode.Brake);
         this.frontLeft.setNeutralMode(NeutralMode.Brake);
         this.backLeft.setNeutralMode(NeutralMode.Brake);

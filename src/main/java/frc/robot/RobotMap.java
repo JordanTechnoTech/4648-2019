@@ -23,7 +23,7 @@ public class RobotMap {
     private static final int canDriveFrontLeft = 1;
     private static final int canDriveFrontRight = 3;
     private static final int canDriveBackLeft = 2;
-    private static final int canDriveBackRight = 9;
+    private static final int canDriveBackRight = 0;
 
     private static final int canArmShoulderDeviceID = 4;
     private static final int canArmElbowDeviceID = 5;

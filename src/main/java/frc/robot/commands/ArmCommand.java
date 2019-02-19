@@ -20,7 +20,7 @@ public class ArmCommand extends Command {
     protected void execute() {
         RobotMap.armSubsystem.moveShoulder(shoulderPosition);
         RobotMap.armSubsystem.moveElbow(elbowPosition);
-        double currentPosition = RobotMap.armSubsystem.getStoredWristPosition();
+     /*   double currentPosition = RobotMap.armSubsystem.getStoredWristPosition();
         if (currentPosition > wristPosition - 1) {
             RobotMap.armSubsystem.moveWristPower(-.5);
         } else if (currentPosition < wristPosition + 1) {
@@ -29,8 +29,7 @@ public class ArmCommand extends Command {
             RobotMap.armSubsystem.moveWristPower(0);
             finished = true;
         }
-        RobotMap.armSubsystem.moveWristPower(wristPosition);
-
+        RobotMap.armSubsystem.moveWristPower(wristPosition);*/
     }
 
     @Override
