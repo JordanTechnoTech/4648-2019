@@ -72,7 +72,6 @@ public class RobotMap {
 
     public static void init() {
         imu = new ADIS16448_IMU();
-        wristMotorController = new Spark(0);
         sonar = new SonarSubsystem(dioSonarPingChannel, dioSonarEchoChannel);
         drivetrain = new MecanumDriveSubsystem(canDriveFrontLeft, canDriveFrontRight, canDriveBackLeft, canDriveBackRight);
         armSubsystem = new ArmSubsystem(canArmShoulderDeviceID, canArmElbowDeviceID, pwmWristChannel, dioWristEncoderChannel);

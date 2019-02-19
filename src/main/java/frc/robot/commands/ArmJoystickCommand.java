@@ -30,7 +30,7 @@ public class ArmJoystickCommand extends Command {
 
         RobotMap.armSubsystem.moveElbowPower(leftY * .5);
         RobotMap.armSubsystem.moveShoulderPower(rightY * .5);
-    //    RobotMap.armSubsystem.moveWristPower(leftX * .5);
+        RobotMap.armSubsystem.moveWristPower(leftX * .5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
