@@ -15,7 +15,7 @@ public class PistonJoystickCommand extends Command {
     public PistonJoystickCommand() {
         // Use requires() here to declare subsystem dependencies
         requires(RobotMap.pistonSubsystem);
-        SmartDashboard.putData("PistonJoystickCommand", this);
+      //  SmartDashboard.putData("PistonJoystickCommand", this);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -24,9 +24,16 @@ public class PistonJoystickCommand extends Command {
 
     @Override
     protected void execute() {
-        double rightY;
-        rightY = OI.deadZone(Robot.m_oi.controller1.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
-        RobotMap.pistonSubsystem.setPistonPower(rightY * .5);
+      //  double rightY;
+     //   rightY = OI.deadZone(Robot.m_oi.controller1.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
+        RobotMap.pistonSubsystem.setPistonPower(.5);
+    }
+
+    @Override
+    public synchronized void cancel() {
+        super.cancel();
+        RobotMap.pistonSubsystem.setPistonPower(0);
+
     }
 
     // Make this return true when this Command no longer needs to run execute()

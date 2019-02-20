@@ -51,10 +51,17 @@ public class OI {
 
         controller0.lbButton.toggleWhenPressed(new AutoCommandGroup(FaceoffCommand.Target.PANEL_HOLE));
         controller0.rbButton.whileHeld(new CloseoutCommand());
-        controller1.aButton.toggleWhenPressed(new ResetArmCommand(0, 1600, 0));
-        controller1.xButton.toggleWhenPressed(new ResetArmCommand(250, 2000, 0));
+        controller0.bButton.toggleWhenPressed(new ResetArmCommand(0, 600, 0));
+
         controller1.yButton.toggleWhenPressed(new ResetArmCommand(500, 2000, 0));
-        controller1.bButton.toggleWhenPressed(new ResetArmCommand(0, 600, 0));
+        controller1.xButton.toggleWhenPressed(new ResetArmCommand(250, 2000, 0));
+        controller1.aButton.toggleWhenPressed(new ResetArmCommand(0, 1600, 0));
+        controller1.dpadUpButton.toggleWhenPressed(new ResetArmCommand(260,3000,40));
+        controller1.dpadLeftButton.toggleWhenPressed(new ResetArmCommand(500,2000,20));
+        controller1.dpadDownButton.toggleWhenPressed(new ResetArmCommand(0,1500,0));
+        controller1.rbButton.toggleWhenPressed(new VacuumJoystickCommand());
+        controller1.lbButton.toggleWhenPressed(new PistonJoystickCommand());
+
     }
 
     public static double deadZone(double val, double deadZone) {

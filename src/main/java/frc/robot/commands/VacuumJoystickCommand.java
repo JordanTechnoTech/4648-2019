@@ -24,9 +24,15 @@ public class VacuumJoystickCommand extends Command {
 
     @Override
     protected void execute() {
-        double leftY;
-        leftY = OI.deadZone(Robot.m_oi.controller1.getStickLeftYValue(), RobotMap.getTranslationaldeadzone());
-        RobotMap.vacuumSubsystem.setVacuumPower(leftY * .5);
+       // double leftY;
+       // leftY = OI.deadZone(Robot.m_oi.controller1.getStickLeftYValue(), RobotMap.getTranslationaldeadzone());
+        RobotMap.vacuumSubsystem.setVacuumPower(.5);
+    }
+
+    @Override
+    public synchronized void cancel() {
+        RobotMap.vacuumSubsystem.setVacuumPower(0);
+        super.cancel();
     }
 
     // Make this return true when this Command no longer needs to run execute()

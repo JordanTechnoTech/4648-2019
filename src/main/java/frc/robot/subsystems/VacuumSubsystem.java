@@ -20,6 +20,9 @@ public class VacuumSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     public void setVacuumPower(double power) {
         motorController.set(power);
+        if (power > 0){
+            SmartDashboard.putBoolean("SUCTION", true);
+        }
     }
 
 

@@ -14,6 +14,9 @@ public class TechnoTechXBoxController {
     public final XBoxButton bButton;
     public final XBoxButton aButton;
     public final XBoxButton backButton;
+    public final DPadButton dpadUpButton;
+    public final DPadButton dpadLeftButton;
+    public final DPadButton dpadDownButton;
     XboxController controller;
 
     public TechnoTechXBoxController(int channel) {
@@ -28,6 +31,9 @@ public class TechnoTechXBoxController {
         this.xButton = new XBoxButton(controller, XBoxButton.kX);
         this.bButton = new XBoxButton(controller, XBoxButton.kB);
         this.backButton = new XBoxButton(controller, XBoxButton.kBack);
+        this.dpadUpButton = new DPadButton(controller, DPadButton.Direction.Up);
+        this.dpadLeftButton = new DPadButton(controller, DPadButton.Direction.Left);
+        this.dpadDownButton = new DPadButton(controller, DPadButton.Direction.Down);
     }
 
     public double getStickRightYValue(){ return controller.getY(GenericHID.Hand.kRight);}

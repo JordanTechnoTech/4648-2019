@@ -29,6 +29,7 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         Gains kGains = new Gains(0.23, 0, 1, 0.0, 0, 1.0);
         TalonInitializer.initTalon(this.shoulder, kGains);
         TalonInitializer.initTalon(this.elbow, kGains);
+        wristEncoder.reset();
     }
 
     double storedWristPosition = 0;
