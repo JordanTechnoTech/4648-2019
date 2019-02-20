@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.RobotMap;
 import frc.robot.commands.ArmJoystickCommand;
 import frc.robot.talon.Gains;
 import frc.robot.talon.TalonInitializer;
@@ -26,20 +27,26 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
     }
 
     public void initSubSystem() {
-        Gains kGains = new Gains(0.23, 0, 1, 0.0, 0, 1.0);
-        TalonInitializer.initTalon(this.shoulder, kGains);
-        TalonInitializer.initTalon(this.elbow, kGains);
+        Gains kGains1 = new Gains(0.23, 0, 1, 0.0, 0, 1.0);
+        TalonInitializer.initTalon(this.shoulder, kGains1);
+        Gains kGains2 = new Gains(0.35, 0, 1, 0.0, 0, 1.0);
+        TalonInitializer.initTalon(this.elbow, kGains2);
         wristEncoder.reset();
+        stopElbow();
+        stopShoulder();
     }
 
-    double storedWristPosition = 0;
+    int storedWristPosition = 0;
+    int lastPoll = 0;
 
     public void trackWristCounter() {
-        double diff = 0;
+        if(wrist.getSpeed() == 0){
+            return;
+        }
         if (wrist.getSpeed() > 0) {
-            diff = wristEncoder.get() - storedWristPosition;
+            diff =  wristEncoder.get() - lastPoll;
         } else {
-            diff = storedWristPosition - wristEncoder.get();
+            diff = -(wristEncoder.get() - lastPoll);
         }
         storedWristPosition += diff;
     }
@@ -54,7 +61,7 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
         SmartDashboard.putNumber("Shoulder sensor value", shoulder.getSelectedSensorPosition());
         SmartDashboard.putNumber("Shoulder motor output", shoulder.getMotorOutputPercent());
         SmartDashboard.putNumber("Elbow motor output", elbow.getMotorOutputPercent());
-        SmartDashboard.putNumber("Wrist motor position", wristEncoder.get());
+        SmartDashboard.putNumber("Wrist motor position", getStoredWristPosition());
         SmartDashboard.putNumber("wrist motor Speed", wrist.getSpeed());
     }
 
@@ -73,11 +80,11 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
     }
 
     public void stopElbow() {
-        this.elbow.stopMotor();
+        this.moveElbow(this.elbow.getSelectedSensorPosition()+600);
     }
 
     public void stopShoulder() {
-        this.shoulder.stopMotor();
+        this.moveShoulder(this.shoulder.getSelectedSensorPosition()+600);
     }
 
     public int getElbowPosition() {

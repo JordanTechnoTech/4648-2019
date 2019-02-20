@@ -6,26 +6,27 @@ import frc.robot.RobotMap;
 
 
 public class ResetArmCommand extends Command {
+    private static final int MAX_SHOULDER_POSITION = 1300;
     private double shoulderPosition;
     private double elbowPosition;
     private double wristPosition;
 
     public ResetArmCommand(double shoulderPosition, double elbowPosition, double wristPosition) {
-        this.shoulderPosition = shoulderPosition;
+        this.shoulderPosition = Math.min(shoulderPosition,MAX_SHOULDER_POSITION);
         this.elbowPosition = elbowPosition;
         this.wristPosition = wristPosition;
         requires(RobotMap.armSubsystem);
     }
 
-    public static final int LOWEST_ELBOW_POSITION = 200;
-    public static final int LOWEST_SHOULDER_POSITION = 200;
     boolean finished = false;
 
     @Override
     protected void execute() {
         SmartDashboard.putNumber("Elbow position", RobotMap.armSubsystem.getElbowPosition());
-        RobotMap.armSubsystem.moveElbow(0);
-        if (RobotMap.armSubsystem.getElbowPosition() < LOWEST_ELBOW_POSITION)
+        RobotMap.armSubsystem.moveElbow(300);
+        RobotMap.armSubsystem.moveShoulder(100);
+//        double minElbowPosi
+        if (RobotMap.armSubsystem.getElbowPosition() < elbowPosition && RobotMap.armSubsystem.getShoulderPosiion() < shoulderPosition )
             finished = true;
        /* RobotMap.armSubsystem.moveShoulder(0);
         if(RobotMap.armSubsystem.getShoulderPosition()< LOWEST_SHOULDER_POSITION)

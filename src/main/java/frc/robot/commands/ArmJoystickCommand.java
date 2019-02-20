@@ -21,25 +21,36 @@ public class ArmJoystickCommand extends Command {
 
     }
 
+    private boolean stoppedElbow = true;
+    private boolean stoppedShoulder;
+
+    @Override
+    protected void initialize() {
+        super.initialize();
+    }
+
     @Override
     protected void execute() {
+        SmartDashboard.putString("Arm mode", "Joystick");
         double leftY, rightY, leftX;
-        leftY = OI.deadZone(Robot.m_oi.controller1.getStickLeftYValue(), RobotMap.getTranslationaldeadzone());
-        leftX = OI.deadZone(Robot.m_oi.controller1.getStickLeftXValue(), RobotMap.getTranslationaldeadzone());
-        rightY = OI.deadZone(Robot.m_oi.controller1.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
+        leftY = OI.deadZone(Robot.m_oi.controller1.getStickLeftYValue(), .15);
+        leftX = OI.deadZone(Robot.m_oi.controller1.getStickLeftXValue(), .15);
+        rightY = OI.deadZone(Robot.m_oi.controller1.getStickRightYValue(), .15);
 
-        if (RobotMap.armSubsystem.getElbowPosition() < 50 && leftY < 0) {
+        if (Math.abs(leftY) < .15 && !stoppedElbow) {
+            stoppedElbow = true;
             RobotMap.armSubsystem.stopElbow();
-        } else {
+        } else if (Math.abs(leftY) > .15) {
+            stoppedElbow = false;
             RobotMap.armSubsystem.moveElbowPower(leftY * .5);
         }
 
-        if (RobotMap.armSubsystem.getShoulderPosiion() < 50 && rightY < 0) {
+        if (Math.abs(rightY) < .25 && !stoppedShoulder) {
             RobotMap.armSubsystem.stopShoulder();
-        } else {
+        } else if (Math.abs(rightY) > .25) {
             RobotMap.armSubsystem.moveShoulderPower(rightY * .5);
         }
-        RobotMap.armSubsystem.moveWristPower(leftX * .5);
+        RobotMap.armSubsystem.moveWristPower(leftX * 1);
     }
 
     // Make this return true when this Command no longer needs to run execute()

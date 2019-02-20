@@ -42,6 +42,9 @@ public class TechnoTechXBoxController {
     public boolean getAButtonValue(){
         return controller.getAButton();
     }
+    public boolean getBButtonPressed(){
+        return controller.getBButtonPressed();
+    }
     public boolean getXButtonValue(){
         return controller.getXButton();
     }

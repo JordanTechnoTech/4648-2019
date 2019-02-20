@@ -34,9 +34,9 @@ public class RobotMap {
     private static final int dioWristEncoderChannel = 2;
 
     //PWM CHANNEL MAPPINGS
-    private static final int pwmWristChannel = 0;
-    private static final int pwmVacuumChannel = 1;
-    private static final int pwmPistonChannel = 2;
+    private static final int pwmWristChannel = 8;
+    private static final int pwmVacuumChannel = 9;
+    private static final int pwmPistonChannel = 0;
 
 
     // For example to map the left and right motors, you could define the
@@ -70,7 +70,7 @@ public class RobotMap {
         return translationalDeadZone;
     }
 
-    public static void init() {
+     public static void init() {
         imu = new ADIS16448_IMU();
         sonar = new SonarSubsystem(dioSonarPingChannel, dioSonarEchoChannel);
         drivetrain = new MecanumDriveSubsystem(canDriveFrontLeft, canDriveFrontRight, canDriveBackLeft, canDriveBackRight);

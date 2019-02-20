@@ -1,6 +1,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class ArmCommand extends Command {
@@ -18,18 +20,10 @@ public class ArmCommand extends Command {
 
     @Override
     protected void execute() {
+        SmartDashboard.putString("Arm mode","AUTO");
         RobotMap.armSubsystem.moveShoulder(shoulderPosition);
         RobotMap.armSubsystem.moveElbow(elbowPosition);
-        double currentPosition = RobotMap.armSubsystem.getStoredWristPosition();
-        if (currentPosition > wristPosition - 1) {
-            RobotMap.armSubsystem.moveWristPower(-.5);
-        } else if (currentPosition < wristPosition + 1) {
-            RobotMap.armSubsystem.moveWristPower(.5);
-        } else {
-            RobotMap.armSubsystem.moveWristPower(0);
-            finished = true;
-        }
-        RobotMap.armSubsystem.moveWristPower(wristPosition);
+        finished = true;
     }
 
     @Override
