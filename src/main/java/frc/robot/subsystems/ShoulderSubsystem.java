@@ -12,6 +12,7 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
     public ShoulderSubsystem(int shoulderCanId){
         this.shoulder = new WPI_TalonSRX(shoulderCanId);
         this.shoulder.setInverted(true);
+        stopShoulder();
     }
     @Override
     protected void initDefaultCommand() {
@@ -33,7 +34,7 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
     public int getShoulderPosiion() {
         return this.shoulder.getSelectedSensorPosition();
     }
-    
+
     public void moveShoulderPower(double power) {
         this.shoulder.set(ControlMode.PercentOutput, power);
     }
