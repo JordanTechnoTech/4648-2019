@@ -55,6 +55,9 @@ public class RobotMap {
     public static ADIS16448_IMU imu;
 
     public static SonarSubsystem sonar;
+    public static ShoulderSubsystem shoulderSubsystem;
+    public static ElbowSubsystem elbowSubsystem;
+    public static WristSubsystem wristSubsystem;
     public static ArmSubsystem armSubsystem;
     public static VacuumSubsystem vacuumSubsystem;
     public static PistonSubsystem pistonSubsystem;
