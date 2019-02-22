@@ -26,6 +26,7 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
     public void log() {
         SmartDashboard.putNumber("Shoulder sensor value", shoulder.getSelectedSensorPosition());
         SmartDashboard.putNumber("Shoulder motor output", shoulder.getMotorOutputPercent());
+        SmartDashboard.putNumber("Shoulder motor current", shoulder.getOutputCurrent());
     }
     public void moveShoulderToPosition(double position, Gains kGains) {
         TalonInitializer.initTalon(this.shoulder, kGains);

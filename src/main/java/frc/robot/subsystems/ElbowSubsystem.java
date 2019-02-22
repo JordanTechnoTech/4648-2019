@@ -29,6 +29,7 @@ public class ElbowSubsystem extends Subsystem implements TechnoTechSubsystem {
     public void log() {
         SmartDashboard.putNumber("Elbow sensor value", elbow.getSelectedSensorPosition());
         SmartDashboard.putNumber("Elbow motor output", elbow.getMotorOutputPercent());
+        SmartDashboard.putNumber("Elbow motor Current", elbow.getOutputCurrent());
     }
 
     public void moveElbowToPosition(double position, Gains kGains) {

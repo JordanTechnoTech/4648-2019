@@ -81,5 +81,6 @@ public class RobotMap {
         vacuumSubsystem = new VacuumSubsystem(pwmVacuumChannel);
         pistonSubsystem = new PistonSubsystem(pwmPistonChannel);
         elbowSubsystem = new ElbowSubsystem(canArmElbowDeviceID);
+        shoulderSubsystem = new ShoulderSubsystem(canArmShoulderDeviceID);
     }
 }
