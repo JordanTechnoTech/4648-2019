@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.camera.LimelightCamera;
 import frc.robot.camera.LimelightCamera.ledMode;
+import frc.robot.commands.ElbowCommand;
 import frc.robot.commands.PistonJoystickCommand;
 import frc.robot.commands.VacuumJoystickCommand;
 import frc.robot.subsystems.TechnoTechSubsystem;
@@ -54,12 +55,14 @@ public class Robot extends TimedRobot {
         initSubsystems();
         new VacuumJoystickCommand();
         new PistonJoystickCommand();
+        new ElbowCommand();
     }
 
     public void initSubsystems() {
         subsystems.add(RobotMap.drivetrain);
         subsystems.add(RobotMap.sonar);
-        subsystems.add(RobotMap.armSubsystem);
+//        subsystems.add(RobotMap.armSubsystem);
+        subsystems.add(RobotMap.elbowSubsystem);
         subsystems.add(RobotMap.vacuumSubsystem);
     }
 
@@ -127,7 +130,8 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopInit() {
-        RobotMap.armSubsystem.initSubSystem();
+//        RobotMap.armSubsystem.initSubSystem();
+        RobotMap.elbowSubsystem.resetTalonEncoder();
 
         // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to

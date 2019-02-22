@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SendableBuilder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.talon.Gains;
 import frc.robot.talon.TalonInitializer;
@@ -13,11 +14,6 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
         this.shoulder = new WPI_TalonSRX(shoulderCanId);
         this.shoulder.setInverted(true);
         stopShoulder();
-    }
-    @Override
-    protected void initDefaultCommand() {
-        Gains kGains1 = new Gains(0.23, 0, 1, 0.0, 0, 1.0);
-        TalonInitializer.initTalon(this.shoulder, kGains1);
     }
 
     @Override
@@ -39,4 +35,8 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
         this.shoulder.set(ControlMode.PercentOutput, power);
     }
 
+    @Override
+    protected void initDefaultCommand() {
+
+    }
 }

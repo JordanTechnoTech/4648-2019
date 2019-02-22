@@ -21,8 +21,8 @@ public class TalonInitializer {
     /* Config the peak and nominal outputs, 12V means full */
     _talon.configNominalOutputForward(0, Constants.kTimeoutMs);
     _talon.configNominalOutputReverse(0, Constants.kTimeoutMs);
-    _talon.configPeakOutputForward(1, Constants.kTimeoutMs);
-    _talon.configPeakOutputReverse(-1, Constants.kTimeoutMs);
+    _talon.configPeakOutputForward(gains.kPeakOutput, Constants.kTimeoutMs);
+    _talon.configPeakOutputReverse(-gains.kPeakOutput, Constants.kTimeoutMs);
 
     /**
      * Config the allowable closed-loop error, Closed-Loop output will be
@@ -36,23 +36,5 @@ public class TalonInitializer {
     _talon.config_kP(Constants.kPIDLoopIdx, gains.kP, Constants.kTimeoutMs);
     _talon.config_kI(Constants.kPIDLoopIdx, gains.kI, Constants.kTimeoutMs);
     _talon.config_kD(Constants.kPIDLoopIdx, gains.kD, Constants.kTimeoutMs);
-
-    /**
-     * Grab the 360 degree position of the MagEncoder's absolute
-     * position, and initially set the relative sensor to match.
-     */
-    int absolutePosition = _talon.getSensorCollection().getPulseWidthPosition();
-
-    /* Mask out overflows, keep bottom 12 bits */
-    absolutePosition &= 0xFFF;
-    if (Constants.kSensorPhase) {
-      absolutePosition *= -1;
-    }
-    if (Constants.kMotorInvert) {
-      absolutePosition *= -1;
-    }
-
-    /* Set the quadrature (relative) sensor to match absolute */
-    _talon.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
   }
 }

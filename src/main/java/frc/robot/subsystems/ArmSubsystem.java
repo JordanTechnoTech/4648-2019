@@ -97,7 +97,7 @@ public class ArmSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new ArmJoystickCommand());
+//        setDefaultCommand(new ArmJoystickCommand());
     }
 
     public void moveShoulderPower(double power) {
