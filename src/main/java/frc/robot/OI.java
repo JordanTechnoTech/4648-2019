@@ -49,17 +49,20 @@ public class OI {
     public final TechnoTechXBoxController controller1 = new TechnoTechXBoxController(1);
 
     public OI() {
-
         controller0.lbButton.toggleWhenPressed(new AutoCommandGroup(FaceoffCommand.Target.PANEL_HOLE));
         controller0.rbButton.whileHeld(new CloseoutCommand());
-        controller0.bButton.toggleWhenPressed(new ArmCommand(100, 3000, 0));
+        controller0.bButton.whenPressed(new ArmCommand(100, 100, 0));
 
-        controller1.yButton.whenPressed(new ArmCommand(1500, 2400, 0));
-        controller1.xButton.whenPressed(new ArmCommand(200, 2465, 0));
-        controller1.aButton.whenPressed(new ArmCommand(200, 401, 0));
-        controller1.dpadUpButton.whenPressed(new ArmCommand(260,3000,40));
-        controller1.dpadLeftButton.whenPressed(new ArmCommand(500,2000,20));
-        controller1.dpadDownButton.whenPressed(new ArmCommand(100,1500,0));
+        //Panels high medium low
+        controller1.yButton.whenPressed(new ArmCommand(800, 300, 0));
+        controller1.xButton.whenPressed(new ArmCommand(500, 200, 0));
+        controller1.aButton.whenPressed(new ArmCommand(200, 100, 0));
+
+        //Ball hole high medium low
+        controller1.dpadUpButton.whenPressed(new ArmCommand(1200,400,40));
+        controller1.dpadLeftButton.whenPressed(new ArmCommand(600,300,20));
+        controller1.dpadDownButton.whenPressed(new ArmCommand(300,200,0));
+
         controller1.rbButton.toggleWhenPressed(new VacuumJoystickCommand());
         controller1.lbButton.toggleWhenPressed(new PistonJoystickCommand());
         controller1.startButton.whenPressed(new Command() {

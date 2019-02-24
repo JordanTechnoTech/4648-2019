@@ -36,8 +36,9 @@ public class ElbowSubsystem extends Subsystem implements TechnoTechSubsystem {
     }
 
     public void stopElbow() {
-        this.moveElbowToPosition(this.elbow.getSelectedSensorPosition(), defaultKGains);
-//        this.elbow.stopMotor();
+//        this.moveElbowToPosition(this.elbow.getSelectedSensorPosition(), defaultKGains);
+        this.elbow.setNeutralMode(NeutralMode.Brake);
+        this.elbow.stopMotor();
     }
 
     public void moveElbowPower(double power) {

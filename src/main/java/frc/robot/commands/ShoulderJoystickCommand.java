@@ -13,7 +13,6 @@ public class ShoulderJoystickCommand extends Command {
     }
 
     public void log() {
-
     }
 
     @Override
@@ -27,11 +26,12 @@ public class ShoulderJoystickCommand extends Command {
             SmartDashboard.putString("Shoulder mode", "Joystick");
             double rightY;
             rightY = OI.deadZone(Robot.m_oi.controller1.getStickRightYValue(), .15);
+            SmartDashboard.putNumber("Shoulder joystick",rightY);
 
-            if (rightY == 0.0) {
+            if (rightY == 0.0 || (RobotMap.shoulderSubsystem.getShoulderPosition() < 300 && rightY > 0) || (RobotMap.shoulderSubsystem.getShoulderPosition() > 3000 && rightY < 0)) {
                 RobotMap.shoulderSubsystem.stopShoulder();
             } else {
-                RobotMap.shoulderSubsystem.moveShoulderPower(rightY * .5);
+                RobotMap.shoulderSubsystem.moveShoulderPower(-rightY * .4);
             }
         }
     }

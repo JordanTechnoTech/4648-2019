@@ -10,8 +10,8 @@ public class ArmCommand extends Command {
     private double elbowPosition;
     private double wristPosition;
     private boolean finished = false;
-    private Gains elbowGains = new Gains(1.7, 0, 1, 0.0, 0, .2);
-    private Gains shoulderGains = new Gains(.15, 0, 1, 0.0, 0, .2);
+    private Gains elbowGains = new Gains(1.85, 0, 1, 0.0, 0, .2);
+    private Gains shoulderGains = new Gains(1.85, 0, 1, 0.0, 0, .2);
 
     public ArmCommand(double shoulderPosition, double elbowPosition, double wristPosition) {
         this.shoulderPosition = shoulderPosition;
@@ -22,17 +22,21 @@ public class ArmCommand extends Command {
         requires(RobotMap.wristSubsystem);
     }
 
+    int counter = 0;
+
     @Override
     protected void execute() {
         RobotMap.runningAutoArm(true);
-        SmartDashboard.putString("Arm mode", "AUTO");
-        RobotMap.shoulderSubsystem.moveShoulderToPosition(shoulderPosition, elbowGains);
-        RobotMap.elbowSubsystem.moveElbowToPosition(elbowPosition, shoulderGains);
+        counter++;
+        SmartDashboard.putString("Arm mode", "AUTO:"+counter);
+        RobotMap.shoulderSubsystem.moveShoulderToPosition(shoulderPosition, shoulderGains);
+        RobotMap.elbowSubsystem.moveElbowToPosition(elbowPosition, elbowGains);
         finished = true;
     }
 
     @Override
     public synchronized void cancel() {
+        SmartDashboard.putString("Arm mode", "AUTO CANCELLED");
         RobotMap.runningAutoArm(false);
         super.cancel();
     }
