@@ -7,13 +7,15 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class WristJoystickCommand extends Command {
-    public WristJoystickCommand(){
+    public WristJoystickCommand() {
         requires(RobotMap.wristSubsystem);
         SmartDashboard.putData("Manual Wrist Control", this);
     }
-    public void log(){
+
+    public void log() {
 
     }
+
     @Override
     protected void initialize() {
         super.initialize();
@@ -29,7 +31,7 @@ public class WristJoystickCommand extends Command {
             if (leftX == 0.0) {
                 RobotMap.wristSubsystem.stopWrist();
             } else {
-                RobotMap.armSubsystem.moveElbowPower(leftX * .5);
+                RobotMap.wristSubsystem.moveWristPower(leftX * .5);
             }
         }
     }

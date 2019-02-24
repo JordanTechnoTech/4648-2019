@@ -1,9 +1,11 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.ShoulderJoystickCommand;
 import frc.robot.talon.Constants;
 import frc.robot.talon.Gains;
 import frc.robot.talon.TalonInitializer;
@@ -34,7 +36,7 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
     }
 
     public void stopShoulder() {
-        //   this.moveShoulder(this.shoulder.getSelectedSensorPosition()+600);
+        this.shoulder.setNeutralMode(NeutralMode.Brake);
         this.shoulder.stopMotor();
     }
 
@@ -48,6 +50,6 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
 
     @Override
     protected void initDefaultCommand() {
-
+        setDefaultCommand(new ShoulderJoystickCommand());
     }
 }

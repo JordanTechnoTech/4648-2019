@@ -58,7 +58,6 @@ public class RobotMap {
     public static ShoulderSubsystem shoulderSubsystem;
     public static ElbowSubsystem elbowSubsystem;
     public static WristSubsystem wristSubsystem;
-    public static ArmSubsystem armSubsystem;
     public static VacuumSubsystem vacuumSubsystem;
     public static PistonSubsystem pistonSubsystem;
 
@@ -78,7 +77,6 @@ public class RobotMap {
         imu = new ADIS16448_IMU();
         sonar = new SonarSubsystem(dioSonarPingChannel, dioSonarEchoChannel);
         drivetrain = new MecanumDriveSubsystem(canDriveFrontLeft, canDriveFrontRight, canDriveBackLeft, canDriveBackRight);
-        armSubsystem = new ArmSubsystem(12, 11, pwmWristChannel, dioWristEncoderChannel);
         vacuumSubsystem = new VacuumSubsystem(pwmVacuumChannel);
         pistonSubsystem = new PistonSubsystem(pwmPistonChannel);
         elbowSubsystem = new ElbowSubsystem(canArmElbowDeviceID);

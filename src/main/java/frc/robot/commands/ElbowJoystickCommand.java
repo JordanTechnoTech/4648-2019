@@ -34,9 +34,9 @@ public class ElbowJoystickCommand extends Command {
             leftY = OI.deadZone(Robot.m_oi.controller1.getStickLeftYValue(), .15);
 
             if (leftY == 0.0) {
-                RobotMap.armSubsystem.stopElbow();
+                RobotMap.elbowSubsystem.stopElbow();
             } else {
-                RobotMap.armSubsystem.moveElbowPower(leftY * .5);
+                RobotMap.elbowSubsystem.moveElbowPower(leftY * .5);
             }
         }
     }

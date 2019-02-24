@@ -7,11 +7,12 @@ import frc.robot.Robot;
 import frc.robot.RobotMap;
 
 public class ShoulderJoystickCommand extends Command {
-    public ShoulderJoystickCommand(){
+    public ShoulderJoystickCommand() {
         requires(RobotMap.shoulderSubsystem);
         SmartDashboard.putData("Manual Shoulder Control", this);
     }
-    public void log(){
+
+    public void log() {
 
     }
 
@@ -28,12 +29,13 @@ public class ShoulderJoystickCommand extends Command {
             rightY = OI.deadZone(Robot.m_oi.controller1.getStickRightYValue(), .15);
 
             if (rightY == 0.0) {
-                RobotMap.armSubsystem.stopShoulder();
+                RobotMap.shoulderSubsystem.stopShoulder();
             } else {
-                RobotMap.armSubsystem.moveShoulderPower(rightY * .5);
+                RobotMap.shoulderSubsystem.moveShoulderPower(rightY * .5);
             }
         }
     }
+
     @Override
     protected boolean isFinished() {
         return false;
