@@ -71,6 +71,6 @@ public class OI {
                 return -(-val - deadZone) / (1 - deadZone);
             }
         }
-        return 0;
+        return 0.0;
     }
 }

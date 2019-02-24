@@ -6,33 +6,31 @@ import frc.robot.RobotMap;
 import frc.robot.talon.Gains;
 
 public class ElbowCommand extends Command {
-    private double elbowPosition;
     private boolean finished = false;
 
-    public ElbowCommand(){
-        this.elbowPosition = elbowPosition;
+    public ElbowCommand() {
         requires(RobotMap.elbowSubsystem);
         SmartDashboard.putData(this);
-        SmartDashboard.putNumber("Elbow Kp",.75);
-        SmartDashboard.putNumber("Elbow Ki",0);
-        SmartDashboard.putNumber("Elbow Kd",1);
-        SmartDashboard.putNumber("Elbow kF",0);
-        SmartDashboard.putNumber("Elbow kIzone",0);
-        SmartDashboard.putNumber("Elbow kPeakOutput",.2);
-        SmartDashboard.putNumber("Elbow position",100);
+        SmartDashboard.putNumber("Elbow Kp", .75);
+        SmartDashboard.putNumber("Elbow Ki", 0);
+        SmartDashboard.putNumber("Elbow Kd", 1);
+        SmartDashboard.putNumber("Elbow kF", 0);
+        SmartDashboard.putNumber("Elbow kIzone", 0);
+        SmartDashboard.putNumber("Elbow kPeakOutput", .2);
+        SmartDashboard.putNumber("Elbow position", 0);
     }
 
     @Override
     protected void execute() {
-        double kp = SmartDashboard.getNumber("Elbow Kp",.75);
-        double Ki = SmartDashboard.getNumber("Elbow Ki",0);
-        double Kd = SmartDashboard.getNumber("Elbow Kd",1);
-        double kF = SmartDashboard.getNumber("Elbow kF",0);
-        int kIzone = (int) SmartDashboard.getNumber("Elbow kIzone",0);
-        double kPeakOutput = SmartDashboard.getNumber("Elbow kPeakOutput",.2);
-        double dbPosition = SmartDashboard.getNumber("Elbow position",100);
-        Gains gains = new Gains(kp,Ki,Kd,kF,kIzone,kPeakOutput);
-        RobotMap.elbowSubsystem.moveElbowToPosition(dbPosition,gains);
+        double kp = SmartDashboard.getNumber("Elbow Kp", .75);
+        double Ki = SmartDashboard.getNumber("Elbow Ki", 0);
+        double Kd = SmartDashboard.getNumber("Elbow Kd", 1);
+        double kF = SmartDashboard.getNumber("Elbow kF", 0);
+        int kIzone = (int) SmartDashboard.getNumber("Elbow kIzone", 0);
+        double kPeakOutput = SmartDashboard.getNumber("Elbow kPeakOutput", .2);
+        double dbPosition = SmartDashboard.getNumber("Elbow position", 0);
+        Gains gains = new Gains(kp, Ki, Kd, kF, kIzone, kPeakOutput);
+        RobotMap.elbowSubsystem.moveElbowToPosition(dbPosition, gains);
         finished = true;
     }
 
@@ -42,5 +40,7 @@ public class ElbowCommand extends Command {
     }
 
     @Override
-    protected boolean isFinished() { return finished;}
+    protected boolean isFinished() {
+        return finished;
+    }
 }

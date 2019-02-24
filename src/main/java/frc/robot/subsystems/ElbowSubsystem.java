@@ -4,6 +4,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.ElbowJoystickCommand;
 import frc.robot.talon.Constants;
 import frc.robot.talon.Gains;
 import frc.robot.talon.TalonInitializer;
@@ -16,10 +17,6 @@ public class ElbowSubsystem extends Subsystem implements TechnoTechSubsystem {
         this.elbow = new WPI_TalonSRX(elbowCanId);
     }
 
-    @Override
-    protected void initDefaultCommand() {
-//        stopElbow();
-    }
 
     public void resetTalonEncoder() {
         elbow.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
@@ -29,7 +26,7 @@ public class ElbowSubsystem extends Subsystem implements TechnoTechSubsystem {
     public void log() {
         SmartDashboard.putNumber("Elbow sensor value", elbow.getSelectedSensorPosition());
         SmartDashboard.putNumber("Elbow motor output", elbow.getMotorOutputPercent());
-        SmartDashboard.putNumber("Elbow motor Current", elbow.getOutputCurrent());
+        SmartDashboard.putNumber("Elbow motor current", elbow.getOutputCurrent());
     }
 
     public void moveElbowToPosition(double position, Gains kGains) {
@@ -37,16 +34,21 @@ public class ElbowSubsystem extends Subsystem implements TechnoTechSubsystem {
         this.elbow.set(ControlMode.Position, position);
     }
 
-    public void moveElbowPower(double power) {
-        this.elbow.set(ControlMode.PercentOutput, power);
-    }
-
     public void stopElbow() {
 //        this.moveElbowToPosition(this.elbow.getSelectedSensorPosition(), defaultKGains);
         this.elbow.stopMotor();
     }
 
+    public void moveElbowPower(double power) {
+        this.elbow.set(ControlMode.PercentOutput, power);
+    }
+
     public int getElbowPosition() {
         return this.elbow.getSelectedSensorPosition();
+    }
+
+    @Override
+    protected void initDefaultCommand() {
+        new ElbowJoystickCommand();
     }
 }
