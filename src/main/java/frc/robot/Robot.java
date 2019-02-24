@@ -61,8 +61,9 @@ public class Robot extends TimedRobot {
     public void initSubsystems() {
         subsystems.add(RobotMap.drivetrain);
         subsystems.add(RobotMap.sonar);
-//        subsystems.add(RobotMap.armSubsystem);
         subsystems.add(RobotMap.elbowSubsystem);
+        subsystems.add(RobotMap.shoulderSubsystem);
+        subsystems.add(RobotMap.wristSubsystem);
         subsystems.add(RobotMap.vacuumSubsystem);
     }
 

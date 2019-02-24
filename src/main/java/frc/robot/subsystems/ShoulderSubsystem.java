@@ -12,7 +12,8 @@ import frc.robot.talon.TalonInitializer;
 
 public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem {
     private WPI_TalonSRX shoulder;
-    private Gains defaultKGains = new Gains(0.015, 0, 1, 0.0, 0, 1.0);
+    private Gains defaultUpKGains = new Gains(1.85, 0, 1, 0.0, 0, .2);
+    private Gains defaultDownKGains = new Gains(1.85, 0, 1, 0.0, 0, .2);
 
     public ShoulderSubsystem(int shoulderCanId) {
         this.shoulder = new WPI_TalonSRX(shoulderCanId);

@@ -81,6 +81,7 @@ public class RobotMap {
         pistonSubsystem = new PistonSubsystem(pwmPistonChannel);
         elbowSubsystem = new ElbowSubsystem(canArmElbowDeviceID);
         shoulderSubsystem = new ShoulderSubsystem(canArmShoulderDeviceID);
+        wristSubsystem = new WristSubsystem(pwmWristChannel,dioWristEncoderChannel);
     }
 
     public static void runningAutoArm(boolean b) {
