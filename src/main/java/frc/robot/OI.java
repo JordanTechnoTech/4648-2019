@@ -9,6 +9,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.commands.*;
 
 
@@ -61,6 +62,13 @@ public class OI {
         controller1.dpadDownButton.toggleWhenPressed(new ArmCommand(100,1500,0));
         controller1.rbButton.toggleWhenPressed(new VacuumJoystickCommand());
         controller1.lbButton.toggleWhenPressed(new PistonJoystickCommand());
+        controller1.startButton.whenPressed(new Command() {
+            @Override
+            protected void execute() { RobotMap.runningAutoArm(false); }
+
+            @Override
+            protected boolean isFinished() { return false; }
+        });
     }
 
     public static double deadZone(double val, double deadZone) {

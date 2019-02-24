@@ -28,14 +28,16 @@ public class ElbowJoystickCommand extends Command {
 
     @Override
     protected void execute() {
-        SmartDashboard.putString("Elbow mode", "Joystick");
-        double leftY;
-        leftY = OI.deadZone(Robot.m_oi.controller1.getStickLeftYValue(), .15);
+        if (!RobotMap.isRunningAutoArm()) {
+            SmartDashboard.putString("Elbow mode", "Joystick");
+            double leftY;
+            leftY = OI.deadZone(Robot.m_oi.controller1.getStickLeftYValue(), .15);
 
-        if (leftY == 0.0) {
-            RobotMap.armSubsystem.stopElbow();
-        } else {
-            RobotMap.armSubsystem.moveElbowPower(leftY * .5);
+            if (leftY == 0.0) {
+                RobotMap.armSubsystem.stopElbow();
+            } else {
+                RobotMap.armSubsystem.moveElbowPower(leftY * .5);
+            }
         }
     }
 

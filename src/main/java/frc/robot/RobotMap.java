@@ -64,6 +64,7 @@ public class RobotMap {
 
     //   public static Counter wristCounterEncoder;
     public static Spark wristMotorController;
+    private static boolean runningAutoArm = false;
 
     public static double getRotationaldeadzone() {
         return rotationalDeadZone;
@@ -82,5 +83,13 @@ public class RobotMap {
         pistonSubsystem = new PistonSubsystem(pwmPistonChannel);
         elbowSubsystem = new ElbowSubsystem(canArmElbowDeviceID);
         shoulderSubsystem = new ShoulderSubsystem(canArmShoulderDeviceID);
+    }
+
+    public static void runningAutoArm(boolean b) {
+        runningAutoArm = b;
+    }
+
+    public static boolean isRunningAutoArm() {
+        return runningAutoArm;
     }
 }

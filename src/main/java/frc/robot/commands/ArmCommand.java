@@ -20,10 +20,17 @@ public class ArmCommand extends Command {
 
     @Override
     protected void execute() {
+        RobotMap.runningAutoArm(true);
         SmartDashboard.putString("Arm mode","AUTO");
         RobotMap.armSubsystem.moveShoulder(shoulderPosition);
         RobotMap.armSubsystem.moveElbow(elbowPosition);
         finished = true;
+    }
+
+    @Override
+    public synchronized void cancel() {
+        RobotMap.runningAutoArm(false);
+        super.cancel();
     }
 
     @Override
