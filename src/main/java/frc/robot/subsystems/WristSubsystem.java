@@ -46,4 +46,7 @@ public class WristSubsystem extends Subsystem implements TechnoTechSubsystem {
         this.wrist.set(power);
 
     }
+    public void stopWrist(){
+        this.wrist.stopMotor();
+    }
 }

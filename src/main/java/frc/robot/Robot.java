@@ -15,9 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.camera.LimelightCamera;
 import frc.robot.camera.LimelightCamera.ledMode;
-import frc.robot.commands.ElbowCommand;
-import frc.robot.commands.PistonJoystickCommand;
-import frc.robot.commands.VacuumJoystickCommand;
+import frc.robot.commands.*;
 import frc.robot.subsystems.TechnoTechSubsystem;
 
 import java.util.ArrayList;
@@ -56,6 +54,8 @@ public class Robot extends TimedRobot {
         new VacuumJoystickCommand();
         new PistonJoystickCommand();
         new ElbowCommand();
+        new ShoulderCommand();
+        new WristCommand(0);
     }
 
     public void initSubsystems() {
