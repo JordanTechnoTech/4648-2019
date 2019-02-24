@@ -11,7 +11,7 @@ public class ShoulderCommand extends Command {
     public ShoulderCommand() {
         requires(RobotMap.shoulderSubsystem);
         SmartDashboard.putData(this);
-        SmartDashboard.putNumber("Shoulder Kp", .75);
+        SmartDashboard.putNumber("Shoulder Kp", .15);
         SmartDashboard.putNumber("Shoulder Ki", 0);
         SmartDashboard.putNumber("Shoulder Kd", 1);
         SmartDashboard.putNumber("Shoulder kF", 0);
@@ -22,7 +22,7 @@ public class ShoulderCommand extends Command {
 
     @Override
     protected void execute() {
-        double kp = SmartDashboard.getNumber("Shoulder Kp", .75);
+        double kp = SmartDashboard.getNumber("Shoulder Kp", .15);
         double Ki = SmartDashboard.getNumber("Shoulder Ki", 0);
         double Kd = SmartDashboard.getNumber("Shoulder Kd", 1);
         double kF = SmartDashboard.getNumber("Shoulder kF", 0);
