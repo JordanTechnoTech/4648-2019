@@ -53,8 +53,8 @@ public class Robot extends TimedRobot {
         initSubsystems();
         new VacuumJoystickCommand();
         new PistonJoystickCommand();
-        new ElbowCommand();
-        new ShoulderCommand();
+//        new ElbowCommand();
+//        new ShoulderCommand();
         new WristCommand(0);
     }
 

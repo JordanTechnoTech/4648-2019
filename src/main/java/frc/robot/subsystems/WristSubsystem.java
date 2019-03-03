@@ -27,7 +27,7 @@ public class WristSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     public void trackWristCounter() {
         if (wrist.getSpeed() == 0) {
-            return;
+            storedWristPosition = lastPoll;
         }
         if (wrist.getSpeed() > 0) {
             diff = wristEncoder.get() - lastPoll;

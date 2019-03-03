@@ -7,6 +7,7 @@ public class Gains {
   public final double kF;
   public final int kIzone;
   public final double kPeakOutput;
+  public boolean inverted =false;
 
   public Gains(double _kP, double _kI, double _kD, double _kF, int _kIzone, double _kPeakOutput) {
     kP = _kP;

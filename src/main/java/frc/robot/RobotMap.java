@@ -36,7 +36,7 @@ public class RobotMap {
     //PWM CHANNEL MAPPINGS
     private static final int pwmWristChannel = 8;
     private static final int pwmVacuumChannel = 9;
-    private static final int pwmPistonChannel = 0;
+    private static final int pwmPistonChannel = 7;
 
 
     // For example to map the left and right motors, you could define the

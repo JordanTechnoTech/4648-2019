@@ -16,7 +16,7 @@ public class TalonInitializer {
      * Set based on what direction you want forward/positive to be.
      * This does not affect sensor phase.
      */
-    _talon.setInverted(Constants.kMotorInvert);
+    _talon.setInverted(gains.inverted);
 
     /* Config the peak and nominal outputs, 12V means full */
     _talon.configNominalOutputForward(0, Constants.kTimeoutMs);

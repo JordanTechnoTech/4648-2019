@@ -33,7 +33,7 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
 
     public void moveShoulderToPosition(double position, Gains kGains) {
         this.shoulder.setNeutralMode(NeutralMode.Coast);
-        stopped = false;
+//        stopped = false;
         TalonInitializer.initTalon(this.shoulder, kGains);
         this.shoulder.set(ControlMode.Position, position);
     }
@@ -42,6 +42,7 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
         if (!this.stopped) {
             this.stopped = true;
             stopCounter++;
+            this.shoulder.set(0.0);
             this.shoulder.setNeutralMode(NeutralMode.Brake);
 //            this.shoulder.stopMotor();
             SmartDashboard.putString("ShoulderSubsystem running status","stopped:"+stopCounter);

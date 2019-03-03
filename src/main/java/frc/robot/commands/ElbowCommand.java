@@ -23,7 +23,7 @@ public class ElbowCommand extends Command {
     @Override
     protected void execute() {
         RobotMap.runningAutoArm(true);
-        double kp = SmartDashboard.getNumber("Elbow Kp", .75);
+        double kp = SmartDashboard.getNumber("Elbow Kp", 1.85);
         double Ki = SmartDashboard.getNumber("Elbow Ki", 0);
         double Kd = SmartDashboard.getNumber("Elbow Kd", 1);
         double kF = SmartDashboard.getNumber("Elbow kF", 0);
