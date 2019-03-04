@@ -13,7 +13,7 @@ import frc.robot.talon.TalonInitializer;
 
 public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem {
     private WPI_TalonSRX shoulder;
-    private Gains defaultKGains = new Gains(1.85, 0, 1, 0.0, 0, .2);
+    private Gains defaultKGains = new Gains(1.85, 0, 1, 0.0, 0, .2,.2 );
     private boolean stopped= false;
 
     public ShoulderSubsystem(int shoulderCanId) {
@@ -22,6 +22,7 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
 
     public void resetTalonEncoder() {
         shoulder.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
+        moveShoulderToPosition(300,defaultKGains);
     }
 
     @Override

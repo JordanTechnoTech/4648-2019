@@ -23,7 +23,7 @@ public class FaceoffCommand extends Command {
     public static final double degreesAdjust = 2;  //OFFSET FOR CAMERA ANGLE ADJUST increase number to angle more to right
 
     public static List<RangeValue> forwardSpeedRangeValues = Arrays.asList(
-            new RangeValue(-1, 110, .25),
+            new RangeValue(-999, 110, .25),
             new RangeValue(110, 150, 0),
             new RangeValue(150, 200, -.2),
             new RangeValue(200, 350, -.3),
@@ -33,15 +33,13 @@ public class FaceoffCommand extends Command {
     public static List<RangeValue> slideSpeedRangeValues = Arrays.asList(
             new RangeValue(-999, -4, -.3),
             new RangeValue(-4, -2, -.28),
-//            new RangeValue(-2, -1, -.25),
             new RangeValue(-2, 2, 0),
-//            new RangeValue(1, 2, .25),
             new RangeValue(2, 4, .28),
             new RangeValue(4, 9999, .3)
     );
 
     public static List<RangeValue> turnSpeedRangeValues = Arrays.asList(
-            new RangeValue(-1, 1, 0.0),
+            new RangeValue(-999, 1, 0.0),
             new RangeValue(1, 5, -.023),
             new RangeValue(5, 10, -.025),
             new RangeValue(10, 15, -.03),

@@ -30,7 +30,7 @@ public class ElbowCommand extends Command {
         int kIzone = (int) SmartDashboard.getNumber("Elbow kIzone", 0);
         double kPeakOutput = SmartDashboard.getNumber("Elbow kPeakOutput", .2);
         double dbPosition = SmartDashboard.getNumber("Elbow position", 0);
-        Gains gains = new Gains(kp, Ki, Kd, kF, kIzone, kPeakOutput);
+        Gains gains = new Gains(kp, Ki, Kd, kF, kIzone, kPeakOutput,kPeakOutput );
         RobotMap.elbowSubsystem.moveElbowToPosition(dbPosition, gains);
         finished = true;
     }

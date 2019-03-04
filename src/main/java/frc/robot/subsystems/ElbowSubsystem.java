@@ -13,16 +13,16 @@ import frc.robot.talon.TalonInitializer;
 
 public class ElbowSubsystem extends Subsystem implements TechnoTechSubsystem {
     private WPI_TalonSRX elbow;
-    private Gains defaultKGains = new Gains(0.015, 0, 1, 0.0, 0, 1.0);
+    private Gains defaultKGains = new Gains(1.85, 0, 1, 0.0, 0, .2,.2 );
     private boolean stopped= false;
 
     public ElbowSubsystem(int elbowCanId) {
         this.elbow = new WPI_TalonSRX(elbowCanId);
-        this.elbow.setInverted(true);
     }
 
     public void resetTalonEncoder() {
         elbow.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
+        moveElbowToPosition(300, defaultKGains);
     }
 
     @Override
@@ -34,8 +34,6 @@ public class ElbowSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     public void moveElbowToPosition(double position, Gains kGains) {
         this.elbow.setNeutralMode(NeutralMode.Coast);
-//        stopped = false;
-        kGains.inverted = true;
         TalonInitializer.initTalon(this.elbow, kGains);
         this.elbow.set(ControlMode.Position, position);
     }

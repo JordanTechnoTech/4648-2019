@@ -10,8 +10,8 @@ public class ArmCommand extends Command {
     private double elbowPosition;
     private double wristPosition;
     private boolean finished = false;
-    private Gains elbowGains = new Gains(1.85, 0, 1, 0.0, 0, .2);
-    private Gains shoulderGains = new Gains(1.85, 0, 1, 0.0, 0, .2);
+    private Gains elbowGains = new Gains(1.85, 0, 1, 0.0, 0, .5, .2);
+    private Gains shoulderGains = new Gains(1.85, 0, 1, 0.0, 0, .2, .2);
 
     public ArmCommand(double shoulderPosition, double elbowPosition, double wristPosition) {
         this.shoulderPosition = shoulderPosition;
@@ -29,8 +29,8 @@ public class ArmCommand extends Command {
         RobotMap.runningAutoArm(true);
         counter++;
         SmartDashboard.putString("Arm mode", "AUTO:"+counter);
-        RobotMap.shoulderSubsystem.moveShoulderToPosition(shoulderPosition, shoulderGains);
         RobotMap.elbowSubsystem.moveElbowToPosition(elbowPosition, elbowGains);
+        RobotMap.shoulderSubsystem.moveShoulderToPosition(shoulderPosition, shoulderGains);
         finished = true;
     }
 

@@ -30,7 +30,7 @@ public class ShoulderCommand extends Command {
         int kIzone = (int) SmartDashboard.getNumber("Shoulder kIzone", 0);
         double kPeakOutput = SmartDashboard.getNumber("Shoulder kPeakOutput", .2);
         double dbPosition = SmartDashboard.getNumber("Shoulder position", 0);
-        Gains gains = new Gains(kp, Ki, Kd, kF, kIzone, kPeakOutput);
+        Gains gains = new Gains(kp, Ki, Kd, kF, kIzone, kPeakOutput,kPeakOutput );
         RobotMap.shoulderSubsystem.moveShoulderToPosition(dbPosition, gains);
         finished = true;
     }

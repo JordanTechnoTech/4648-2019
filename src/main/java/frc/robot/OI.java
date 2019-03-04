@@ -51,17 +51,17 @@ public class OI {
     public OI() {
         controller0.lbButton.toggleWhenPressed(new AutoCommandGroup(FaceoffCommand.Target.PANEL_HOLE));
         controller0.rbButton.whileHeld(new CloseoutCommand());
-        controller0.bButton.whenPressed(new ArmCommand(100, 100, 0));
+        controller0.bButton.whenPressed(new ArmCommand(50, 1300, 0));
 
         //Panels high medium low
-        controller1.yButton.whenPressed(new ArmCommand(800, 600, 0));
-        controller1.xButton.whenPressed(new ArmCommand(500, 200, 0));
-        controller1.aButton.whenPressed(new ArmCommand(200, 300, 0));
+        controller1.yButton.whenPressed(new ArmCommand(748, 3992, 0));
+        controller1.xButton.whenPressed(new ArmCommand(17, 2092, 0));
+        controller1.aButton.whenPressed(new ArmCommand(47, 475, 0));
 
         //Ball hole high medium low
-        controller1.dpadUpButton.whenPressed(new ArmCommand(1200,400,40));
-        controller1.dpadLeftButton.whenPressed(new ArmCommand(600,300,20));
-        controller1.dpadDownButton.whenPressed(new ArmCommand(300,200,0));
+        controller1.dpadUpButton.whenPressed(new ArmCommand(1252,5000,40));
+        controller1.dpadLeftButton.whenPressed(new ArmCommand(271,2622,20));
+        controller1.dpadDownButton.whenPressed(new ArmCommand(43,988,0));
 
         controller1.rbButton.toggleWhenPressed(new VacuumJoystickCommand());
         controller1.lbButton.toggleWhenPressed(new PistonJoystickCommand());

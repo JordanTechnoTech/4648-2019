@@ -23,17 +23,17 @@ public class WristJoystickCommand extends Command {
 
     @Override
     protected void execute() {
-        if (!RobotMap.isRunningAutoArm()) {
-            SmartDashboard.putString("Wrist mode", "Joystick");
-            double leftTrigger, rightTrigger;
-            leftTrigger = OI.deadZone(Robot.m_oi.controller1.getLeftTriggerValue(), .15);
-            rightTrigger = OI.deadZone(Robot.m_oi.controller1.getRightTriggerValue(), .15);
+        SmartDashboard.putString("Wrist mode", "Joystick");
+        double leftTrigger, rightTrigger;
+        leftTrigger = OI.deadZone(Robot.m_oi.controller1.getLeftTriggerValue(), .15);
+        rightTrigger = OI.deadZone(Robot.m_oi.controller1.getRightTriggerValue(), .15);
 
-            if (leftTrigger > 0) {
-                RobotMap.wristSubsystem.moveWristPower(leftTrigger * .5);
-            } else if (rightTrigger > 0){
-                RobotMap.wristSubsystem.moveWristPower(rightTrigger * -.5);
-            }
+        if (leftTrigger > 0) {
+            RobotMap.wristSubsystem.moveWristPower(leftTrigger * .75);
+        } else if (rightTrigger > 0){
+            RobotMap.wristSubsystem.moveWristPower(rightTrigger * -.75);
+        } else {
+            RobotMap.wristSubsystem.moveWristPower(0);
         }
     }
 

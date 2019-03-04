@@ -28,7 +28,7 @@ public class ElbowJoystickCommand extends Command {
             leftY = OI.deadZone(Robot.m_oi.controller1.getStickLeftYValue(), .15);
             SmartDashboard.putNumber("Elbow joystick",leftY);
 
-            if (leftY == 0.0 || (RobotMap.elbowSubsystem.getElbowPosition() < 300 && leftY > 0) || (RobotMap.elbowSubsystem.getElbowPosition() > 1000 && leftY < 0)) {
+            if (leftY == 0.0 || (RobotMap.elbowSubsystem.getElbowPosition() < 300 && leftY > 0) || (RobotMap.elbowSubsystem.getElbowPosition() > 5000 && leftY < 0)) {
                 RobotMap.elbowSubsystem.stopElbow();
             } else {
                 RobotMap.elbowSubsystem.moveElbowPower(leftY * -.5);

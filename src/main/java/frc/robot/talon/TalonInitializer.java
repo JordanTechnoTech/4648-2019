@@ -22,7 +22,7 @@ public class TalonInitializer {
     _talon.configNominalOutputForward(0, Constants.kTimeoutMs);
     _talon.configNominalOutputReverse(0, Constants.kTimeoutMs);
     _talon.configPeakOutputForward(gains.kPeakOutput, Constants.kTimeoutMs);
-    _talon.configPeakOutputReverse(-gains.kPeakOutput, Constants.kTimeoutMs);
+    _talon.configPeakOutputReverse(-gains.kPeakOutputReverse, Constants.kTimeoutMs);
 
     /**
      * Config the allowable closed-loop error, Closed-Loop output will be
