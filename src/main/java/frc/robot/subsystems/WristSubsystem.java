@@ -32,7 +32,7 @@ public class WristSubsystem extends Subsystem implements TechnoTechSubsystem {
         if (wrist.getSpeed() > 0) {
             diff = wristEncoder.get() - lastPoll;
         } else {
-            diff = -(wristEncoder.get() - lastPoll);
+            diff = lastPoll - wristEncoder.get();
         }
         storedWristPosition += diff;
     }
