@@ -38,6 +38,9 @@ public class RobotMap {
     private static final int pwmVacuumChannel = 9;
     private static final int pwmPistonChannel = 7;
 
+    //PNEUMATIC MODULE
+    private static final int pwmPistonCanBusChannel = 0;
+
 
     // For example to map the left and right motors, you could define the
     // following variables to use with your drivetrain subsystem.
@@ -78,7 +81,7 @@ public class RobotMap {
         sonar = new SonarSubsystem(dioSonarPingChannel, dioSonarEchoChannel);
         drivetrain = new MecanumDriveSubsystem(canDriveFrontLeft, canDriveFrontRight, canDriveBackLeft, canDriveBackRight);
         vacuumSubsystem = new VacuumSubsystem(pwmVacuumChannel);
-        pistonSubsystem = new PistonSubsystem(pwmPistonChannel);
+        pistonSubsystem = new PistonSubsystem(pwmPistonChannel,pwmPistonCanBusChannel);
         elbowSubsystem = new ElbowSubsystem(canArmElbowDeviceID);
         shoulderSubsystem = new ShoulderSubsystem(canArmShoulderDeviceID);
         wristSubsystem = new WristSubsystem(pwmWristChannel,dioWristEncoderChannel);

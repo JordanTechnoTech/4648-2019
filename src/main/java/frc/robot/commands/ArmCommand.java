@@ -10,8 +10,8 @@ public class ArmCommand extends Command {
     private double elbowPosition;
     private double wristPosition;
     private boolean finished = false;
-    private Gains elbowGains = new Gains(1.85, 0, 1, 0.0, 0, .5, .2);
-    private Gains shoulderGains = new Gains(1.85, 0, 1, 0.0, 0, .2, .2);
+    private Gains elbowGains = new Gains(1.85, 0, 1, 0.0, 0, .4, .2);
+    private Gains shoulderGains = new Gains(1.85, 0, 1, 0.0, 0, .2, .3);
 
     public ArmCommand(double shoulderPosition, double elbowPosition, double wristPosition) {
         this.shoulderPosition = shoulderPosition;

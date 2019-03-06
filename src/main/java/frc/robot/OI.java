@@ -65,6 +65,7 @@ public class OI {
 
         controller1.rbButton.toggleWhenPressed(new VacuumJoystickCommand());
         controller1.lbButton.toggleWhenPressed(new PistonJoystickCommand());
+        controller1.bButton.toggleWhenPressed(new ArmCommand(1845,912,0));
         controller1.startButton.whenPressed(new Command() {
             @Override
             protected void execute() { RobotMap.runningAutoArm(false); }

@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -7,23 +8,25 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PistonSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     private final Spark motorController;
+    Solenoid solenoid;
 
-    public PistonSubsystem(int pwmChannel) {
+    public PistonSubsystem(int pwmChannel,int pistonCanChannel) {
         SmartDashboard.putData("PistonSubsystem", this);
         motorController = new Spark(pwmChannel);
+        solenoid = new Solenoid(6,pistonCanChannel);
     }
 
     @Override
     protected void initDefaultCommand() {
     }
 
-    public void setPistonPower(double power) {
-        motorController.set(power);
+    public void togglePiston(boolean toggle) {
+        motorController.set(1);
+        solenoid.set(toggle);
     }
-
 
     @Override
     public void log() {
-
+        SmartDashboard.putBoolean("Solenoid value",solenoid.get());
     }
 }

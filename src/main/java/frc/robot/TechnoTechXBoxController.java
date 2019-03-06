@@ -46,6 +46,9 @@ public class TechnoTechXBoxController {
     public boolean getAButtonValue(){
         return controller.getAButton();
     }
+    public boolean getLeftBumperValue(){
+        return controller.getBumper(GenericHID.Hand.kLeft);
+    }
     public boolean getBButtonPressed(){
         return controller.getBButtonPressed();
     }

@@ -1,12 +1,8 @@
 package frc.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.robot.OI;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
-
-import java.nio.channels.Channel;
 
 /**
  * An example command.  You can replace me with your own command.
@@ -26,14 +22,13 @@ public class PistonJoystickCommand extends Command {
     protected void execute() {
       //  double rightY;
      //   rightY = OI.deadZone(Robot.m_oi.controller1.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
-        RobotMap.pistonSubsystem.setPistonPower(.5);
+        RobotMap.pistonSubsystem.togglePiston(false);
     }
 
     @Override
     public synchronized void cancel() {
         super.cancel();
-        RobotMap.pistonSubsystem.setPistonPower(0);
-
+        RobotMap.pistonSubsystem.togglePiston(true);
     }
 
     // Make this return true when this Command no longer needs to run execute()
