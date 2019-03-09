@@ -31,7 +31,7 @@ public class VacuumJoystickCommand extends Command {
 
     @Override
     public synchronized void cancel() {
-        RobotMap.vacuumSubsystem.setVacuumPower(0);
+        RobotMap.vacuumSubsystem.setVacuumPower(-1);
         super.cancel();
     }
 

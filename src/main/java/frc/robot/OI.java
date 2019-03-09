@@ -54,14 +54,14 @@ public class OI {
         controller0.bButton.whenPressed(new ArmCommand(50, 1300, 0));
 
         //Panels high medium low
-        controller1.yButton.whenPressed(new ArmCommand(748, 3992, 0));
-        controller1.xButton.whenPressed(new ArmCommand(17, 2092, 0));
+        controller1.yButton.whenPressed(new ArmCommand(1697, 5667, 0));
+        controller1.xButton.whenPressed(new ArmCommand(37, 2762, 0));
         controller1.aButton.whenPressed(new ArmCommand(47, 475, 0));
 
         //Ball hole high medium low
-        controller1.dpadUpButton.whenPressed(new ArmCommand(1252,5000,40));
-        controller1.dpadLeftButton.whenPressed(new ArmCommand(271,2622,20));
-        controller1.dpadDownButton.whenPressed(new ArmCommand(43,988,0));
+        controller1.dpadUpButton.whenPressed(new ArmCommand(2051,7028,40));
+        controller1.dpadLeftButton.whenPressed(new ArmCommand(0,3180,20));
+        controller1.dpadDownButton.whenPressed(new ArmCommand(0,1172,0));
 
         controller1.rbButton.toggleWhenPressed(new VacuumJoystickCommand());
         controller1.lbButton.toggleWhenPressed(new PistonJoystickCommand());

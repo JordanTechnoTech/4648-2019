@@ -10,7 +10,7 @@ public class TalonInitializer {
             Constants.kTimeoutMs);
 
     /* Ensure sensor is positive when output is positive */
-    _talon.setSensorPhase(Constants.kSensorPhase);
+    _talon.setSensorPhase(!gains.inverted);
 
     /**
      * Set based on what direction you want forward/positive to be.

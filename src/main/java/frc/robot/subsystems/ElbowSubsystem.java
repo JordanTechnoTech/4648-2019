@@ -18,10 +18,12 @@ public class ElbowSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     public ElbowSubsystem(int elbowCanId) {
         this.elbow = new WPI_TalonSRX(elbowCanId);
+        this.elbow.setInverted(true);
     }
 
     public void resetTalonEncoder() {
         elbow.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
+        defaultKGains.inverted = true;
         moveElbowToPosition(300, defaultKGains);
     }
 
@@ -34,6 +36,7 @@ public class ElbowSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     public void moveElbowToPosition(double position, Gains kGains) {
         this.elbow.setNeutralMode(NeutralMode.Coast);
+        kGains.inverted = true;
         TalonInitializer.initTalon(this.elbow, kGains);
         this.elbow.set(ControlMode.Position, position);
     }
