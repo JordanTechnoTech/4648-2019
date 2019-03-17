@@ -24,12 +24,16 @@ public class PistonJoystickCommand extends Command {
 
     @Override
     protected void execute() {
-        RobotMap.pistonSubsystem.togglePiston(toggle);
+        RobotMap.pistonSubsystem.togglePiston(false);
+        RobotMap.pistonSubsystem.setMidVacuumPower(1);
     }
 
     @Override
     public synchronized void cancel() {
         toggle = !toggle;
+        RobotMap.pistonSubsystem.setMidVacuumPower(0);
+        RobotMap.pistonSubsystem.togglePiston(true);
+        super.cancel();
     }
 
     // Make this return true when this Command no longer needs to run execute()

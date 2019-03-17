@@ -27,11 +27,13 @@ public class VacuumJoystickCommand extends Command {
        // double leftY;
        // leftY = OI.deadZone(Robot.m_oi.controller1.getStickLeftYValue(), RobotMap.getTranslationaldeadzone());
         RobotMap.vacuumSubsystem.setVacuumPower(1);
+        RobotMap.vacuumSubsystem.toggleDumpValve(false);
     }
 
     @Override
     public synchronized void cancel() {
-        RobotMap.vacuumSubsystem.setVacuumPower(-1);
+        RobotMap.vacuumSubsystem.setVacuumPower(0);
+        RobotMap.vacuumSubsystem.toggleDumpValve(true);
         super.cancel();
     }
 

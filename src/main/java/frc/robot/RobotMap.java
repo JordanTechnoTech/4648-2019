@@ -40,6 +40,7 @@ public class RobotMap {
 
     //PNEUMATIC MODULE
     private static final int pwmPistonCanBusChannel = 0;
+    private static final int releaseValveCanBusChannel = 1;
 
 
     // For example to map the left and right motors, you could define the
@@ -80,7 +81,7 @@ public class RobotMap {
         imu = new ADIS16448_IMU();
         sonar = new SonarSubsystem(dioSonarPingChannel, dioSonarEchoChannel);
         drivetrain = new MecanumDriveSubsystem(canDriveFrontLeft, canDriveFrontRight, canDriveBackLeft, canDriveBackRight);
-        vacuumSubsystem = new VacuumSubsystem(pwmVacuumChannel);
+        vacuumSubsystem = new VacuumSubsystem(pwmVacuumChannel, releaseValveCanBusChannel);
         pistonSubsystem = new PistonSubsystem(pwmPistonChannel,pwmPistonCanBusChannel);
         elbowSubsystem = new ElbowSubsystem(canArmElbowDeviceID);
         shoulderSubsystem = new ShoulderSubsystem(canArmShoulderDeviceID);

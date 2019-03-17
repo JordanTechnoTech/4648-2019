@@ -21,8 +21,10 @@ public class PistonSubsystem extends Subsystem implements TechnoTechSubsystem {
     }
 
     public void togglePiston(boolean toggle) {
-        motorController.set(1);
         solenoid.set(toggle);
+    }
+    public void setMidVacuumPower(double power){
+        motorController.set(power);
     }
 
     @Override
