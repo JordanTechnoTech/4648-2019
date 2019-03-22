@@ -55,7 +55,7 @@ public class OI {
 
         //Panels high medium low
         controller1.yButton.whenPressed(new ArmCommand(1697, 5667, 0));
-        controller1.xButton.whenPressed(new ArmCommand(37, 2762, 0));
+        controller1.xButton.whenPressed(new ArmCommand(37, 2577, 0));
         controller1.aButton.whenPressed(new ArmCommand(47, 475, 0));
 
         //Ball hole high medium low
@@ -65,7 +65,7 @@ public class OI {
 
         controller1.rbButton.toggleWhenPressed(new VacuumJoystickCommand());
         controller1.lbButton.toggleWhenPressed(new PistonJoystickCommand());
-        controller1.bButton.toggleWhenPressed(new ArmCommand(1845,912,0));
+        controller1.bButton.toggleWhenPressed(new ArmCommand(3576,1967,0));
         controller1.startButton.whenPressed(new Command() {
             @Override
             protected void execute() { RobotMap.runningAutoArm(false); }
