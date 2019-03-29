@@ -117,9 +117,14 @@ public class Robot extends TimedRobot {
          */
 
         // schedule the autonomous command (example)
-        if (m_autonomousCommand != null) {
-            m_autonomousCommand.start();
-        }
+//        if (m_autonomousCommand != null) {
+//            m_autonomousCommand.start();
+//        }
+        RobotMap.elbowSubsystem.resetTalonEncoder();
+        RobotMap.shoulderSubsystem.resetTalonEncoder();
+        LimelightCamera.setLightMode(ledMode.OFF);
+        LimelightCamera.setCameraMode(LimelightCamera.cameraMode.CAMERA);
+        LimelightCamera.setPipeline(1);
     }
 
     /**
@@ -133,8 +138,7 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopInit() {
 //        RobotMap.armSubsystem.initSubSystem();
-        RobotMap.elbowSubsystem.resetTalonEncoder();
-        RobotMap.shoulderSubsystem.resetTalonEncoder();
+
 
         // This makes sure that the autonomous stops running when
         // teleop starts running. If you want the autonomous to
@@ -143,9 +147,7 @@ public class Robot extends TimedRobot {
         if (m_autonomousCommand != null) {
             m_autonomousCommand.cancel();
         }
-        LimelightCamera.setLightMode(ledMode.OFF);
-        LimelightCamera.setCameraMode(LimelightCamera.cameraMode.CAMERA);
-        LimelightCamera.setPipeline(1);
+
         CameraServer.getInstance().startAutomaticCapture();
         // starting position goes here
         //

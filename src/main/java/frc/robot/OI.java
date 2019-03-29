@@ -56,7 +56,7 @@ public class OI {
         //Panels high medium low
         controller1.yButton.whenPressed(new ArmCommand(1697, 5667, 0));
         controller1.xButton.whenPressed(new ArmCommand(37, 2577, 0));
-        controller1.aButton.whenPressed(new ArmCommand(47, 475, 0));
+        controller1.aButton.whenPressed(new ArmCommand(47, 450, 0));
 
         //Ball hole high medium low
         controller1.dpadUpButton.whenPressed(new ArmCommand(2051,7028,40));

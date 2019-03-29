@@ -24,7 +24,7 @@ public class PistonJoystickCommand extends Command {
 
     @Override
     protected void execute() {
-        RobotMap.pistonSubsystem.togglePiston(false);
+    //    RobotMap.pistonSubsystem.togglePiston(false);
         RobotMap.pistonSubsystem.setMidVacuumPower(1);
     }
 
@@ -32,7 +32,7 @@ public class PistonJoystickCommand extends Command {
     public synchronized void cancel() {
         toggle = !toggle;
         RobotMap.pistonSubsystem.setMidVacuumPower(0);
-        RobotMap.pistonSubsystem.togglePiston(true);
+   //     RobotMap.pistonSubsystem.togglePiston(true);
         super.cancel();
     }
 

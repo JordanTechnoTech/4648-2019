@@ -25,6 +25,11 @@ public class PistonSubsystem extends Subsystem implements TechnoTechSubsystem {
     }
     public void setMidVacuumPower(double power){
         motorController.set(power);
+        if (power > 0){
+            SmartDashboard.putBoolean("SUCTION CENTER", true);
+        } else{
+            SmartDashboard.putBoolean("SUCTION CENTER", false);
+        }
     }
 
     @Override
