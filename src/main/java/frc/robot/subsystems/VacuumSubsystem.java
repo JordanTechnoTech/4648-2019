@@ -9,7 +9,7 @@ public class VacuumSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     private final Spark motorController;
     Solenoid solenoid;
-
+//The vacuums are run from this system
     public VacuumSubsystem(int pwmChannel, int releaseValveChannel) {
         SmartDashboard.putData("VacuumSubsystem", this);
         motorController = new Spark(pwmChannel);
@@ -23,7 +23,7 @@ public class VacuumSubsystem extends Subsystem implements TechnoTechSubsystem {
     public void toggleDumpValve(boolean toggle) {
         solenoid.set(toggle);
     }
-
+//This runs the Vacuums, but the VacuumJoystickCommand fills in the power
     public void setVacuumPower(double power) {
         motorController.set(power);
         if (power > 0){

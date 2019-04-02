@@ -57,7 +57,7 @@ public class RobotMap {
 
     public static MecanumDriveSubsystem drivetrain;
     public static ADIS16448_IMU imu;
-
+    //starts up the subsystems
     public static SonarSubsystem sonar;
     public static ShoulderSubsystem shoulderSubsystem;
     public static ElbowSubsystem elbowSubsystem;

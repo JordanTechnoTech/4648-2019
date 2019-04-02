@@ -9,7 +9,8 @@ public class PistonSubsystem extends Subsystem implements TechnoTechSubsystem {
 
     private final Spark motorController;
     Solenoid solenoid;
-
+//This should move the piston when plugged into a good solenoid
+//For now it just turns on the MidVacuumPower
     public PistonSubsystem(int pwmChannel,int pistonCanChannel) {
         SmartDashboard.putData("PistonSubsystem", this);
         motorController = new Spark(pwmChannel);

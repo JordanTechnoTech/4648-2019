@@ -19,7 +19,7 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
     public ShoulderSubsystem(int shoulderCanId) {
         this.shoulder = new WPI_TalonSRX(shoulderCanId);
     }
-
+//This is the code that pushes the shoulder up at the beginning and sets the encoder to 0
     public void resetTalonEncoder() {
         shoulder.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
         moveShoulderToPosition(300,defaultKGains);
@@ -31,7 +31,7 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
         SmartDashboard.putNumber("Shoulder motor output", shoulder.getMotorOutputPercent());
         SmartDashboard.putNumber("Shoulder motor current", shoulder.getOutputCurrent());
     }
-
+//Moves the shoulder to position but ShoulderJoystickCommand sets the points
     public void moveShoulderToPosition(double position, Gains kGains) {
         this.shoulder.setNeutralMode(NeutralMode.Coast);
 //        stopped = false;
@@ -51,7 +51,7 @@ public class ShoulderSubsystem extends Subsystem implements TechnoTechSubsystem 
 //            this.shoulder.set(ControlMode.Position, getShoulderPosition());
         }
     }
-
+//This sets how fast the Shoulder moves
     public void moveShoulderPower(double power) {
         stopped = false;
         SmartDashboard.putString("ShoulderSubsystem running status","running");

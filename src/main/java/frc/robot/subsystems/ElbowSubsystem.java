@@ -15,12 +15,12 @@ public class ElbowSubsystem extends Subsystem implements TechnoTechSubsystem {
     private WPI_TalonSRX elbow;
     private Gains defaultKGains = new Gains(1.85, 0, 1, 0.0, 0, .2,.2 );
     private boolean stopped= false;
-
+//Inverts the Elbow
     public ElbowSubsystem(int elbowCanId) {
         this.elbow = new WPI_TalonSRX(elbowCanId);
         this.elbow.setInverted(true);
     }
-
+//Resets the encoder and moves the Elbow up
     public void resetTalonEncoder() {
         elbow.setSelectedSensorPosition(0, Constants.kPIDLoopIdx, Constants.kTimeoutMs);
         defaultKGains.inverted = true;

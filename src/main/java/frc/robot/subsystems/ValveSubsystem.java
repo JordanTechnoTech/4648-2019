@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
+//This is straight garbage
 public class ValveSubsystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.

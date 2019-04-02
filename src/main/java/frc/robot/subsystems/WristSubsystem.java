@@ -46,12 +46,13 @@ public class WristSubsystem extends Subsystem implements TechnoTechSubsystem {
         SmartDashboard.putNumber("Wrist motor position", getStoredWristPosition());
         SmartDashboard.putNumber("wrist motor Speed", wrist.getSpeed());
     }
-
+//This is the part of the code that moves the Wrist
+//The power is set in the WristJoystickCommand
     public void moveWristPower(double power) {
         this.wrist.set(power);
 
     }
-
+//This is a function that just stops the wrist
     public void stopWrist() {
         this.wrist.stopMotor();
     }
