@@ -21,7 +21,8 @@ import java.util.List;
  */
 public class FaceoffCommand extends Command {
     public static final double degreesAdjust = 2;  //OFFSET FOR CAMERA ANGLE ADJUST increase number to angle more to right
-
+//If the Range values fall between the first two numbers
+//Then the type of speed is set to the third number
     public static List<RangeValue> forwardSpeedRangeValues = Arrays.asList(
             new RangeValue(-999, 110, .25),
             new RangeValue(110, 150, 0),
@@ -56,8 +57,7 @@ public class FaceoffCommand extends Command {
     public FaceoffCommand(FaceoffCommand.Target atarget) {
         target = atarget;
     }
-
-    // Called just before this Command runs the first time
+//Turns the camera to tracking mode
     @Override
     protected void initialize() {
         finished = false;
@@ -68,11 +68,10 @@ public class FaceoffCommand extends Command {
         super.initialize();
     }
 
-    // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
         limeLightValues = limelightCamera.poll();
-        //turn to target until in view
+//
         double distance = LimelightCamera.getDistance(target.getHeight(), limeLightValues.getTargetVertical());
         SmartDashboard.putNumber("distance", distance);
         SmartDashboard.putNumber("cachedTA", limeLightValues.ta);

@@ -51,7 +51,7 @@ public class OI {
     public OI() {
         controller0.lbButton.toggleWhenPressed(new AutoCommandGroup(FaceoffCommand.Target.PANEL_HOLE));
         controller0.rbButton.whileHeld(new CloseoutCommand());
-        controller0.bButton.whenPressed(new ArmCommand(50, 1300, 0));
+        controller0.bButton.whenPressed(new ArmCommand(50, 2000, 0));
 
         //Panels high medium low
         controller1.yButton.whenPressed(new ArmCommand(1697, 5757, 0));

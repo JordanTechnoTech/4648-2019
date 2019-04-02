@@ -20,7 +20,7 @@ public class DPadButton extends Button {
 
         return degree == direction.degree;
     }
-
+//Sets the DPad up so that each direction corisponds to an angle
     public enum Direction {
         Up (0),
         Down (180),

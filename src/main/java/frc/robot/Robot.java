@@ -40,16 +40,11 @@ public class Robot extends TimedRobot {
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
+//Starts up the Robotmap, OI, Vacuum Wrist and Piston Commands, and most subsystems
     @Override
     public void robotInit() {
         RobotMap.init();
         m_oi = new OI();
-//    m_chooser.setDefaultOption("Default Auto", new ExampleCommand());
-        // chooser.addOption("My Auto", new MyAutoCommand());
-//    SmartDashboard.putData("Auto mode", m_chooser);
-//        new TalonSrxMotorTestCommand(5);
-//        new SparkWristTest(0, new AnalogInput(0), null);
-//        new SparkMotorTestCommand(5);
         initSubsystems();
         new VacuumJoystickCommand();
         new PistonJoystickCommand();

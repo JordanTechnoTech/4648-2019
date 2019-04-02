@@ -31,6 +31,8 @@ public class MecanumDriveCommand extends Command {
         y = Robot.m_oi.controller0.deadZone(Robot.m_oi.controller0.getStickRightYValue(), RobotMap.getTranslationaldeadzone());
         twist = Robot.m_oi.controller0.deadZone(Robot.m_oi.controller0.getStickRightXValue(), RobotMap.getRotationaldeadzone());
         twist = twist * .7;
+        x = x * 1;
+        y = y * 1;
 
         RobotMap.drivetrain.getDrivetrain().driveCartesian(-x, y, -twist);
         SmartDashboard.putNumber("Drive twist", twist);

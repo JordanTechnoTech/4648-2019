@@ -4,11 +4,11 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.RobotMap;
 import frc.robot.camera.LimelightCamera;
-
+//The Sonar Mode
 public class CloseoutCommand extends Command {
 
     private boolean finished = false;
-
+//Turns off the limelight camera and makes it so you can see out of it
     public void initialize() {
         LimelightCamera.setLightMode(LimelightCamera.ledMode.OFF);
         LimelightCamera.setPipeline(1);
@@ -16,7 +16,8 @@ public class CloseoutCommand extends Command {
         finished = false;
         super.initialize();
     }
-
+//Takes the distance and plugs it into getForwardSpeed below
+//Then it finishes the command when getFowardSpeed returns a speed of 0
     public void execute() {
         double distance = RobotMap.sonar.getRangeCentimeters();
         log();
@@ -30,7 +31,7 @@ public class CloseoutCommand extends Command {
             RobotMap.drivetrain.getDrivetrain().driveCartesian(0, forwardSpeed, 0);
         }
     }
-
+//This takes in the sonar distance and sets speed based on that
     public double getForwardSpeed(double distance) {
         double qSetSpeed;
         if (distance <= 10) {

@@ -19,7 +19,10 @@ public class ElbowCommand extends Command {
         SmartDashboard.putNumber("Elbow kPeakOutput", .2);
         SmartDashboard.putNumber("Elbow position", 0);
     }
-
+//This sets the PID tuning
+//Kp is Power and the Peak output is the max that the power can go to
+//Don't touch the Ki, just don't
+//Kd is good at 1 I think
     @Override
     protected void execute() {
         RobotMap.runningAutoArm(true);
@@ -34,7 +37,7 @@ public class ElbowCommand extends Command {
         RobotMap.elbowSubsystem.moveElbowToPosition(dbPosition, gains);
         finished = true;
     }
-
+//Stops the Elbow when cancel is called
     @Override
     public synchronized void cancel() {
         RobotMap.runningAutoArm(false);
