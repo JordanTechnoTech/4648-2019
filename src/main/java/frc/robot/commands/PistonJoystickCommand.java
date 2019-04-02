@@ -9,6 +9,8 @@ import frc.robot.RobotMap;
 /**
  * An example command.  You can replace me with your own command.
  */
+//Will run the piston when it is plugged in
+//For now it just runs the center suction cup
 public class PistonJoystickCommand extends Command {
     private  boolean toggle = false;
     public PistonJoystickCommand() {

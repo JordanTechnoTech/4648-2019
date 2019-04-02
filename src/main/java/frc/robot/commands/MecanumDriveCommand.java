@@ -23,7 +23,7 @@ public class MecanumDriveCommand extends Command {
     public void log() {
 
     }
-
+//Sets drive speeds
     @Override
     protected void execute() {
         double x, y, twist;
@@ -33,7 +33,7 @@ public class MecanumDriveCommand extends Command {
         twist = twist * .7;
         x = x * 1;
         y = y * 1;
-
+//Actually drives the robot
         RobotMap.drivetrain.getDrivetrain().driveCartesian(-x, y, -twist);
         SmartDashboard.putNumber("Drive twist", twist);
         SmartDashboard.putNumber("Drive x", x);

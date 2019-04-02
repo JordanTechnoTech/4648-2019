@@ -19,7 +19,7 @@ public class ShoulderJoystickCommand extends Command {
     protected void initialize() {
         super.initialize();
     }
-
+//Fills in the points the Shoulder is being moved to
     @Override
     protected void execute() {
         if (!RobotMap.isRunningAutoArm()) {

@@ -71,13 +71,15 @@ public class FaceoffCommand extends Command {
     @Override
     protected void execute() {
         limeLightValues = limelightCamera.poll();
-//
+//Gets the distance from the camera to the target
         double distance = LimelightCamera.getDistance(target.getHeight(), limeLightValues.getTargetVertical());
         SmartDashboard.putNumber("distance", distance);
         SmartDashboard.putNumber("cachedTA", limeLightValues.ta);
         SmartDashboard.putNumber("cachedTX", limeLightValues.tx);
         SmartDashboard.putNumber("cachedTY", limeLightValues.ty);
         SmartDashboard.putNumber("cachedTS", limeLightValues.ts);
+//Counts the number of times the camera loses the target
+//Also gets the Robot lined up with the target
         if (!limeLightValues.hasTarget()) {
             cameraFail = cameraFail + 1;
             SmartDashboard.putNumber("CameraFail", cameraFail);
@@ -110,7 +112,7 @@ public class FaceoffCommand extends Command {
         }
         throw new RuntimeException("Item not found:" + itemToFind);
     }
-
+//Tells the robot how much it has to turn
     public double getTurnSpeed(LimeLightValues limeLightValues) {
         float tx = (float) limeLightValues.getTargetHorizontal();
         float angle = Math.abs(tx);
@@ -126,7 +128,7 @@ public class FaceoffCommand extends Command {
         }
         return steering_adjust;
     }
-
+//Tells the robot how much to slide to the sides
     public double getSlideSpeed(LimeLightValues limeLightValues, double distance) {
         double skew = limeLightValues.getTargetSkew();
         if (skew <= -60) {
@@ -136,7 +138,7 @@ public class FaceoffCommand extends Command {
         SmartDashboard.putNumber("SkewDistance", skewDistance);
         return findInCollection(slideSpeedRangeValues, skewDistance);
     }
-
+//Tells the robot how much to go forward
     public double getForwardSpeed(double distance) {
         return findInCollection(forwardSpeedRangeValues, distance);
     }
